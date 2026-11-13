@@ -1,98 +1,120 @@
 <!DOCTYPE html>
 <html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Practical Application Game - Sales Demand Planner</title>
+<title>Practical Application Game - Auto System Terintegrasi</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:system-ui,Arial;background:#0b1f17;color:#fff;padding:14px}
-h1{font-size:22px} .card{background:#132e22;border:1px solid #2e5a40;border-radius:14px;padding:14px;margin:10px 0}
-button{background:#ff7a00;color:#fff;border:0;padding:12px 16px;border-radius:10px;font-weight:700;cursor:pointer;margin:4px}
-button.green{background:#00c853}button.blue{background:#2196f3}
+.card{background:#132e22;border:1px solid #2e5a40;border-radius:16px;padding:14px;margin:10px 0}
+button{background:#ff7a00;color:#fff;border:0;padding:12px 16px;border-radius:12px;font-weight:800;cursor:pointer;margin:4px}
+button.green{background:#00c853}button.blue{background:#2196f3}button.purple{background:#7b1fa2}button.red{background:#c62828}
 input,select{width:100%;padding:11px;border-radius:10px;border:1px solid #333;margin:6px 0;background:#fff;color:#000}
 .pill{background:#1e4a32;padding:8px 12px;border-radius:999px;font-weight:700;display:inline-block;margin:3px}
-.stage{background:linear-gradient(#87CEEB,#e8f5e9);color:#000;border-radius:14px;padding:16px;min-height:220px;position:relative;overflow:hidden}
-.actor{font-size:56px;position:absolute;transition:left 1s;bottom:20px}.bubble{background:#fff;color:#000;padding:8px 10px;border-radius:12px;max-width:240px;font-size:13px;position:absolute;top:10px;display:none}
-.beam{position:absolute;top:30px;left:50%;width:180px;height:14px;background:yellow;box-shadow:0 0 20px yellow;display:none;transform:rotate(15deg)}
+.stage{background:linear-gradient(180deg,#87CEEB,#e8f5e9);color:#000;border-radius:16px;padding:16px;min-height:240px;position:relative;overflow:hidden}
+.actor{font-size:56px;position:absolute;transition:left 1s;bottom:20px}.bubble{background:#fff;color:#000;padding:8px 10px;border-radius:12px;max-width:260px;font-size:13px;position:absolute;top:10px;display:none}
+.beam{position:absolute;top:30px;left:50%;width:180px;height:14px;background:#ffeb3b;box-shadow:0 0 24px #ffeb3b;display:none;transform:rotate(15deg)}
+.trend{background:linear-gradient(90deg,#ff7a00,#ffeb3b,#00e676);color:#000;padding:10px;border-radius:12px;font-weight:800;text-align:center}
 </style></head><body>
+<div class="trend">✨ TRENDSETTER - OTOMATIS TER-SYSTEM & TERINTEGRASI - STYLISH BANGET ✨</div>
 <h1>🎮 Practical Application Game</h1>
-<p>Kamu = <b>Staff Sales / Demand Planner yang Kanvas</b>. Nawarinn sistem peralatan infrared ke Bos Sponsor. Teknisi yang rakit.</p>
-<div><span class="pill">PTS: <span id="pts">0</span></span><span class="pill">Level: <span id="level">1</span></span><span class="pill">Waktu: <span id="time">24</span> jam</span><span class="pill">Sponsor: <span id="sponsor">0</span>/2</span></div>
+<p>Kamu = <b>Staff Sales / Demand Planner yang Kanvas</b>. Sistem otomatis baca kontrak + peralatan dari file lain. Update file lain, game ikut update, index tidak diganggu.</p>
+<div><span class="pill">PTS: <span id="pts">0</span></span><span class="pill">Level: <span id="level">1</span></span><span class="pill">Waktu: <span id="time">24</span> jam</span><span class="pill">Sponsor: <span id="sponsor">0</span>/2</span><span class="pill">Produk Terpilih: <span id="prodName">-</span></span></div>
 
 <div class="card">
 <b>Nama:</b> <input id="nama" placeholder="Nama kamu">
-<b>Email (opsional, buat terima update):</b> <input id="email" placeholder="contoh: asuveleikha@gmail.com">
-<button class="green" onclick="daftar()">Simpan & Main ▶</button><span id="regMsg"></span>
+<b>Email (opsional):</b> <input id="email" placeholder="asuveleikha@gmail.com">
+<button class="green" onclick="document.getElementById('regMsg').innerText='Siap! Selamat main.'">Simpan & Main ▶</button> <span id="regMsg"></span>
 </div>
 
 <div class="card">
-<h2>🎬 Panggung Visual</h2>
+<h2>🎬 Panggung Visual - Otomatis</h2>
 <div class="stage" id="stage">
-<div class="bubble" id="bSales">Halo Bos! Saya Sales Demand Planner, mau nawarin sistem kita.</div>
-<div class="bubble" id="bBoss" style="right:10px">Hmm... DEAL!</div>
-<div class="bubble" id="bTek" style="left:38%">Siap Bos, saya maklum, saya siap rakit.</div>
+<div class="bubble" id="bSales">Halo Bos!</div><div class="bubble" id="bBoss" style="right:10px">DEAL!</div><div class="bubble" id="bTek" style="left:38%">Siap Bos!</div>
 <div class="beam" id="beam"></div>
 <div class="actor" id="sales" style="left:5%">🧑‍💼<br><small style="font-size:12px">SALES</small></div>
 <div class="actor" id="tek" style="left:42%">👨‍🔧<br><small style="font-size:12px">TEKNISI</small></div>
 <div class="actor" id="boss" style="left:78%">👨‍💼<br><small style="font-size:12px">BOS</small></div>
 <div style="position:absolute;right:8px;top:90px;font-size:30px">🏪</div>
 </div>
-<p id="story"></p>
-<button style="background:#7b1fa2" onclick="speak('Halo Bos! Saya Sales Demand Planner, mau nawarin sistem kita. Bos mau jadi sponsor saya tidak? Ini sistem peralatan infrared kita.')">🔊 SUARA: Ngobrol</button><button style="background:#c62828" onclick="speakKontrak()">🔊 SUARA: Bacakan KONTRAK - Tegas Lantang</button><button style="background:#1565c0" onclick="speakPanduan()">🔊 SUARA: Panduan Perakitan + Installasi Aktif</button><br><button onclick="jalan()">1. JALAN KANVAS KE TOKO 🚶</button>
-<button onclick="ngobrol()">2. NGOBROL TATAP MUKA 💬</button>
-<button onclick="kontrak()">3. BUAT KONTRAK 📄</button>
-<button onclick="maklumat()">4. BOS KASIH TAU TEKNISI 📣</button>
-<button onclick="cariBuyer()">5. CARI BUYER 🛒</button>
-<button onclick="rakit()">6. TEKNISI KERJA 🔧</button>
-<button onclick="tesLampu()">7. TES LAMPU - ON 💡</button>
+<p id="story">Pilih produk di bawah, suara akan bacakan 1 per 1 secara detail.</p>
+<button onclick="jalan()">1. JALAN KANVAS 🚶</button>
+<button onclick="kontrak()">2. KONTRAK 📄</button>
+<button onclick="cariBuyer()">3. CARI BUYER 🛒</button>
+<button onclick="rakit()">4. TEKNISI KERJA 🔧</button>
+<button onclick="tesLampu()">5. TES LAMPU 💡</button>
 </div>
 
 <div class="card">
-<h2>📄 Kontrak Tertulis</h2>
-<p id="kontrakText">Belum ada kontrak. Jalan ke toko dulu, ngobrol, buat kontrak.</p>
-<p><b>PTS per produk:</b> MQ-135 28, SHT41 95, IMX219 210, ESP32-S3 578, MLX90640 1045, Bio Health Room 701, SG-810 1956, Obsidian 788, Color QC 650, CCTV 578, GPS 450, SAAS SCM 500, Marketing Digital 600, UV 380. <br><b>TENDER = INDENT FULL DESIGN:</b> Harga x jumlah + Desain 2000 + SAAS 500 + Marketing 600</p>
-</div>
-
-<div class="card">
-<h2>🛒 Jualan - 1 Unit / Lebih / Tender</h2>
-<select id="produk">
-<option>Bio Health Room - 701 PTS</option><option>Super IR Guard SG-810 - 1956 PTS</option><option>Obsidian / Gem Lab - 788 PTS</option><option>Color QC Batik - 650 PTS</option><option>CCTV AI - 578 PTS</option><option>SAAS SCM - 500 PTS</option><option>UV Steril - 380 PTS</option>
-</select>
-<select id="qty"><option value="1">1 unit - Satuan ke Rumah</option><option value="5">5 unit - Ruko</option><option value="10">10 unit - Sekolah / Minimarket</option><option value="100">TENDER 100 unit - Mal / Dept Pemerintah</option></select>
+<h2>🛒 Pilih Produk - Suara Baca 1 Per 1 Detail</h2>
+<p class="small">Produk dibaca dari <b>peralatan.json</b> (file lain, upgradeable). Kalau tambah produk baru di file itu, otomatis muncul di sini + suaranya ikut.</p>
+<select id="produk" onchange="pilihProduk()"></select>
+<select id="qty"><option value="1">1 unit - Satuan</option><option value="5">5 unit</option><option value="10">10 unit</option><option value="100">TENDER 100 unit - INDENT FULL DESIGN</option></select>
+<p><b>Detail Terpilih:</b> <span id="detail"></span></p>
+<button class="purple" onclick="suaraProduk()">🔊 SUARA: Bacakan Produk Terpilih 1 Per 1 Detail</button>
+<button class="blue" onclick="suaraPanduanProduk()">🔊 SUARA: Panduan Perakitan Produk Ini + Elemen Yang Diinstall</button>
+<button class="red" onclick="suaraKontrak()">🔊 SUARA: Kontrak Tegas Lantang</button>
 <button class="green" onclick="jual()">JUAL SEKARANG 💰</button>
 <p id="jualMsg"></p>
-<p><b>Market:</b> Perumahan, Outlet, Ruko, Toko, Sekolah, Pasar Jaya, Mall, Mini Market, Supermarket, Department Store, Departemen Pemerintah Setempat.</p>
-<p><b>Sistem:</b> ESP32-S3 otak terima WiFi ke HP / Laptop, Kapasitor cadangkan daya, TCS34725 + IMX219 deteksi kebakaran, gas berbahaya, ruang sehat tanpa timbal dan debu.</p>
+</div>
+
+<div class="card"><h3>📋 Daftar Peralatan (dari file lain)</h3><div id="list"></div>
+<p class="small">Cara update: Edit file <b>peralatan.json</b> di GitHub, upload lagi. Jangan edit index.html ini. Game otomatis baca file baru. Kalau file tidak ketemu (offline), pakai daftar cadangan di dalam game.</p>
 </div>
 
 <script>
-let pts=0,level=1,time=24,sponsor=0,hasBuyer=false,hasKontrak=false;
+let pts=0,level=1,time=24,sponsor=0,hasKontrak=false,hasBuyer=false;
+let DATA=[
+{nama:"Bio Health Room",komponen:["SHT41","MQ-135","ESP32-S3"],fungsi:"Jaga udara, lembab, gas. Ruang sehat tanpa timbal dan debu.",pts:701},
+{nama:"Super IR Guard SG-810 - Infrared Anti Kebakaran",komponen:["ESP32-S3 otak","Kapasitor cadangan daya","TCS34725","IMX219","MLX90640","MQ-135","SHT41"],fungsi:"Deteksi kebakaran, gas berbahaya mudah terbakar. ESP32-S3 terima WiFi ke HP dan Laptop.",pts:1956},
+{nama:"Obsidian / Gem Lab",komponen:["IMX219","ESP32-S3"],fungsi:"Cek batu mulia asli atau palsu ke toko permata mulia.",pts:788},
+{nama:"Color QC Batik",komponen:["TCS34725","IMX219","ESP32-S3"],fungsi:"Cek warna batik belang atau tidak.",pts:650},
+{nama:"CCTV AI Camera",komponen:["ESP32-S3 AI Camera"],fungsi:"Pantau maling, orang masuk.",pts:578},
+{nama:"GPS Logistics",komponen:["ESP32-S3","GPS"],fungsi:"Lacak kurir dan barang.",pts:450},
+{nama:"SAAS SCM Accurate",komponen:["Aplikasi"],fungsi:"Catat stok, order, uang, demand planner.",pts:500},
+{nama:"Sistem Marketing Digital",komponen:["Aplikasi"],fungsi:"Posting, chat, Google Search, promosi produk Bos.",pts:600},
+{nama:"UV Steril + Fogging",komponen:["UV LED 365nm","MOSFET AO3400","Photodiode S1226","Relay Omron"],fungsi:"Steril ruangan, bunuh jamur.",pts:380},
+{nama:"Lampu Senter Demo",komponen:["ESP32-S3","LED","Tombol ON"],fungsi:"Contoh nyata: tombol ON ditekan, cahaya memancar.",pts:100}
+];
+async function loadData(){
+  try{let r=await fetch('peralatan.json');if(r.ok){let j=await r.json();if(j.peralatan&&j.peralatan.length){DATA=j.peralatan.map(p=>({nama:p.nama,komponen:p.komponen||[],fungsi:p.fungsi||'',pts:p.pts||500}));}}}
+  catch(e){}
+  render();
+}
+function render(){
+  let sel=document.getElementById('produk');sel.innerHTML='';
+  DATA.forEach(p=>{let o=document.createElement('option');o.text=p.nama+' - '+p.pts+' PTS';sel.add(o)});
+  let l=document.getElementById('list');l.innerHTML=DATA.map(p=>`<div style="background:#1a3a2a;padding:8px;border-radius:8px;margin:4px"><b>${p.nama}</b> - ${p.pts} PTS<br><small>${p.fungsi}<br>Komponen: ${p.komponen.join(', ')}</small></div>`).join('');
+  pilihProduk();
+}
 function upd(){document.getElementById('pts').innerText=pts;document.getElementById('level').innerText=level;document.getElementById('time').innerText=time;document.getElementById('sponsor').innerText=sponsor;}
-
-function speak(teks, lantang=false){
-  try{
-    speechSynthesis.cancel();
-    let u = new SpeechSynthesisUtterance(teks);
-    u.lang='id-ID'; u.rate=0.95; u.pitch=1; u.volume= lantang?1:0.95;
-    let voices=speechSynthesis.getVoices();
-    let v=voices.find(x=>x.lang && x.lang.toLowerCase().startsWith('id'))||voices[0];
-    if(v) u.voice=v;
-    speechSynthesis.speak(u);
-  }catch(e){}
+function speak(t,lantang=false){try{speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(t);u.lang='id-ID';u.rate=0.92;u.volume=lantang?1:0.95;let vs=speechSynthesis.getVoices();let v=vs.find(x=>x.lang&&x.lang.toLowerCase().startsWith('id'))||vs[0];if(v)u.voice=v;speechSynthesis.speak(u);}catch(e){}}
+function cur(){return DATA[document.getElementById('produk').selectedIndex]||DATA[0];}
+function pilihProduk(){let p=cur();document.getElementById('prodName').innerText=p.nama;document.getElementById('detail').innerText=p.nama+' | '+p.pts+' PTS | '+p.fungsi+' | Komponen: '+p.komponen.join(', ');}
+function suaraProduk(){
+  let p=cur();let q=document.getElementById('qty').value;
+  let teks=`Produk terpilih! Satu! ${p.nama}! Harga ${p.pts} PTS! Jumlah ${q} unit! Fungsi: ${p.fungsi} Komponen yang harus diinstall, satu per satu: `+p.komponen.map((c,i)=>`${i+1}. ${c}`).join(', ')+`. Total PTS: ${p.pts*q} PTS!`;
+  document.getElementById('story').innerText=teks; speak(teks);
+  if(q>1) speak(`Pembelian dalam jumlah banyak! ${q} unit! Semua varian ${p.nama} akan dirakit satu per satu!`);
 }
-function speakKontrak(){
-  speak('PERHATIAN! KONTRAK RESMI! Bos Sponsor setuju! Sales Demand Planner dapat upah PTS per transaksi! Teknisi merakit! Peralatan kita: ESP32-S3 sebagai otak! TCS34725 sensor warna! NDIR sensor gas! IMX219 kamera delapan megapiksel! MLX90640 kamera thermal! MQ-135 sensor gas! SHT41 sensor suhu dan lembab! Bio Health Room! Super IR Guard SG-810! Obsidian Gem Lab! Color QC Batik! CCTV AI! GPS Logistics! SAAS SCM! Sistem Marketing Digital! UV Steril! Semua harus dipasang dengan benar, aktif berfungsi!', true);
+function suaraPanduanProduk(){
+  let p=cur();
+  let teks=`Panduan perakitan ${p.nama}! Langkah satu! Siapkan komponen: `+p.komponen.join(', ')+`. Langkah dua! Pasang satu per satu sesuai desain! Langkah tiga! Sambungkan dengan kapasitor dan dioda untuk cadangkan daya! Langkah empat! Sambungkan WiFi ESP32-S3 ke HP dan Laptop! Langkah lima! Tes! Tekan tombol ON! Lampu menyala! Cahaya memancar! Sensor mendeteksi! Peralatan aktif berfungsi setelah terinstall dengan benar!`;
+  // Special for SG-810
+  if(p.nama.includes('SG-810')||p.nama.includes('Infrared')) teks=`Panduan perakitan Infrared Anti Kebakaran! ESP32-S3 sebagai otak, menerima WiFi terkoneksi via internet ke HP dan Laptop! Gunakan kapasitor untuk mencadangkan daya agar TCS34725 dan IMX219 berfungsi dengan baik! TCS34725 dan IMX219 mendeteksi kebakaran, gas berbahaya mudah terbakar! SHT41 dan MQ-135 mendeteksi ruang sehat tanpa timbal dan debu! Tekan tombol ON! Lampu menyala! Cahaya memancar! Installasi benar! Aktif berfungsi!`;
+  document.getElementById('story').innerText=teks; speak(teks,true);
 }
-function speakPanduan(){
-  speak('PANDUAN PERAKITAN! ESP32-S3 sebagai otak, menerima WiFi terkoneksi via internet ke HP dan Laptop! Gunakan kapasitor untuk mencadangkan daya agar TCS34725 dan IMX219 berfungsi dengan baik! TCS34725 dan IMX219 mendeteksi kebakaran, gas berbahaya mudah terbakar! SHT41 dan MQ-135 mendeteksi ruang sehat tanpa timbal dan debu! Tekan tombol ON! Lampu menyala! Cahaya memancar! Installasi benar! Aktif berfungsi!', true);
+function suaraKontrak(){speak('Perhatian! Kontrak resmi! Bos Sponsor setuju! Sales Demand Planner dapat upah PTS per transaksi! Teknisi merakit! Peralatan kita: '+DATA.map(p=>p.nama).join(', ')+'. Semua harus dipasang dengan benar, aktif berfungsi!',true);}
+function jalan(){document.getElementById('sales').style.left='62%';speak('Sales jalan! Kanvas ke toko! Menuju Bos Sponsor!');}
+function kontrak(){hasKontrak=true;sponsor=1;suaraKontrak();}
+function cariBuyer(){hasBuyer=true;speak('Buyer datang! Saya mau pesan! Nota Order dibuat! Satuan, lebih dari satu unit, atau Tender Inden Full Design!');}
+function rakit(){if(!hasBuyer){speak('Belum ada buyer, cari buyer dulu.');return;}suaraPanduanProduk();}
+function tesLampu(){let b=document.getElementById('beam');b.style.display=b.style.display==='block'?'none':'block';speak('Tes lampu! Tombol ON ditekan! Lampu menyala! Cahaya memancar! Installasi benar! Aktif berfungsi!');}
+function jual(){
+  if(!hasKontrak){speak('Buat kontrak dulu, jalan ke toko dulu.');return;}
+  let p=cur();let q=parseInt(document.getElementById('qty').value);
+  let total=p.pts*q + (q>=100?2000+500+600:1100);
+  let deal=Math.random()<0.6; if(!deal){time--;document.getElementById('jualMsg').innerText='Kecewa... Buyer belum setuju. Waktu -1 jam.';speak('Kecewa, buyer belum setuju. Waktu berkurang satu jam. Cari lagi.');upd();return;}
+  pts+=total;level++;document.getElementById('jualMsg').innerText=`Berhasil! +${total} PTS. ${p.nama} terpasang, aktif berfungsi!`;
+  speak(`Berhasil! Transaksi! ${p.nama} terjual ${q} unit! Total ${total} PTS! Peralatan terpasang, aktif berfungsi!`);
+  upd();
 }
-
-function daftar(){let n=document.getElementById('nama').value;document.getElementById('regMsg').innerText=n?'Siap '+n+'! Selamat main.':'';}
-function show(id){document.getElementById(id).style.display='block';setTimeout(()=>{document.getElementById(id).style.display='none'},3500);}
-function jalan(){ speak('Sales jalan! Kanvas ke toko! Menuju Bos Sponsor!');document.getElementById('sales').style.left='62%';document.getElementById('story').innerText='Sales jalan kanvas ke toko...';show('bSales');}
-function ngobrol(){ speak('Tatap muka! Sales menjelaskan: ESP32-S3, TCS34725, NDIR, IMX219, MLX90640, MQ-135, SHT41. Bos mengangguk.');document.getElementById('story').innerText='Tatap muka: Sales jelasin ESP32-S3, TCS34725, NDIR, IMX219, MLX90640, MQ-135, SHT41. Bos angguk-angguk.';show('bSales');}
-function kontrak(){ speakKontrak();hasKontrak=true;document.getElementById('kontrakText').innerText='KONTRAK DEAL! Bos Sponsor setuju. Sales dapat upah PTS per transaksi. Teknisi merakit. Tanda tangan + stempel DEAL.';document.getElementById('story').innerText='Kontrak dibuat! Bos tanda tangan.';show('bBoss');}
-function maklumat(){ speak('Bos berkata: Bang Teknisi, ini kontrak alat kita. Tolong rakit ya kalau ada order. Teknisi menjawab: Siap Bos, saya maklum, saya siap rakit.');document.getElementById('story').innerText='Bos: Bang Teknisi, ini kontrak alat kita. Tolong rakit ya kalau ada order. Teknisi: Siap Bos, saya maklum.';show('bTek');}
-function cariBuyer(){ speak('Buyer datang! Saya mau pesan! Nota Order dibuat! Satuan, lebih dari satu unit, atau Tender Inden Full Design!');hasBuyer=true;document.getElementById('story').innerText='Buyer datang: Saya mau pesan! Nota Order dibuat: Satuan / Lebih / Tender Indent Full Design.';}
-function rakit(){ speak('Teknisi bekerja! Merakit! ESP32-S3, kapasitor, TCS34725, IMX219! Desain full! Selesai!');if(!hasBuyer){document.getElementById('story').innerText='Belum ada buyer, cari buyer dulu bro.';return;}document.getElementById('story').innerText='Teknisi merakit: ESP32-S3 -> Kapasitor -> TCS34725 -> IMX219. Desain full... Selesai!';}
-function tesLampu(){ speak('Tes lampu! Tombol ON ditekan! Lampu menyala! Cahaya memancar! Installasi benar! Aktif berfungsi!');let b=document.getElementById('beam');b.style.display=b.style.display==='block'?'none':'block';document.getElementById('story').innerText=b.style.display==='block'?'LAMPU ON! Cahaya memancar! Installasi benar, aktif berfungsi.':'Lampu OFF.';}
-function jual(){ speak('Transaksi! Buyer membeli! Teknisi memasang! Peralatan aktif berfungsi! PTS didapat!');if(!hasKontrak){document.getElementById('jualMsg').innerText='Buat kontrak dulu bro, jalan ke toko dulu.';return;}let q=parseInt(document.getElementById('qty').value);let base=parseInt(document.getElementById('produk').value.split(' - ')[1]);let total=base*q + (q>=100?2000+500+600:1100);let deal=Math.random()<0.6;if(!deal){time--;document.getElementById('jualMsg').innerText='Kecewa... Buyer belum setuju. Waktu -1 jam. Cari lagi.';upd();return;}pts+=total;level++;document.getElementById('jualMsg').innerText='Berhasil! Teknisi rakit + pasang. Transaksi! +'+total+' PTS. Level naik jadi '+level+'.';upd();}
-upd();
+loadData(); upd();
 </script></body></html>
