@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Practical Application Game - Sales Demand Planner</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,Arial;background:#0b1f17;color:#fff;padding:14px}
+h1{font-size:22px} .card{background:#132e22;border:1px solid #2e5a40;border-radius:14px;padding:14px;margin:10px 0}
+button{background:#ff7a00;color:#fff;border:0;padding:12px 16px;border-radius:10px;font-weight:700;cursor:pointer;margin:4px}
+button.green{background:#00c853}button.blue{background:#2196f3}
+input,select{width:100%;padding:11px;border-radius:10px;border:1px solid #333;margin:6px 0;background:#fff;color:#000}
+.pill{background:#1e4a32;padding:8px 12px;border-radius:999px;font-weight:700;display:inline-block;margin:3px}
+.stage{background:linear-gradient(#87CEEB,#e8f5e9);color:#000;border-radius:14px;padding:16px;min-height:220px;position:relative;overflow:hidden}
+.actor{font-size:56px;position:absolute;transition:left 1s;bottom:20px}.bubble{background:#fff;color:#000;padding:8px 10px;border-radius:12px;max-width:240px;font-size:13px;position:absolute;top:10px;display:none}
+.beam{position:absolute;top:30px;left:50%;width:180px;height:14px;background:yellow;box-shadow:0 0 20px yellow;display:none;transform:rotate(15deg)}
+</style></head><body>
+<h1>🎮 Practical Application Game</h1>
+<p>Kamu = <b>Staff Sales / Demand Planner yang Kanvas</b>. Nawarinn sistem peralatan infrared ke Bos Sponsor. Teknisi yang rakit.</p>
+<div><span class="pill">PTS: <span id="pts">0</span></span><span class="pill">Level: <span id="level">1</span></span><span class="pill">Waktu: <span id="time">24</span> jam</span><span class="pill">Sponsor: <span id="sponsor">0</span>/2</span></div>
+
+<div class="card">
+<b>Nama:</b> <input id="nama" placeholder="Nama kamu">
+<b>Email (opsional, buat terima update):</b> <input id="email" placeholder="contoh: asuveleikha@gmail.com">
+<button class="green" onclick="daftar()">Simpan & Main ▶</button><span id="regMsg"></span>
+</div>
+
+<div class="card">
+<h2>🎬 Panggung Visual</h2>
+<div class="stage" id="stage">
+<div class="bubble" id="bSales">Halo Bos! Saya Sales Demand Planner, mau nawarin sistem kita.</div>
+<div class="bubble" id="bBoss" style="right:10px">Hmm... DEAL!</div>
+<div class="bubble" id="bTek" style="left:38%">Siap Bos, saya maklum, saya siap rakit.</div>
+<div class="beam" id="beam"></div>
+<div class="actor" id="sales" style="left:5%">🧑‍💼<br><small style="font-size:12px">SALES</small></div>
+<div class="actor" id="tek" style="left:42%">👨‍🔧<br><small style="font-size:12px">TEKNISI</small></div>
+<div class="actor" id="boss" style="left:78%">👨‍💼<br><small style="font-size:12px">BOS</small></div>
+<div style="position:absolute;right:8px;top:90px;font-size:30px">🏪</div>
+</div>
+<p id="story"></p>
+<button onclick="jalan()">1. JALAN KANVAS KE TOKO 🚶</button>
+<button onclick="ngobrol()">2. NGOBROL TATAP MUKA 💬</button>
+<button onclick="kontrak()">3. BUAT KONTRAK 📄</button>
+<button onclick="maklumat()">4. BOS KASIH TAU TEKNISI 📣</button>
+<button onclick="cariBuyer()">5. CARI BUYER 🛒</button>
+<button onclick="rakit()">6. TEKNISI KERJA 🔧</button>
+<button onclick="tesLampu()">7. TES LAMPU - ON 💡</button>
+</div>
+
+<div class="card">
+<h2>📄 Kontrak Tertulis</h2>
+<p id="kontrakText">Belum ada kontrak. Jalan ke toko dulu, ngobrol, buat kontrak.</p>
+<p><b>PTS per produk:</b> MQ-135 28, SHT41 95, IMX219 210, ESP32-S3 578, MLX90640 1045, Bio Health Room 701, SG-810 1956, Obsidian 788, Color QC 650, CCTV 578, GPS 450, SAAS SCM 500, Marketing Digital 600, UV 380. <br><b>TENDER = INDENT FULL DESIGN:</b> Harga x jumlah + Desain 2000 + SAAS 500 + Marketing 600</p>
+</div>
+
+<div class="card">
+<h2>🛒 Jualan - 1 Unit / Lebih / Tender</h2>
+<select id="produk">
+<option>Bio Health Room - 701 PTS</option><option>Super IR Guard SG-810 - 1956 PTS</option><option>Obsidian / Gem Lab - 788 PTS</option><option>Color QC Batik - 650 PTS</option><option>CCTV AI - 578 PTS</option><option>SAAS SCM - 500 PTS</option><option>UV Steril - 380 PTS</option>
+</select>
+<select id="qty"><option value="1">1 unit - Satuan ke Rumah</option><option value="5">5 unit - Ruko</option><option value="10">10 unit - Sekolah / Minimarket</option><option value="100">TENDER 100 unit - Mal / Dept Pemerintah</option></select>
+<button class="green" onclick="jual()">JUAL SEKARANG 💰</button>
+<p id="jualMsg"></p>
+<p><b>Market:</b> Perumahan, Outlet, Ruko, Toko, Sekolah, Pasar Jaya, Mall, Mini Market, Supermarket, Department Store, Departemen Pemerintah Setempat.</p>
+<p><b>Sistem:</b> ESP32-S3 otak terima WiFi ke HP / Laptop, Kapasitor cadangkan daya, TCS34725 + IMX219 deteksi kebakaran, gas berbahaya, ruang sehat tanpa timbal dan debu.</p>
+</div>
+
+<script>
+let pts=0,level=1,time=24,sponsor=0,hasBuyer=false,hasKontrak=false;
+function upd(){document.getElementById('pts').innerText=pts;document.getElementById('level').innerText=level;document.getElementById('time').innerText=time;document.getElementById('sponsor').innerText=sponsor;}
+function daftar(){let n=document.getElementById('nama').value;document.getElementById('regMsg').innerText=n?'Siap '+n+'! Selamat main.':'';}
+function show(id){document.getElementById(id).style.display='block';setTimeout(()=>{document.getElementById(id).style.display='none'},3500);}
+function jalan(){document.getElementById('sales').style.left='62%';document.getElementById('story').innerText='Sales jalan kanvas ke toko...';show('bSales');}
+function ngobrol(){document.getElementById('story').innerText='Tatap muka: Sales jelasin ESP32-S3, TCS34725, NDIR, IMX219, MLX90640, MQ-135, SHT41. Bos angguk-angguk.';show('bSales');}
+function kontrak(){hasKontrak=true;document.getElementById('kontrakText').innerText='KONTRAK DEAL! Bos Sponsor setuju. Sales dapat upah PTS per transaksi. Teknisi merakit. Tanda tangan + stempel DEAL.';document.getElementById('story').innerText='Kontrak dibuat! Bos tanda tangan.';show('bBoss');}
+function maklumat(){document.getElementById('story').innerText='Bos: Bang Teknisi, ini kontrak alat kita. Tolong rakit ya kalau ada order. Teknisi: Siap Bos, saya maklum.';show('bTek');}
+function cariBuyer(){hasBuyer=true;document.getElementById('story').innerText='Buyer datang: Saya mau pesan! Nota Order dibuat: Satuan / Lebih / Tender Indent Full Design.';}
+function rakit(){if(!hasBuyer){document.getElementById('story').innerText='Belum ada buyer, cari buyer dulu bro.';return;}document.getElementById('story').innerText='Teknisi merakit: ESP32-S3 -> Kapasitor -> TCS34725 -> IMX219. Desain full... Selesai!';}
+function tesLampu(){let b=document.getElementById('beam');b.style.display=b.style.display==='block'?'none':'block';document.getElementById('story').innerText=b.style.display==='block'?'LAMPU ON! Cahaya memancar! Installasi benar, aktif berfungsi.':'Lampu OFF.';}
+function jual(){if(!hasKontrak){document.getElementById('jualMsg').innerText='Buat kontrak dulu bro, jalan ke toko dulu.';return;}let q=parseInt(document.getElementById('qty').value);let base=parseInt(document.getElementById('produk').value.split(' - ')[1]);let total=base*q + (q>=100?2000+500+600:1100);let deal=Math.random()<0.6;if(!deal){time--;document.getElementById('jualMsg').innerText='Kecewa... Buyer belum setuju. Waktu -1 jam. Cari lagi.';upd();return;}pts+=total;level++;document.getElementById('jualMsg').innerText='Berhasil! Teknisi rakit + pasang. Transaksi! +'+total+' PTS. Level naik jadi '+level+'.';upd();}
+upd();
+</script></body></html>
