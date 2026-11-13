@@ -35,7 +35,7 @@ input,select{width:100%;padding:11px;border-radius:10px;border:1px solid #333;ma
 <div style="position:absolute;right:8px;top:90px;font-size:30px">🏪</div>
 </div>
 <p id="story"></p>
-<button onclick="jalan()">1. JALAN KANVAS KE TOKO 🚶</button>
+<button style="background:#7b1fa2" onclick="speak('Halo Bos! Saya Sales Demand Planner, mau nawarin sistem kita. Bos mau jadi sponsor saya tidak? Ini sistem peralatan infrared kita.')">🔊 SUARA: Ngobrol</button><button style="background:#c62828" onclick="speakKontrak()">🔊 SUARA: Bacakan KONTRAK - Tegas Lantang</button><button style="background:#1565c0" onclick="speakPanduan()">🔊 SUARA: Panduan Perakitan + Installasi Aktif</button><br><button onclick="jalan()">1. JALAN KANVAS KE TOKO 🚶</button>
 <button onclick="ngobrol()">2. NGOBROL TATAP MUKA 💬</button>
 <button onclick="kontrak()">3. BUAT KONTRAK 📄</button>
 <button onclick="maklumat()">4. BOS KASIH TAU TEKNISI 📣</button>
@@ -65,15 +65,34 @@ input,select{width:100%;padding:11px;border-radius:10px;border:1px solid #333;ma
 <script>
 let pts=0,level=1,time=24,sponsor=0,hasBuyer=false,hasKontrak=false;
 function upd(){document.getElementById('pts').innerText=pts;document.getElementById('level').innerText=level;document.getElementById('time').innerText=time;document.getElementById('sponsor').innerText=sponsor;}
+
+function speak(teks, lantang=false){
+  try{
+    speechSynthesis.cancel();
+    let u = new SpeechSynthesisUtterance(teks);
+    u.lang='id-ID'; u.rate=0.95; u.pitch=1; u.volume= lantang?1:0.95;
+    let voices=speechSynthesis.getVoices();
+    let v=voices.find(x=>x.lang && x.lang.toLowerCase().startsWith('id'))||voices[0];
+    if(v) u.voice=v;
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function speakKontrak(){
+  speak('PERHATIAN! KONTRAK RESMI! Bos Sponsor setuju! Sales Demand Planner dapat upah PTS per transaksi! Teknisi merakit! Peralatan kita: ESP32-S3 sebagai otak! TCS34725 sensor warna! NDIR sensor gas! IMX219 kamera delapan megapiksel! MLX90640 kamera thermal! MQ-135 sensor gas! SHT41 sensor suhu dan lembab! Bio Health Room! Super IR Guard SG-810! Obsidian Gem Lab! Color QC Batik! CCTV AI! GPS Logistics! SAAS SCM! Sistem Marketing Digital! UV Steril! Semua harus dipasang dengan benar, aktif berfungsi!', true);
+}
+function speakPanduan(){
+  speak('PANDUAN PERAKITAN! ESP32-S3 sebagai otak, menerima WiFi terkoneksi via internet ke HP dan Laptop! Gunakan kapasitor untuk mencadangkan daya agar TCS34725 dan IMX219 berfungsi dengan baik! TCS34725 dan IMX219 mendeteksi kebakaran, gas berbahaya mudah terbakar! SHT41 dan MQ-135 mendeteksi ruang sehat tanpa timbal dan debu! Tekan tombol ON! Lampu menyala! Cahaya memancar! Installasi benar! Aktif berfungsi!', true);
+}
+
 function daftar(){let n=document.getElementById('nama').value;document.getElementById('regMsg').innerText=n?'Siap '+n+'! Selamat main.':'';}
 function show(id){document.getElementById(id).style.display='block';setTimeout(()=>{document.getElementById(id).style.display='none'},3500);}
-function jalan(){document.getElementById('sales').style.left='62%';document.getElementById('story').innerText='Sales jalan kanvas ke toko...';show('bSales');}
-function ngobrol(){document.getElementById('story').innerText='Tatap muka: Sales jelasin ESP32-S3, TCS34725, NDIR, IMX219, MLX90640, MQ-135, SHT41. Bos angguk-angguk.';show('bSales');}
-function kontrak(){hasKontrak=true;document.getElementById('kontrakText').innerText='KONTRAK DEAL! Bos Sponsor setuju. Sales dapat upah PTS per transaksi. Teknisi merakit. Tanda tangan + stempel DEAL.';document.getElementById('story').innerText='Kontrak dibuat! Bos tanda tangan.';show('bBoss');}
-function maklumat(){document.getElementById('story').innerText='Bos: Bang Teknisi, ini kontrak alat kita. Tolong rakit ya kalau ada order. Teknisi: Siap Bos, saya maklum.';show('bTek');}
-function cariBuyer(){hasBuyer=true;document.getElementById('story').innerText='Buyer datang: Saya mau pesan! Nota Order dibuat: Satuan / Lebih / Tender Indent Full Design.';}
-function rakit(){if(!hasBuyer){document.getElementById('story').innerText='Belum ada buyer, cari buyer dulu bro.';return;}document.getElementById('story').innerText='Teknisi merakit: ESP32-S3 -> Kapasitor -> TCS34725 -> IMX219. Desain full... Selesai!';}
-function tesLampu(){let b=document.getElementById('beam');b.style.display=b.style.display==='block'?'none':'block';document.getElementById('story').innerText=b.style.display==='block'?'LAMPU ON! Cahaya memancar! Installasi benar, aktif berfungsi.':'Lampu OFF.';}
-function jual(){if(!hasKontrak){document.getElementById('jualMsg').innerText='Buat kontrak dulu bro, jalan ke toko dulu.';return;}let q=parseInt(document.getElementById('qty').value);let base=parseInt(document.getElementById('produk').value.split(' - ')[1]);let total=base*q + (q>=100?2000+500+600:1100);let deal=Math.random()<0.6;if(!deal){time--;document.getElementById('jualMsg').innerText='Kecewa... Buyer belum setuju. Waktu -1 jam. Cari lagi.';upd();return;}pts+=total;level++;document.getElementById('jualMsg').innerText='Berhasil! Teknisi rakit + pasang. Transaksi! +'+total+' PTS. Level naik jadi '+level+'.';upd();}
+function jalan(){ speak('Sales jalan! Kanvas ke toko! Menuju Bos Sponsor!');document.getElementById('sales').style.left='62%';document.getElementById('story').innerText='Sales jalan kanvas ke toko...';show('bSales');}
+function ngobrol(){ speak('Tatap muka! Sales menjelaskan: ESP32-S3, TCS34725, NDIR, IMX219, MLX90640, MQ-135, SHT41. Bos mengangguk.');document.getElementById('story').innerText='Tatap muka: Sales jelasin ESP32-S3, TCS34725, NDIR, IMX219, MLX90640, MQ-135, SHT41. Bos angguk-angguk.';show('bSales');}
+function kontrak(){ speakKontrak();hasKontrak=true;document.getElementById('kontrakText').innerText='KONTRAK DEAL! Bos Sponsor setuju. Sales dapat upah PTS per transaksi. Teknisi merakit. Tanda tangan + stempel DEAL.';document.getElementById('story').innerText='Kontrak dibuat! Bos tanda tangan.';show('bBoss');}
+function maklumat(){ speak('Bos berkata: Bang Teknisi, ini kontrak alat kita. Tolong rakit ya kalau ada order. Teknisi menjawab: Siap Bos, saya maklum, saya siap rakit.');document.getElementById('story').innerText='Bos: Bang Teknisi, ini kontrak alat kita. Tolong rakit ya kalau ada order. Teknisi: Siap Bos, saya maklum.';show('bTek');}
+function cariBuyer(){ speak('Buyer datang! Saya mau pesan! Nota Order dibuat! Satuan, lebih dari satu unit, atau Tender Inden Full Design!');hasBuyer=true;document.getElementById('story').innerText='Buyer datang: Saya mau pesan! Nota Order dibuat: Satuan / Lebih / Tender Indent Full Design.';}
+function rakit(){ speak('Teknisi bekerja! Merakit! ESP32-S3, kapasitor, TCS34725, IMX219! Desain full! Selesai!');if(!hasBuyer){document.getElementById('story').innerText='Belum ada buyer, cari buyer dulu bro.';return;}document.getElementById('story').innerText='Teknisi merakit: ESP32-S3 -> Kapasitor -> TCS34725 -> IMX219. Desain full... Selesai!';}
+function tesLampu(){ speak('Tes lampu! Tombol ON ditekan! Lampu menyala! Cahaya memancar! Installasi benar! Aktif berfungsi!');let b=document.getElementById('beam');b.style.display=b.style.display==='block'?'none':'block';document.getElementById('story').innerText=b.style.display==='block'?'LAMPU ON! Cahaya memancar! Installasi benar, aktif berfungsi.':'Lampu OFF.';}
+function jual(){ speak('Transaksi! Buyer membeli! Teknisi memasang! Peralatan aktif berfungsi! PTS didapat!');if(!hasKontrak){document.getElementById('jualMsg').innerText='Buat kontrak dulu bro, jalan ke toko dulu.';return;}let q=parseInt(document.getElementById('qty').value);let base=parseInt(document.getElementById('produk').value.split(' - ')[1]);let total=base*q + (q>=100?2000+500+600:1100);let deal=Math.random()<0.6;if(!deal){time--;document.getElementById('jualMsg').innerText='Kecewa... Buyer belum setuju. Waktu -1 jam. Cari lagi.';upd();return;}pts+=total;level++;document.getElementById('jualMsg').innerText='Berhasil! Teknisi rakit + pasang. Transaksi! +'+total+' PTS. Level naik jadi '+level+'.';upd();}
 upd();
 </script></body></html>
