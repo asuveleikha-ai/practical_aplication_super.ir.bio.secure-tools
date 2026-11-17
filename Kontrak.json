@@ -1,60 +1,24 @@
 {
-  "versi": "1.0",
-  "judul": "KONTRAK - Practical Application Game - Sales / Demand Planner",
-  "catatan": "File ini BISA DI-UPDATE kapan saja. Upload ulang file ini saja, index.html TIDAK PERLU diubah. Game akan baca kontrak terbaru otomatis.",
-  "sponsor": [
-    {
-      "nama": "Pak Haji",
-      "toko": "Toko Elektronik Infrared - Bandung",
-      "peran": "Owner / Bos Sponsor"
-    },
-    {
-      "nama": "Bu Sari",
-      "toko": "Toko Elektronik Komputerisasi - Jakarta",
-      "peran": "Owner / Bos Sponsor"
-    }
-  ],
-  "sales": {
-    "peran": "Staff Sales / Demand Planner - Kanvas",
-    "tugas": "Menawarkan sistem, cari sponsor, cari buyer, dapat upah PTS per transaksi"
-  },
-  "teknisi": {
-    "peran": "Teknisi dari Sponsor",
-    "tugas": "Merakit dengan desain, installasi, tes fungsi"
-  },
-  "pts": {
-    "MQ-135": 28,
-    "SHT41": 95,
-    "IMX219_8MP": 210,
-    "ESP32-S3_AI_Camera": 578,
-    "MLX90640_Thermal": 1045,
-    "TCS34725": 180,
-    "NDIR_CO2": 320,
-    "Bio_Health_Room": 701,
-    "Super_IR_Guard_SG810": 1956,
-    "Obsidian_Gem_Lab": 788,
-    "Color_QC_Batik": 650,
-    "CCTV_AI": 578,
-    "GPS_Logistics": 450,
-    "SAAS_SCM_Accurate": 500,
-    "Sistem_Marketing_Digital": 600,
-    "UV_Steril_Fogging": 380
-  },
-  "tender": {
-    "rumus": "Harga unit x jumlah + Biaya Desain 2000 PTS + SAAS SCM 500 PTS + Sistem Marketing 600 PTS",
-    "keterangan": "TENDER = Pembelian berdasarkan INDENT FULL DESIGN. Buyer pesan dulu, teknisi bikin full design, baru rakit, baru kirim."
+  "version": "v23",
+  "judul": "KONTRAK RESMI - Super Secure Syst v23",
+  "isi": "Bos Sponsor setuju. Sales Demand Planner dapat upah PTS per transaksi. Teknisi merakit. Peralatan harus dipasang dengan benar, aktif berfungsi. ESP32-S3 sebagai otak, menerima WiFi terkoneksi via internet ke HP dan Laptop. Gunakan kapasitor untuk mencadangkan daya agar TCS34725 dan IMX219 berfungsi dengan baik. TCS34725 dan IMX219 mendeteksi kebakaran, gas berbahaya mudah terbakar. SHT41 dan MQ-135 mendeteksi ruang sehat tanpa timbal dan debu. Tekan tombol ON. Lampu menyala. Cahaya memancar. Installasi benar. Aktif berfungsi.",
+  "bonus": {
+    "design": 2000,
+    "saas": 500,
+    "marketing": 600
   },
   "markets": [
-    "Perumahan",
-    "Outlet",
+    "Rumah Tangga",
     "Ruko",
-    "Toko",
+    "Outlet",
     "Sekolah",
     "Pasar Jaya",
     "Mall",
-    "Mini Market",
+    "Minimarket",
     "Supermarket",
     "Department Store",
-    "Departemen Pemerintah Setempat"
+    "Dinas Pemda",
+    "Toko Permata",
+    "Toko Elektronik"
   ]
 }

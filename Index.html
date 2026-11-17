@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Practical Application Game - Sales / Demand Planner</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,Arial;background:#0b1f17;color:#fff;padding:14px}
+h1{font-size:22px;margin:6px 0}.card{background:#132e22;border:1px solid #2e5a40;border-radius:14px;padding:14px;margin:10px 0}
+button{background:#ff7a00;color:#fff;border:0;padding:12px 16px;border-radius:10px;font-weight:700;cursor:pointer;margin:4px 4px 4px 0}
+button.green{background:#00c853}button.blue{background:#2196f3}button.gray{background:#455a64}
+input,select{width:100%;padding:11px;border-radius:10px;border:1px solid #333;margin:6px 0;background:#fff;color:#000}
+.top{display:flex;gap:8px;flex-wrap:wrap}.pill{background:#1e4a32;padding:8px 12px;border-radius:999px;font-weight:700}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tool{background:#1a3a2a;padding:10px;border-radius:10px}
+.hidden{display:none}.happy{color:#7CFC9A}.sad{color:#ff8a80}.small{font-size:13px;opacity:.9}
+</style></head><body>
+<h1>🎮 Practical Application Game</h1>
+<p class="small">Kamu = <b>Sales / Demand Planner</b>. Bukan direktur. Bukan teknisi. Tugasmu: nawarin SISTEM, cari sponsor toko elektronik, cari buyer. Teknisi dari sponsor yang rakit. Kamu dapat upah = PTS.</p>
+<div class="top"><span class="pill">PTS: <span id="pts">0</span></span><span class="pill">Level: <span id="level">1</span></span><span class="pill">Waktu: <span id="time">24</span> jam</span><span class="pill">Sponsor: <span id="sponsor">0</span>/3</span></div>
+
+<div id="register" class="card">
+<h2>1. Daftar Dulu - Buat Terima Game</h2>
+<p class="small">Kamu NGGAK ngirim email ke kami. Kamu isi email kamu buat terima game + update. Email kamu masuk daftar pemain.</p>
+<input id="nama" placeholder="Nama kamu">
+<input id="email" placeholder="Email kamu - contoh: asuveleikha@gmail.com">
+<button class="green" onclick="daftar()">Daftar & Main ▶</button>
+<p id="regMsg" class="small"></p>
+</div>
+
+<div id="game" class="hidden">
+<div class="card">
+<h2>2. Jalan Ke Toko - Ketemu Bos</h2>
+<p id="bossText">Bos: "Mau apa dek?"</p>
+<p><b>Kamu:</b> "Bos mau jadi sponsor saya nggak? Nih saya ada sistem ini yang bisa memasarkan produk-produknya si Bos nih."</p>
+<button onclick="tawarBos()">Tawarin Bos Ini 🤝</button>
+<button class="blue" onclick="randomLevel()">🎲 Random Level</button>
+<button class="blue" onclick="lompatGem()">💎 Langsung Level 26-30 - Jual Obsidian ke Toko Gem</button>
+<p id="dealMsg"></p>
+</div>
+
+<div class="card">
+<h2>3. Pilih Jumlah Jualan + Hitung PTS</h2>
+<select id="produk" onchange="hitung()"></select>
+<select id="qty" onchange="hitung()">
+<option value="1">1 unit - Satuan ke Rumah</option>
+<option value="5">5 unit - ke Ruko</option>
+<option value="10">10 unit - ke Sekolah / Minimarket</option>
+<option value="50">50 unit - ke Supermarket</option>
+<option value="100">TENDER 100 unit - ke Mal / Department</option>
+</select>
+<p><b>Hitungan:</b> <span id="calc"></span></p>
+<p class="small">Paket SISTEM = Alat + SAAS SCM 500 PTS + Sistem Marketing Digital 600 PTS. Jadi 1 paket sistem lebih gede dari 1 alat saja.</p>
+<button class="green" onclick="jual()">Jual Sekarang - Cari Buyer 💰</button>
+<p id="jualMsg"></p>
+</div>
+
+<div class="card">
+<h2>4. 8 Alat Ringan - Tanpa Turbin, Tanpa AutoCAD</h2>
+<div class="grid" id="tools"></div>
+</div>
+
+<div class="card">
+<h2>5. Peta 30 Level - Random Boleh, Full Juga Bisa</h2>
+<p class="small">Level 1-5 Rumah, 6-10 Ruko/Minimarket, 11-15 Pasar/Sekolah, 16-20 Supermarket/Department, 21-25 Mal, 26-30 Toko Permata Mulia / Obsidian. Jual 1 unit saja sudah naik level. Walau random, kalau lancar bisa full semua terisi.</p>
+<div id="levels"></div>
+<p><b>Level Terisi:</b> <span id="filled">0</span>/30</p>
+</div>
+
+<div class="card">
+<h2>6. Beli Kartu Bantuan</h2>
+<button onclick="beliKartu('Senyum',100,20)">Kartu Senyum +20% Deal - 100 PTS</button>
+<button onclick="beliKartu('Contoh',200,30)">Kartu Contoh Produk +30% Deal - 200 PTS</button>
+<button onclick="beliKartu('Teknisi Cepat',150,0)">Kartu Teknisi Cepat - 150 PTS</button>
+<p id="kartuMsg" class="small">Kartu aktif: -</p>
+</div>
+<div class="card"><p class="small">Versi 2.2 - Upgradeable. Update alat / level baru tidak mengganggu game yang sudah aktif. Bisa edit / upload file lain tanpa ganggu index. SAAS SCM + Sistem Marketing Digital sudah masuk produk.</p></div>
+</div>
+
+<script>
+let pts=0, level=1, time=24, sponsor=0, bonus=0, filledSet=new Set();
+const products=[
+["Bio Health Room",701],["Early Warning SG-810",1956],["Obsidian / Gem Lab",788],["Color QC Batik",650],["CCTV AI Camera",578],["GPS Logistics",450],["SAAS SCM Accurate",500],["UV Steril + Fogging",380],["MQ-135",28],["SHT41",95],["IMX219 8MP",210],["ESP32-S3 AI Camera",578],["MLX90640 Thermal",1045],["Sistem Marketing Digital",600]
+];
+const toolsDiv=document.getElementById('tools');
+products.slice(0,8).forEach(p=>{toolsDiv.innerHTML+=`<div class="tool"><b>${p[0]}</b><br>${p[1]} PTS<br><button onclick="pilihProduk('${p[0]}')">Pilih</button></div>`});
+const sel=document.getElementById('produk');
+products.forEach(p=>{let o=document.createElement('option');o.value=p[0];o.text=p[0]+' - '+p[1]+' PTS';sel.add(o)});
+function update(){document.getElementById('pts').innerText=pts;document.getElementById('level').innerText=level;document.getElementById('time').innerText=time;document.getElementById('sponsor').innerText=sponsor;document.getElementById('filled').innerText=filledSet.size; renderLevels();}
+function renderLevels(){let h='';for(let i=1;i<=30;i++){let c=filledSet.has(i)?'background:#00c853':'background:#333';h+=`<span style="display:inline-block;padding:6px 8px;margin:3px;border-radius:8px;${c}">${i}</span>`}document.getElementById('levels').innerHTML=h}
+function daftar(){let n=document.getElementById('nama').value, e=document.getElementById('email').value; if(!n||!e){document.getElementById('regMsg').innerText='Isi nama + email dulu bro.';return;} document.getElementById('regMsg').innerText='Siap '+n+'! Email '+e+' terdaftar. Game terkirim ke email kamu. Selamat main!'; document.getElementById('register').classList.add('hidden'); document.getElementById('game').classList.remove('hidden'); update(); hitung();}
+function pilihProduk(n){sel.value=n; hitung();}
+function hitung(){let p=products.find(x=>x[0]==sel.value);let q=parseInt(document.getElementById('qty').value);let total=p[1]*q;let bonusT=q>=100?5000:0;let sistem=1100; document.getElementById('calc').innerText=`${p[0]} ${p[1]} PTS x ${q} = ${total} PTS + Bonus Tender ${bonusT} + Paket Sistem SAAS+Marketing 1100 = ${total+bonusT+sistem} PTS`;}
+function tawarBos(){let deal=Math.random()<0.6+bonus/100; if(deal){sponsor++; document.getElementById('dealMsg').innerHTML='<b class="happy">SENANG! DEAL! 🎉 Ada Transaksi! Bos setuju jadi sponsor, dapat teknisi gratis.</b>';}else{time--; document.getElementById('dealMsg').innerHTML='<b class="sad">Kecewa... Bos belum setuju. Nggak ada transaksi, PTS nggak berkurang, cuma waktu -1 jam. Cari toko lain.</b>'; if(time<=0){time=24; document.getElementById('dealMsg').innerHTML+='<br>Besok lagi, cari lagi.'}} update();}
+function jual(){let p=products.find(x=>x[0]==sel.value);let q=parseInt(document.getElementById('qty').value);let deal=Math.random()<0.6+bonus/100; if(!deal){time--; document.getElementById('jualMsg').innerHTML='<b class="sad">Kecewa... Buyer belum setuju. Waktu -1 jam. Coba buyer lain.</b>'; update();return;} let total=p[1]*q + (q>=100?5000:0) + 1100; pts+=total; level+= q>=100?3:1; let lv=Math.floor(Math.random()*30)+1; filledSet.add(lv); document.getElementById('jualMsg').innerHTML=`<b class="happy">Berhasil! Teknisi sedang merakit... Berhasil! +${total} PTS. Level ${lv} terisi! Level naik jadi ${level}.</b>`; if(pts>=5000) document.getElementById('jualMsg').innerHTML+='<br>🏆 KARIR SALES NAIK LEVEL! Sponsor kasih gaji beneran nanti.'; update();}
+function randomLevel(){let lv=Math.floor(Math.random()*30)+1; document.getElementById('dealMsg').innerText='Random Level: Kamu lompat ke Level '+lv+'! Bisa langsung jualan di sana.'; }
+function lompatGem(){sel.value='Obsidian / Gem Lab'; hitung(); document.getElementById('dealMsg').innerText='Langsung Level 26-30! Jual Obsidian ke Toko Permata Mulia / Toko Gem Kecil + SAAS SCM + Sistem. Tender bisa!';}
+function beliKartu(nama,harga,b){if(pts<harga){document.getElementById('kartuMsg').innerText='PTS kurang bro, jualan dulu.';return;} pts-=harga; bonus=b; document.getElementById('kartuMsg').innerText='Kartu aktif: '+nama+' +'+b+'% deal'; update();}
+update(); hitung(); renderLevels();
+</script></body></html>

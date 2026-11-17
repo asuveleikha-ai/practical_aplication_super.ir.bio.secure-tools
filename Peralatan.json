@@ -1,9 +1,10 @@
 {
-  "versi": "1.0",
-  "catatan": "Daftar peralatan BISA DITAMBAH kapan saja tanpa ganggu index.html. Tambah item baru di sini, upload lagi, game langsung baca.",
+  "version": "v23",
+  "updated": "2026-11-17",
   "peralatan": [
     {
       "nama": "Bio Health Room",
+      "pts": 701,
       "komponen": [
         "SHT41",
         "MQ-135",
@@ -13,6 +14,7 @@
     },
     {
       "nama": "Super IR Guard SG-810 - Infrared Anti Kebakaran",
+      "pts": 1956,
       "komponen": [
         "ESP32-S3 otak",
         "Kapasitor cadangan daya",
@@ -22,27 +24,30 @@
         "MQ-135",
         "SHT41"
       ],
-      "fungsi": "Deteksi kebakaran, gas berbahaya mudah terbakar, ruang sehat. ESP32-S3 terima WiFi terkoneksi internet ke HP dan Laptop."
+      "fungsi": "Deteksi kebakaran, gas berbahaya mudah terbakar. ESP32-S3 terima WiFi ke HP dan Laptop."
     },
     {
-      "nama": "Obsidian / Super Guardian Gem Lab",
+      "nama": "Obsidian / Gem Lab",
+      "pts": 788,
       "komponen": [
         "IMX219",
         "ESP32-S3"
       ],
-      "fungsi": "Cek batu mulia asli/palsu ke toko permata mulia."
+      "fungsi": "Cek batu mulia asli atau palsu ke toko permata mulia."
     },
     {
       "nama": "Color QC Batik",
+      "pts": 650,
       "komponen": [
         "TCS34725",
         "IMX219",
         "ESP32-S3"
       ],
-      "fungsi": "Cek warna batik belang / tidak."
+      "fungsi": "Cek warna batik belang atau tidak."
     },
     {
       "nama": "CCTV AI Camera",
+      "pts": 578,
       "komponen": [
         "ESP32-S3 AI Camera"
       ],
@@ -50,6 +55,7 @@
     },
     {
       "nama": "GPS Logistics",
+      "pts": 450,
       "komponen": [
         "ESP32-S3",
         "GPS"
@@ -58,6 +64,7 @@
     },
     {
       "nama": "SAAS SCM Accurate",
+      "pts": 500,
       "komponen": [
         "Aplikasi"
       ],
@@ -65,6 +72,7 @@
     },
     {
       "nama": "Sistem Marketing Digital",
+      "pts": 600,
       "komponen": [
         "Aplikasi"
       ],
@@ -72,6 +80,7 @@
     },
     {
       "nama": "UV Steril + Fogging",
+      "pts": 380,
       "komponen": [
         "UV LED 365nm",
         "MOSFET AO3400",
@@ -79,15 +88,6 @@
         "Relay Omron"
       ],
       "fungsi": "Steril ruangan, bunuh jamur."
-    },
-    {
-      "nama": "Lampu Senter Demo - Tes Installasi",
-      "komponen": [
-        "ESP32-S3",
-        "LED",
-        "Tombol ON"
-      ],
-      "fungsi": "Contoh nyata: tombol ON dipencet, cahaya memancar. Bukti installasi benar dan aktif."
     }
   ]
 }
