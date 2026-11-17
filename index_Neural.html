@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Neural Grid - Super Secure Syst v23 - FIXED</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#020a12;color:#aef;font-family:Consolas,monospace;padding:10px}
+.top{background:#031018;border:2px solid #00e5ff;border-radius:10px;padding:12px;text-align:center}
+.trend{color:#ff9a00;font-weight:900}
+.panel{background:#031a2a;border:1px solid #00e5ff;border-radius:10px;padding:12px;margin:10px 0}
+button{background:transparent;border:1px solid #00e5ff;color:#00e5ff;padding:10px 12px;border-radius:8px;font-weight:800;cursor:pointer;margin:4px}
+button.o{border-color:#ff9a00;color:#ff9a00}button.y{border-color:#ffeb3b;color:#ffeb3b}
+select{width:100%;padding:10px;border-radius:8px;background:#021a2a;color:#fff;border:1px solid #00e5ff;margin:6px 0}
+canvas{width:100%;height:220px;border:1px solid #00e5ff;border-radius:10px;background:#020a12}
+.marketBtn{display:inline-block;padding:7px 10px;margin:3px;border:1px solid #00e5ff;border-radius:999px;cursor:pointer;font-size:12px}
+.marketBtn.active{background:#00e5ff;color:#000}
+</style></head><body>
+<div class="top"><b style="color:#fff;font-size:20px">NEURAL GRID // GAME UI v3.7 - FIXED ✅</b><br><span class="trend">SYSTEM ONLINE - SECURE - SUPER SECURE SYST v23</span><br><small>TIMER <span id="timer">02:14</span> | PING 22ms | FPS 144 | PTS <span id="ptsTop">0</span></small><br><small id="debug" style="color:#00e676">✅ Game ke-load! Semua tombol jalan! Kalau ini muncul, berarti file-nya BENER.</small></div>
+
+<div class="panel"><b>🏪 MARKET - PILIH NODE</b><br><div id="markets"></div><p id="marketDesc"></p></div>
+
+<div class="panel"><b>💡 CENTER - PUSAT HIDUP ALAT</b><br><small>OTAK ESP32-S3 | MATA IMX219+MLX90640 | HIDUNG MQ-135+SHT41 | TELINGA Sensor Suara</small>
+<div style="text-align:center;padding:10px"><div id="centerLamp" style="font-size:80px;filter:grayscale(1)">💡</div><div id="centerStatus" style="font-weight:900;color:#ff5252">CENTER: OFF - SEMUA INDERA TIDUR</div>
+<div style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:8px">
+<div id="mata" style="border:1px solid #00e5ff;padding:8px;border-radius:8px">👁️ MATA<br>TIDUR</div>
+<div id="hidung" style="border:1px solid #ff9a00;padding:8px;border-radius:8px">👃 HIDUNG<br>TIDUR</div>
+<div id="telinga" style="border:1px solid #00e676;padding:8px;border-radius:8px">👂 TELINGA<br>TIDUR</div>
+<div id="otak" style="border:1px solid #ffeb3b;padding:8px;border-radius:8px">🧠 OTAK<br>TIDUR</div>
+</div>
+<button class="y" onclick="toggleCenter()">🔘 CENTER: KLIK ON - LAMPU MENYALA!</button>
+<button onclick="suaraCenter()">🔊 SUARA CENTER</button><p id="centerMsg">Pegang CENTER, klik ON, lampu menyala, semua indera melek.</p></div></div>
+
+<div class="panel"><b>✨ NEURAL GRID - PARTIKEL ELEKTRON = DATA NGALIR</b><br><small>Partikel biru + oranye = data dari mata / hidung ke otak. Kalau gerak, berarti sensor hidup. Kalau diem, berarti CENTER OFF.</small><canvas id="gridCanvas"></canvas><p style="text-align:center"><b>SCANNING... NODE 03 LOCKED</b> • <span id="story">Sales siap jalan.</span></p>
+<div style="text-align:center"><button onclick="scan()">[Q] SCAN</button><button class="o" onclick="dash()">[W] DASH</button><button onclick="boost()">[E] BOOST</button><button class="o" onclick="deploy()">[R] DEPLOY PROBE</button></div></div>
+
+<div class="panel"><b>🛒 PRODUK - SUARA DETAIL 1 PER 1</b><br><select id="produk"></select><select id="qty"><option value="1">1 unit</option><option value="5">5 unit</option><option value="10">10 unit</option><option value="100">TENDER 100 - INDENT FULL DESIGN</option></select><p id="detail"></p>
+<button onclick="suaraProduk()">🔊 SUARA PRODUK</button><button class="o" onclick="suaraPanduan()">🔊 PANDUAN RAKIT</button><button onclick="suaraKontrak()">🔊 KONTRAK LANTANG</button><button class="o" onclick="jual()">JUAL 💰</button><p id="jualMsg"></p></div>
+
+<div class="panel"><b>🏭 REKAM PABRIK - JADI SIMULASI NYATA</b><br><button class="o" onclick="toggleRekam()">⏺️ REKAM PABRIK</button><span id="rekam">OFF</span><p id="rekamMsg">Pencet untuk mulai merekam aktivitas pabrik jadi data game. Lestari, diterima umum.</p><p id="sensorLive">TEMP: 36.6°C • MQ-135: 28 • SHT41: 95 • NODE: Pabrik</p></div>
+
+<script>
+var pts=0, curMarket=0, centerOn=false, rekamOn=false, sec=134, extract=32;
+var MARKETS=[
+{nama:"Pabrik",desc:"Rekam pabrik: suhu, gas, api, debu. SG-810 + Bio Health + CCTV."},
+{nama:"Rumah Tangga",desc:"Bio Health Room - rumah sehat tanpa timbal dan debu."},
+{nama:"Ruko",desc:"CCTV + SG-810."},
+{nama:"Outlet",desc:"Color QC + Marketing Digital."},
+{nama:"Sekolah",desc:"Bio Health + UV Steril + CCTV."},
+{nama:"Pasar Jaya",desc:"GPS + CCTV + SG-810."},
+{nama:"Mall",desc:"Tender Inden Full Design."},
+{nama:"Minimarket",desc:"CCTV + SAAS SCM."},
+{nama:"Supermarket",desc:"GPS + SAAS SCM + CCTV."},
+{nama:"Department Store",desc:"Tender + Marketing."},
+{nama:"Dinas Pemda",desc:"Tender Resmi."},
+{nama:"Toko Permata",desc:"Obsidian Gem Lab."}];
+var DATA=[
+{nama:"Bio Health Room",pts:701,komponen:["SHT41","MQ-135","ESP32-S3"],fungsi:"Jaga udara, lembab, gas."},
+{nama:"Super IR Guard SG-810",pts:1956,komponen:["ESP32-S3 otak","Kapasitor cadangan daya","TCS34725","IMX219","MLX90640","MQ-135","SHT41"],fungsi:"Deteksi kebakaran, gas berbahaya mudah terbakar. ESP32-S3 terima WiFi ke HP dan Laptop."},
+{nama:"Obsidian / Gem Lab",pts:788,komponen:["IMX219","ESP32-S3"],fungsi:"Cek batu asli atau palsu."},
+{nama:"Color QC Batik",pts:650,komponen:["TCS34725","IMX219","ESP32-S3"],fungsi:"Cek warna batik."},
+{nama:"CCTV AI Camera",pts:578,komponen:["ESP32-S3 AI Camera"],fungsi:"Pantau maling."},
+{nama:"GPS Logistics",pts:450,komponen:["ESP32-S3","GPS"],fungsi:"Lacak kurir."},
+{nama:"SAAS SCM Accurate",pts:500,komponen:["Aplikasi"],fungsi:"Catat stok."},
+{nama:"Sistem Marketing Digital",pts:600,komponen:["Aplikasi"],fungsi:"Promosi."},
+{nama:"UV Steril + Fogging",pts:380,komponen:["UV LED 365nm","MOSFET AO3400","Photodiode S1226","Relay Omron"],fungsi:"Steril ruangan."}];
+function speak(t){try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='id-ID';u.rate=0.92;speechSynthesis.speak(u);}catch(e){}}
+function renderMarkets(){var d=document.getElementById('markets');d.innerHTML='';MARKETS.forEach(function(m,i){var s=document.createElement('span');s.className='marketBtn'+(i===curMarket?' active':'');s.innerText=m.nama;s.onclick=function(){curMarket=i;renderMarkets();speak('Market '+m.nama+'. '+m.desc);};d.appendChild(s);});document.getElementById('marketDesc').innerText=MARKETS[curMarket].nama+' - '+MARKETS[curMarket].desc;}
+function renderProduk(){var s=document.getElementById('produk');s.innerHTML='';DATA.forEach(function(p){var o=document.createElement('option');o.text=p.nama+' - '+p.pts+' PTS';s.appendChild(o);});pilihProduk();}
+function cur(){return DATA[document.getElementById('produk').selectedIndex]||DATA[0];}
+function pilihProduk(){var p=cur();document.getElementById('detail').innerText=p.nama+' | '+p.pts+' PTS | '+p.fungsi+' | '+p.komponen.join(', ');}
+function toggleCenter(){centerOn=!centerOn;var lamp=document.getElementById('centerLamp');if(centerOn){lamp.style.filter='none';lamp.innerText='💡✨';document.getElementById('centerStatus').innerText='CENTER: ON - SEMUA INDERA MELEK! LAMPU MENYALA!';document.getElementById('centerStatus').style.color='#00e676';document.getElementById('mata').innerHTML='👁️ MATA<br>MELEK - LIAT API!';document.getElementById('hidung').innerHTML='👃 HIDUNG<br>MELEK - CIUM GAS!';document.getElementById('telinga').innerHTML='👂 TELINGA<br>MELEK - DENGER!';document.getElementById('otak').innerHTML='🧠 OTAK<br>MIKIR - KIRIM KE HP!';document.getElementById('centerMsg').innerText='CENTER ON! Lampu menyala! Cahaya memancar!';speak('Center diaktifkan! Otak ESP32-S3 bangun! Mata melek! Hidung mencium gas! Telinga mendengar! Lampu menyala! Cahaya memancar! Aktif berfungsi!');}else{lamp.style.filter='grayscale(1)';lamp.innerText='💡';document.getElementById('centerStatus').innerText='CENTER: OFF - SEMUA INDERA TIDUR';document.getElementById('centerStatus').style.color='#ff5252';document.getElementById('centerMsg').innerText='Center OFF, semua tidur.';speak('Center dimatikan. Semua tidur.');}}
+function suaraCenter(){speak('Center diaktifkan! Otak ESP32-S3 bangun! Mata IMX219 dan MLX90640 melek! Hidung MQ-135 dan SHT41 mencium gas dan udara! Telinga mendengar! Lampu Center menyala!');}
+function scan(){extract=Math.min(100,extract+8);document.getElementById('story').innerText='Scanning! Node 03 terdeteksi! Extract '+extract+'%';speak('Scanning! Node terdeteksi!');}
+function dash(){document.getElementById('story').innerText='Sales dash ke market '+MARKETS[curMarket].nama; speak('Sales dash ke market '+MARKETS[curMarket].nama);}
+function boost(){speak('Boost! Energi naik!');}
+function deploy(){speak('Probe dikirim! Sensor mendeteksi elektron!');}
+function suaraProduk(){var p=cur();var q=document.getElementById('qty').value;speak('Produk '+p.nama+', harga '+p.pts+' PTS, jumlah '+q+' unit, market '+MARKETS[curMarket].nama+', fungsi '+p.fungsi+', komponen '+p.komponen.join(', '));}
+function suaraPanduan(){var p=cur();var teks='Panduan '+p.nama+', siapkan '+p.komponen.join(', ')+', pasang satu per satu, kapasitor cadangkan daya, WiFi ESP32-S3 ke HP, tes ON, lampu menyala, aktif berfungsi!';if(p.nama.indexOf('SG-810')>=0)teks='Panduan SG-810! ESP32-S3 sebagai otak, menerima WiFi ke HP dan Laptop! Kapasitor cadangkan daya agar TCS34725 dan IMX219 berfungsi baik! TCS34725 dan IMX219 deteksi kebakaran, gas berbahaya mudah terbakar! SHT41 dan MQ-135 deteksi ruang sehat tanpa timbal dan debu! Tekan ON! Lampu menyala! Cahaya memancar! Aktif berfungsi!';speak(teks);}
+function suaraKontrak(){speak('Perhatian! Kontrak resmi! Bos Sponsor setuju! Sales dapat PTS! Teknisi merakit! Peralatan kita: '+DATA.map(function(x){return x.nama}).join(', ')+'. Semua harus dipasang benar, aktif berfungsi!');}
+function jual(){var p=cur();var q=parseInt(document.getElementById('qty').value);var total=p.pts*q;pts+=total;document.getElementById('ptsTop').innerText=pts;document.getElementById('jualMsg').innerText='Berhasil di '+MARKETS[curMarket].nama+'! +'+total+' PTS';speak('Berhasil! '+p.nama+' terjual '+q+' unit di '+MARKETS[curMarket].nama+'! Total '+total+' PTS! Aktif berfungsi!');}
+function toggleRekam(){rekamOn=!rekamOn;document.getElementById('rekam').innerText=rekamOn?'ON - MEREKAM':'OFF';document.getElementById('rekamMsg').innerText=rekamOn?('MEREKAM PABRIK '+MARKETS[curMarket].nama+'! Data suhu, gas, api, debu direkam jadi simulasi.'):'Rekaman OFF.';speak(rekamOn?('Mulai merekam pabrik '+MARKETS[curMarket].nama):'Rekaman berhenti.');}
+try{
+  var cv=document.getElementById('gridCanvas');var ctx=cv.getContext('2d');cv.width=600;cv.height=220;
+  var parts=[];for(var i=0;i<70;i++)parts.push({x:Math.random()*600,y:Math.random()*220,vx:(Math.random()-0.5)*2,vy:(Math.random()-0.5)*2,c:Math.random()>0.5?'#00e5ff':'#ff9a00'});
+  function draw(){try{ctx.clearRect(0,0,600,220);ctx.strokeStyle='#0a3a5a';for(var x=0;x<600;x+=40){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,220);ctx.stroke();}for(var y=0;y<220;y+=40){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(600,y);ctx.stroke();}parts.forEach(function(p){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>600)p.vx*=-1;if(p.y<0||p.y>220)p.vy*=-1;ctx.fillStyle=p.c;ctx.beginPath();ctx.arc(p.x,p.y,3,0,7);ctx.fill();});}catch(e){}requestAnimationFrame(draw);}draw();
+}catch(e){document.getElementById('debug').innerText='Canvas error, tapi tombol tetap jalan.';}
+setInterval(function(){sec--;if(sec<0)sec=134;var m=String(Math.floor(sec/60)).padStart(2,'0'),s=String(sec%60).padStart(2,'0');document.getElementById('timer').innerText=m+':'+s;var t=(36+Math.random()).toFixed(1);var mq=Math.floor(20+Math.random()*20);document.getElementById('sensorLive').innerText='TEMP: '+t+' C • MQ-135: '+mq+' • SHT41: 95 • NODE: '+MARKETS[curMarket].nama;},2000);
+document.getElementById('produk').addEventListener('change',pilihProduk);
+renderMarkets();renderProduk();
+</script></body></html>
