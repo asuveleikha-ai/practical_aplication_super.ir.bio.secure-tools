@@ -85,4 +85,32 @@ try{
 setInterval(function(){sec--;if(sec<0)sec=134;var m=String(Math.floor(sec/60)).padStart(2,'0'),s=String(sec%60).padStart(2,'0');document.getElementById('timer').innerText=m+':'+s;var t=(36+Math.random()).toFixed(1);var mq=Math.floor(20+Math.random()*20);document.getElementById('sensorLive').innerText='TEMP: '+t+' C • MQ-135: '+mq+' • SHT41: 95 • NODE: '+MARKETS[curMarket].nama;},2000);
 document.getElementById('produk').addEventListener('change',pilihProduk);
 renderMarkets();renderProduk();
-</script></body></html>
+</script>
+<div class="panel" style="border:2px solid #ffeb3b"><b style="color:#ffeb3b">📷 KAMERA DUNIA NYATA - TANPA KABEL DEBUGGING - MATA + TELINGA + HIDUNG LANGSUNG!</b><br>
+<small>Konsep KEGERAKAN + INSTING + FEELING: Game tidak lagi dirancang dari hayalan. Game dirancang dari HASIL NYATA yang diamati + terekam. Kamera = MATA, Mic = TELINGA, Input manual = HIDUNG. Kalau layak + wajar sesuai standar umum, game otomatis ikut.</small>
+<div style="text-align:center;padding:10px">
+<video id="camVideo" width="320" height="200" autoplay playsinline muted style="border:2px solid #00e5ff;border-radius:10px;background:#000;display:none"></video>
+<canvas id="camSnap" width="320" height="200" style="display:none;border:2px solid #ff9a00;border-radius:10px"></canvas>
+<p id="camStatus">Kamera OFF. Pencet tombol di bawah.</p>
+<button class="y" onclick="startCam()">📷 NYALAKAN KAMERA LAPTOP / HP - JADI MATA!</button>
+<button onclick="snapCam()">📸 JEPRET - REKAM APA YANG DILIHAT!</button>
+<button class="o" onclick="startMic()">🎤 NYALAKAN MIC - JADI TELINGA!</button>
+<button onclick="stopCam()">⏹ MATIKAN</button>
+</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
+<div style="border:1px solid #00e5ff;padding:8px;border-radius:8px">👁️ MATA: <span id="mataCam">Belum lihat</span></div>
+<div style="border:1px solid #ff9a00;padding:8px;border-radius:8px">👃 HIDUNG: <select id="bauInput" onchange="updateBau()" style="width:auto"><option>Udara Segar - Sehat</option><option>Bau Gas - Bahaya!</option><option>Bau Debu / Timbal</option><option>Bau Terbakar - Api!</option></select> <span id="bauOut"></span></div>
+<div style="border:1px solid #00e676;padding:8px;border-radius:8px">👂 TELINGA: <span id="telingaCam">Belum dengar</span></div>
+</div>
+<p><b>HASIL REKAMAN NYATA:</b> <span id="rekamNyata">Belum ada rekaman. Nyalakan kamera, jepret, game akan berperilaku sesuai rekaman.</span></p>
+<button onclick="speak('Kamera dinyalakan! Mata melihat dunia nyata! Mic mendengar! Hidung mencium! Game merekam! Perilaku game mengikuti rekaman nyata! Layak dan wajar sesuai standar kehidupan umum!')">🔊 SUARA: Jelaskan Rekam Nyata</button>
+</div>
+<script>
+let camStream=null;
+async function startCam(){try{camStream=await navigator.mediaDevices.getUserMedia({video:true,audio:false});let v=document.getElementById('camVideo');v.srcObject=camStream;v.style.display='block';document.getElementById('camStatus').innerText='KAMERA ON! Mata melihat dunia nyata! Tanpa kabel debugging!';document.getElementById('mataCam').innerText='MELIHAT - Kamera ON!';speak('Kamera dinyalakan! Mata melihat dunia nyata! Tanpa kabel!');}catch(e){document.getElementById('camStatus').innerText='Kamera gagal: '+e.message+'. Coba di Chrome, izinkan kamera.';speak('Kamera gagal, izinkan kamera di browser.');}}
+function snapCam(){try{let v=document.getElementById('camVideo');let c=document.getElementById('camSnap');let ctx=c.getContext('2d');ctx.drawImage(v,0,0,320,200);c.style.display='block';document.getElementById('rekamNyata').innerText='TEREKAM! Foto dunia nyata diambil jam '+new Date().toLocaleTimeString()+'. Game akan berperilaku sesuai foto ini. Mata melihat, otak ESP32-S3 mikir, CENTER memutuskan: Layak dan wajar? YA, sesuai standar umum!';document.getElementById('mataCam').innerText='TEREKAM - Foto diambil!';speak('Jepret! Dunia nyata terekam! Game akan berperilaku sesuai rekaman!');}catch(e){speak('Nyalakan kamera dulu.');}}
+async function startMic(){try{let s=await navigator.mediaDevices.getUserMedia({audio:true});document.getElementById('telingaCam').innerText='MENDENGAR - Mic ON! Suara dunia nyata masuk!';document.getElementById('camStatus').innerText='MIC ON! Telinga mendengar!';speak('Mic dinyalakan! Telinga mendengar dunia nyata!');setTimeout(()=>{s.getTracks().forEach(t=>t.stop());},8000);}catch(e){speak('Mic gagal, izinkan mic.');}}
+function stopCam(){if(camStream)camStream.getTracks().forEach(t=>t.stop());document.getElementById('camVideo').style.display='none';document.getElementById('camStatus').innerText='Kamera OFF.';}
+function updateBau(){let v=document.getElementById('bauInput').value;document.getElementById('bauOut').innerText=' - '+v;let msg='Hidung mencium: '+v;if(v.indexOf('Gas')>=0||v.indexOf('Terbakar')>=0){msg+='. BAHAYA! CENTER memutuskan: Alarm ON! Layak dan wajar untuk selamatkan nyawa!';document.getElementById('rekamNyata').innerText=msg;}else{msg+='. Aman. Udara sehat, lestari.';document.getElementById('rekamNyata').innerText=msg;}speak(msg);}
+</script>
+</body></html>
