@@ -1,96 +1,124 @@
 <!DOCTYPE html>
 <html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PRACTICAL APPLICATION GAME - ATURAN PTS BENER - Animasi Kartun, Bukan Gambar Asli</title>
+<title>PRACTICAL APPLICATION GAME V5 - 4 Peran + Level 1-8 + Sponsorship + Flowchart YES/NO</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:system-ui,Arial;background:#020a12;color:#dff;padding:12px}
 .top{background:linear-gradient(90deg,#ff7a00,#ffeb3b,#00e676);color:#000;padding:14px;border-radius:12px;text-align:center}
 .panel{background:#031a2a;border:1px solid #00e5ff;border-radius:12px;padding:12px;margin:10px 0}
-button{border:1px solid #00e5ff;background:transparent;color:#00e5ff;padding:12px 14px;border-radius:10px;font-weight:900;cursor:pointer;margin:4px}
-button.red{border-color:#ff5252;color:#ff5252}button.green{border-color:#00e676;color:#00e676}button.yellow{border-color:#ffeb3b;color:#ffeb3b}button.gold{border-color:#ffd700;color:#ffd700;background:#3a2a00}
-.bar{height:14px;background:#111;border-radius:7px;overflow:hidden;margin:6px 0}.fill{height:100%;background:linear-gradient(90deg,#00e5ff,#00e676);width:5%;transition:.5s}
-#anim{width:100%;max-width:480px;margin:auto;background:#0a2a3a;border:2px solid #00e5ff;border-radius:12px;text-align:center;padding:20px;position:relative;overflow:hidden}
-#char{font-size:90px;transition:.6s;display:inline-block}
-#char.mager{transform:rotate(90deg) translateX(10px);filter:grayscale(.2)}
-#char.kanvas{transform:translateX(40px)}#char.kontrak{transform:scale(1.15)}#char.jualan{transform:scale(1.2) rotate(-5deg)}
-.bubble{background:#fff;color:#000;padding:8px 12px;border-radius:12px;display:inline-block;margin:8px;font-weight:700}
-.status{font-size:20px;font-weight:900;text-align:center;padding:10px;border-radius:10px;margin:8px 0}
-.mager{background:#ffeb3b;color:#000}.gerak{background:#00e676;color:#000}.warn{background:#ff5252;color:#fff}
-.prompt{background:#000;color:#00e676;padding:10px;border-radius:8px;font-family:monospace;font-size:13px;white-space:pre-wrap}
-table{width:100%;border-collapse:collapse}td,th{border:1px solid #00e5ff;padding:8px;text-align:left}th{background:#003}
+button{border:1px solid #00e5ff;background:transparent;color:#00e5ff;padding:10px 12px;border-radius:10px;font-weight:900;cursor:pointer;margin:4px}
+button.red{border-color:#ff5252;color:#ff5252}button.green{border-color:#00e676;color:#00e676}button.yellow{border-color:#ffeb3b;color:#ffeb3b}button.gold{border-color:#ffd700;color:#ffd700}
+#stage{width:100%;max-width:560px;margin:auto;background:#0a2a3a;border:2px solid #00e5ff;border-radius:12px;text-align:center;padding:16px;min-height:200px}
+#chars{font-size:60px;transition:.6s}#dialog{background:#fff;color:#000;padding:10px;border-radius:12px;margin:10px;font-weight:700;min-height:50px}
+.status{font-size:18px;font-weight:900;text-align:center;padding:10px;border-radius:10px;margin:8px 0}
+.mager{background:#ffeb3b;color:#000}.gerak{background:#00e676;color:#000}.warn{background:#ff5252;color:#fff}.senang{background:#ff7a00;color:#000}
+.prompt{background:#000;color:#00e676;padding:10px;border-radius:8px;font-family:monospace;font-size:12px;white-space:pre-wrap}
+.jalur{display:flex;gap:4px;flex-wrap:wrap;justify-content:center}.jalur div{border:1px solid #00e5ff;padding:6px;border-radius:8px;font-size:11px}.jalur .done{background:#00e676;color:#000}.jalur .active{background:#ffeb3b;color:#000}
+table{width:100%;border-collapse:collapse}td,th{border:1px solid #00e5ff;padding:6px;text-align:left;font-size:12px}th{background:#003}
+.hidden{display:none}
 </style></head><body>
-<div class="top"><b style="font-size:20px">🎮 PRACTICAL APPLICATION GAME - ATURAN PTS BENER!</b><br><b>ANIMASI KARTUN - BUKAN GAMBAR ASLI - LEBIH SERU, LEBIH LUCU!</b><br><small>Dari Observasi Kamera + Suara: Insting + Feeling + Microcontroller (walaupun belum terpasang, tapi sudah bisa dinilai dari pengamatan). Mager doang = 0 PTS. Kerja baru dapet PTS!</small></div>
+<div class="top"><b style="font-size:20px">🎮 PRACTICAL APPLICATION GAME V5 - REVISI SPONSORSHIP + LEGAL</b><br><b>SALES = Demand Planner + Marketing Digital + Sales + Store Experience (1 Orang Sekarang, Nanti Sewa Pekerja!)</b><br><small>BOS = Supplier + Sponsor | TEKNISI = Staff Bos (SOP + OEE + KPI) | BUYER = Di Market | SaaS + Prototype MILIK FOUNDER, Bisa Dijual Sebagai Sales IT!</small></div>
 
-<div class="panel"><b>⭐ PTS & RANK - ATURAN BENER, NGGAK ROYAL LAGI!</b><br>
-<div style="display:flex;justify-content:space-between;flex-wrap:wrap"><span>⭐ <b id="pts2">0</b> PTS</span><span>🔥 STREAK: <b id="streak">0</b></span><span>🏆 <b id="rank">BRONZE - Pemula</b></span></div>
-<div class="bar"><div class="fill" id="xpbar"></div></div>
-<p style="text-align:center">XP: <b id="xp">0</b> / 100 | LEVEL: <b id="lvl">1</b> | COMBO: <b id="combo">x0</b></p>
-<table>
-<tr><th>Perilaku - Dari Observasi</th><th>PTS</th><th>Alasan - Layak & Wajar?</th></tr>
-<tr><td>😴 MAGER DOANG - Rebahan, belum kerja, belum kanvas</td><td><b>0 PTS</b></td><td>Boleh mager karena capek, tapi nggak dapet upah. Kalau mager dapet PTS, game jadi sia-sia!</td></tr>
-<tr><td>🚶 UDAH KANVAS - Jalan ke toko, ngobrol, capek jalan</td><td><b>+5 PTS</b></td><td>Upah minum aja. Wajar, udah usaha jalan!</td></tr>
-<tr><td>📝 UDAH KONTRAK - Ngomong sama bos toko: "Aku mau kontrak deh"</td><td><b>+30 PTS</b></td><td>Belum ada penjualan, nggak apa-apa, tapi udah ada kontrak, udah ada usaha serius!</td></tr>
-<tr><td>💰 UDAH PENJUALAN - Deal! Barang laku!</td><td><b>+100 PTS</b></td><td>Ini baru kerja beneran! PTS paling besar!</td></tr>
-</table>
+<div class="panel"><b>📅 HARI: <span id="hari">1</span> | ⭐ PTS: <span id="pts">0</span> | 🏆 LEVEL: <span id="levelTxt">1 - Perumahan Pribadi</span> | 📞 Telepon: <span id="telp">Belum Bunyi</span></b><br>
+<div class="jalur"><div id="j1">1. KANVAS</div><div id="j2">2. BOS SUPPLIER</div><div id="j3">3. GUDANG?</div><div id="j4">4. BOS SETUJU?</div><div id="j5">5. TEKNISI</div><div id="j6">6. BUYER MINAT?</div><div id="j7">7. SECOND CONTRACT</div><div id="j8">8. INDENT ORDER</div><div id="j9">9. INSTALASI</div><div id="j10">10. JUALAN + MAINTENANCE!</div></div>
+<p><b>4 Peran Founder - Masing-masing Dapat Point + Peringkat Level:</b> Demand Planner +15 | Marketing Digital +15 | Sales: Kanvas +5, Kontrak +30, Jualan +100 | Store Experience +20 | Mager 0 | Teknisi BUKAN Founder - Teknisi punya PTS sendiri!</p>
 </div>
 
-<div class="panel"><b>🎬 ANIMASI KARTUN - DARI GERAKAN LU, TAPI BUKAN MUKA LU!</b><br>
-<small>Rekaman asli lu TIDAK dipakai sebagai gambar. Diganti jadi kartun animasi, gerakannya ngikutin gerakan lu, tapi mukanya kartun. Lebih seru, lebih lucu, lebih aman!</small>
-<div id="anim">
-<div id="char">🧑‍💼</div><br>
-<div class="bubble" id="bubble">Zzz... capek... rebahan dulu... 😴</div><br>
-<small id="animKet">Animasi: Orang rebahan di bantal, mata setengah merem. Ini MAGER. 0 PTS!</small>
-</div>
-<div id="status" class="status mager">😴 MODE MAGER - 0 PTS - Boleh istirahat, tapi nggak dapet upah!</div>
-<p style="text-align:center">Mode: <b id="mode">MAGER</b> | Sudah Kanvas? <b id="kanvasSt">BELUM</b> | Sudah Kontrak? <b id="kontrakSt">BELUM</b> | Sudah Jualan? <b id="jualanSt">BELUM</b></p>
-<p id="narasi">Observasi Kamera + Suara: Orang ini habis kerja, capek, rebahan. Mata setengah merem, tangan nutup mulut (lagi mikir), tangan lambaian (nyapa). Penilaian: Wajar, capek, boleh mager. Tapi karena belum kerja lagi, PTS = 0. Nanti kalau dia bangun dan kanvas, baru dapet PTS.</p>
-</div>
+<div class="panel"><b>🎬 PANGGUNG GAME - BOS SUPPLIER DI TOKO SUPPLIER, BUKAN DI RUKO!</b><br>
+<div id="stage"><div id="chars">🧑‍💼</div><div id="dialog">Pagi Hari 1: Sales (4 Peran) bangun. Klik 1. KANVAS! Jalan ke Toko Supplier, ketemu Bos Supplier!</div><div style="font-size:12px">Bos Supplier: 🧑‍💼🪑 di Toko Supplier | Teknisi Bos: 👨‍🔧 | Buyer: 🧑 di Ruko/Sekolah/Pasar/Mall | HP: 📱 | Gudang: 📦</div></div>
+<div id="status" class="status gerak">☀️ PAGI HARI 1 - Siap Kanvas ke Toko Supplier!</div>
+<p id="narasi">Narasi: Sales = Demand Planner + Marketing Digital + Sales + Store Experience. Hari ini kanvas ke Toko Supplier dulu, cek gudang, minta kontrak ke Bos Supplier.</p></div>
 
-<div class="panel"><b>🎮 KONTROL - URUTAN KERJA YANG BENER!</b><br>
-<p style="text-align:center"><small>Harus urut! Nggak bisa langsung jualan kalau belum kanvas! Nggak bisa langsung kontrak kalau belum ngobrol!</small></p>
+<div class="panel"><b>🎮 KONTROL - FLOWCHART YES / NO - Bila Tidak Menjalankan = Mager, Bila YES Ada Kontrak = Senang + Dapat PTS!</b><br>
 <div style="text-align:center">
-<button onclick="cmd('MAGER')">😴 MAGER - Rebahan (0 PTS)</button>
-<button class="yellow" onclick="cmd('KANVAS')">🚶 KANVAS - Jalan ke Toko (+5 PTS)</button>
-<button onclick="cmd('KONTRAK')">📝 KONTRAK - Ngomong ke Bos Toko (+30 PTS)</button>
-<button class="green" onclick="cmd('JUALAN')">💰 JUALAN - Deal! (+100 PTS)</button>
-<button class="red" onclick="cmd('PAUSE')">⏸️ PAUSE - Istirahat</button>
+<button onclick="step('KANVAS')">🚶 1. KANVAS - Ke Toko Supplier! (+5 PTS)</button>
+<button class="yellow" onclick="step('BOS')">🧑‍💼 2. KETEMU BOS SUPPLIER - 1 Bentuk Pembicaraan!</button>
+<button onclick="step('GUDANG')">📦 3. DIAMOND: GUDANG LENGKAP? YES/NO</button>
+<button onclick="step('SETUJU')">📝 4. DIAMOND: BOS SETUJU KONTRAK? YES/NO</button>
+<button onclick="step('TEKNISI')">👨‍🔧 5. TEKNISI BRIEFING - SOP + OEE + KPI!</button>
+<button onclick="step('BUYER')">🧑 6. DIAMOND: BUYER MINAT? YES/NO - Ketemu Buyer di Market!</button>
+<button class="green" onclick="step('SECOND')">📝 7. SECOND CONTRACT! +30 PTS</button>
+<button onclick="step('INDENT')">📦 8. INDENT ORDER - Pesan Dulu, Tunggu Datang!</button>
+<button onclick="step('INSTALASI')">🔧 9. INSTALASI - Lampu ON, Cahaya Memancar!</button>
+<button class="green" onclick="step('JUALAN')">💰 10. JUALAN + MAINTENANCE! +100 PTS + Naik Level!</button>
 </div>
-<p id="kontrolHasil">Belum ada perintah. Pencet urut: MAGER -> KANVAS -> KONTRAK -> JUALAN!</p>
+<p id="kontrolHasil">Belum ada langkah. Klik 1. KANVAS dulu!</p>
+<div style="text-align:center">
+<button onclick="step('MARKETING')">📱 MARKETING DIGITAL - Konten + Network di Laptop! +15 PTS</button>
+<button onclick="step('DEMAND')">📊 DEMAND PLANNER - Atur Stok + Rencana! +15 PTS</button>
+<button onclick="step('STORE')">🏪 STORE EXPERIENCE - Buyer Senang, Rating Bagus! +20 PTS</button>
+<button onclick="step('MAGER')">😴 MAGER - Tidak Menjalankan = 0 PTS</button>
+<button class="gold" onclick="step('TELP')">📞 TELEPON BUNYI! Bos / Buyer Nelpon!</button>
+<button onclick="step('NEXTDAY')">🌅 HARI BERIKUTNYA!</button>
 </div>
-
-<div class="panel"><b>🧠 PENILAIAN DARI OBSERVASI - INSTING + FEELING + MICROCONTROLLER</b><br>
-<div class="prompt" id="promptBox">PROMPT PENILAIAN - Dari Pengamatan Kamera + Suara:
-- Kamera lihat: Orang rebahan, mata setengah merem, gerak pelan
-- Suara dengar: Ngomong pelan, capek, tapi masih nyambung
-- Insting: Orang ini HABIS KERJA, bukan males dari pagi!
-- Feeling: Dia capek, butuh istirahat, tapi otaknya masih mikir game
-- Microcontroller (walaupun belum terpasang fisik, tapi logikanya sudah jalan):
-  Jika sudah kerja + mager = WAJAR, boleh istirahat, 0 PTS
-  Jika belum kerja + mager terus = TIDAK WAJAR, harus dibangunkan!
-- Kesimpulan: Mager ini OKE, tapi PTS = 0. Kerja dulu baru dapet PTS!
-
-Perintah: Belum ada.</div>
-<button onclick="speak('Aturan baru! Mager doang nol PTS! Kanvas lima PTS! Kontrak tiga puluh PTS! Jualan seratus PTS!')">🔊 SUARA: Aturan PTS Baru!</button>
 </div>
 
-<div class="panel"><b>💡 CENTER</b><br><div style="text-align:center"><div id="lamp" style="font-size:70px;filter:grayscale(1)">💡</div><div id="centerSt">CENTER: OFF - Orang masih mager</div><button onclick="toggleCenter()">🔘 CENTER ON / OFF</button></div></div>
+<div class="panel"><b>🏆 LEVEL 1-8 - Makin Tinggi Makin Kompleks! Di Game Ditampilkan, Masing-masing Dapat Point + Peringkat!</b><br>
+<table><tr><th>Level</th><th>Nama</th><th>Peralatan</th><th>PTS Jualan</th></tr>
+<tr><td>1</td><td>Perumahan Pribadi</td><td>Bio Health + IR 7 Detik di HP</td><td>+100</td></tr>
+<tr><td>2</td><td>Outlet</td><td>Bio Health + CCTV AI + SaaS SCM</td><td>+120</td></tr>
+<tr><td>3</td><td>Ruko</td><td>Super IR Guard + CCTV AI + Early Warning + SaaS</td><td>+150</td></tr>
+<tr><td>4</td><td>Sekolah</td><td>Bio Health + UV Steril + CCTV AI + Early Warning + SaaS</td><td>+180</td></tr>
+<tr><td>5</td><td>Pasar / Pasar Jaya</td><td>Color QC + CCTV AI + GPS + SaaS + UV Steril</td><td>+200</td></tr>
+<tr><td>6</td><td>Mall / Supermarket / Minimarket / Department Store</td><td>Semua + Marketing Digital</td><td>+250</td></tr>
+<tr><td>7</td><td>Departemen / Local Government</td><td>Tender - Puluhan Unit</td><td>+300</td></tr>
+<tr><td>8</td><td><b>Autonomous Prototype Pabrik Batik 8in1 - TERTINGGI!</b></td><td><b>8in1 Autonomous: Bio Health + Super IR Guard + Color QC Batik + Obsidian + CCTV AI + GPS + SaaS SCM + UV Steril + Super Infrared + SuperSecure + IR 7 Detik!</b></td><td><b>+500 LEGEND!</b></td></tr>
+</table>
+<p><small>Variant Peralatan + System Aplikasi nanti kita sesuaikan: IR 7 Detik (di HP saja), Super Infrared, SuperSecure, SaaS SCM System, dll.</small></p>
+</div>
+
+<div class="panel"><b>📜 KONTRAK SPONSORSHIP - LEGAL - Klik Tombol, Nggak Ngalangin Game!</b><br>
+<button onclick="document.getElementById('kontrakBox').classList.toggle('hidden')">📜 KLIK - LIHAT KONTRAK SPONSORSHIP</button>
+<div id="kontrakBox" class="hidden prompt">KONTRAK SPONSORSHIP V24 - LEGAL:
+- SaaS System + Prototype MILIK FOUNDER, bisa dijual sebagai Sales IT. Bos sebagai Sponsor, bukan pemilik SaaS.
+- Barang Mikrokontroler MILIK BOS SUPPLIER. Founder tidak klaim barang Bos.
+- Bos sebagai Sponsor: Sediakan barang, gudang, teknisi, tempat promosi. Kalau Buyer survey ke toko dan Bos promosikan SaaS + Prototype Founder dan Buyer jadi beli, Bos dapat KOMISI 10%.
+- Insentif 4 Peran Founder (Bukan Teknisi): Demand Planner +15, Marketing Digital +15, Sales: Kanvas +5, Kontrak +30, Jualan +100, Store Experience +20. Capek kerja di laptop + capek mikir + capek kanvas harus dihargai!
+- Teknisi: Briefing +10, Rakit +20, Instalasi +30, Maintenance +20. Ikut SOP, OEE >=85% = Bonus, KPI: Instalasi berhasil, komplain 0-1, respon max 24 jam.
+- Gudang QC: Kepala Gudang tanggung jawab QC, Teknisi lapor ke Bos tiap minggu.
+- Purna Jual: Maintenance Jaminan Kualitas. Founder maintenance SaaS + follow-up, Teknisi maintenance hardware, Bos sediain sparepart.
+- Kerja 4 Peran Bukan 1 Orang Kalau Sudah Berkembang: Sekarang sendiri, nanti sewa + cari pekerja.
+- Kontrak dikuasai Bos Supplier, tapi Sales yang bertemu Buyer. Kalau Buyer survey ke toko, Bos promosikan system + prototype Founder, Bos dapat komisi.
+- Game Simulator dapat + mampu berfungsi real nyata bila terhubung dengan SaaS + Prototype, berapapun pelanggan bisa terkoneksi otomatis aktif sebagaimana fungsinya!
+</div></div>
+
+<div class="panel"><b>📱 MARKETING DIGITAL - Paling Efektif!</b><br>
+<p>1. <b>Sponsor Bos Toko Supplier</b> (Bos promosikan di toko + sosmed Bos) + 2. <b>Video Short (Kling / CapCut)</b> - Demo alat nyala + 3. <b>Live + Testimoni Buyer</b> + 4. <b>Konten Edukasi</b> - Media: Instagram, Threads, Facebook, TikTok, WhatsApp, YouTube. Kerja di laptop juga nyari network, marketingin digital, bikin konten, jawab DM, update SaaS, cek dashboard - Capek mikir + capek laptop harus dihargai!</p>
+<button onclick="speak('Marketing digital! Sponsor Bos paling efektif! Video short, live, testimoni!')">🔊 SUARA: Marketing Digital</button></div>
+
+<div class="panel"><b>🧠 PROMPT GAME</b><br><div class="prompt" id="promptBox">PROMPT GAME V5:
+- Sales = 4 Peran: Demand Planner + Marketing Digital + Sales + Store Experience. Bukan 1 peran!
+- Bos = Supplier + Sponsor. Teknisi = Staff Bos. Buyer = Di Market.
+- SaaS + Prototype MILIK FOUNDER, bisa dijual sebagai Sales IT.
+- Flowchart: Bila tidak menjalankan = Mager (0 PTS). Bila YES ada kontrak = Senang + dapat PTS!
+- Level 1-8, Level 8 Autonomous Pabrik Batik 8in1 paling tinggi!
+Langkah: Belum mulai. Klik KANVAS!</div>
+<button onclick="speak(document.getElementById('narasi').innerText)">🔊 SUARA: Bacain Narasi</button></div>
+
+<div class="panel"><b>💡 CENTER</b><br><div style="text-align:center"><div id="lamp" style="font-size:70px;filter:grayscale(1)">💡</div><div id="centerSt">CENTER: OFF</div><button onclick="toggleCenter()">🔘 CENTER ON / OFF</button></div></div>
 
 <script>
-let pts=0, xp=0, lvl=1, combo=0, sudahKanvas=false, sudahKontrak=false, sudahJualan=false;
+let pts=0, hari=1, level=1;
+let levels=["1 - Perumahan Pribadi","2 - Outlet","3 - Ruko","4 - Sekolah","5 - Pasar / Pasar Jaya","6 - Mall / Supermarket / Department Store","7 - Departemen / Local Government","8 - Autonomous Prototype Pabrik Batik 8in1 - LEGEND!"];
 function speak(t){try{speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(t);u.lang='id-ID';speechSynthesis.speak(u);}catch(e){}}
-function addPts(n,alasan){pts+=n; xp+=n; combo++;
-  if(xp>=100){xp-=100; lvl++;}
-  let ranks=['BRONZE - Pemula','SILVER - Sales Aktif','GOLD - Master Guardian','PLATINUM - Bos Toko','LEGEND - Pencipta Game!'];
-  let r = lvl<2?ranks[0]: lvl<4?ranks[1]: lvl<6?ranks[2]: lvl<8?ranks[3]: ranks[4];
-  document.getElementById('pts2').innerText=pts; document.getElementById('xp').innerText=xp; document.getElementById('lvl').innerText=lvl; document.getElementById('rank').innerText=r; document.getElementById('xpbar').style.width=xp+'%'; document.getElementById('combo').innerText='x'+combo;
-  document.getElementById('promptBox').innerText='PROMPT PENILAIAN:\n> '+alasan+'\n> PTS +'+n+' Total: '+pts+'\n> LEVEL: '+lvl+' RANK: '+r+'\n> COMBO: x'+combo;
+function addPts(n,alasan){pts+=n; document.getElementById('pts').innerText=pts; if(pts>=500) level=8; else if(pts>=300) level=7; else if(pts>=250) level=6; else if(pts>=200) level=5; else if(pts>=180) level=4; else if(pts>=150) level=3; else if(pts>=120) level=2; else level=1; document.getElementById('levelTxt').innerText=levels[level-1]; document.getElementById('promptBox').innerText='PROMPT GAME V5:\n> '+alasan+'\n> PTS +'+n+' Total: '+pts+'\n> LEVEL: '+levels[level-1]+'\n> Hari: '+hari;}
+function step(p){
+ let chars=document.getElementById('chars'), dlg=document.getElementById('dialog'), st=document.getElementById('status'), nar=document.getElementById('narasi'), hasil=document.getElementById('kontrolHasil');
+ if(p=='KANVAS'){chars.innerText='🧑‍💼🚶‍➡️🧑‍💼🪑'; dlg.innerText='Sales (4 Peran): Jalan ke Toko Supplier! Ketemu Bos Supplier!'; nar.innerText='Sales jalan ke Toko Supplier, bukan ke Ruko! Di Toko Supplier ketemu Bos Supplier!'; st.className='status gerak'; st.innerText='🚶 KANVAS - Ke Toko Supplier! +5 PTS!'; hasil.innerText='KANVAS -> +5 PTS!'; addPts(5,'Kanvas ke Toko Supplier'); speak('Kanvas ke toko supplier!');}
+ if(p=='BOS'){chars.innerText='🧑‍💼💬🧑‍💼🪑'; dlg.innerText='Sales: "Bos, saya mau kanvas hari ini ke Ruko / Sekolah / Pasar / Mall / Departemen / Rumah. Kalau ada minat, saya mau kontrak. Stok gudang lengkap nggak?" Bos: "Cek dulu..."'; nar.innerText='Sales ngomong 1 bentuk pembicaraan ke Bos Supplier. Satu bentuk untuk semua toko!'; st.innerText='🧑‍💼 KETEMU BOS SUPPLIER - 1 Bentuk Pembicaraan!'; hasil.innerText='BOS SUPPLIER -> 1 bentuk pembicaraan!'; speak('Ketemu Bos supplier!');}
+ if(p=='GUDANG'){chars.innerText='📦🧑‍💼'; dlg.innerText='DIAMOND 1: GUDANG LENGKAP? YES -> Bos: "Lengkap!" NO -> Bos: "Nggak lengkap!" Sales: "Ya udah, saya kanvas dulu, cari minat dulu!"'; nar.innerText='Bos cek gudang. Kepala Gudang + Teknisi lapor ke Bos. Kalau lengkap, lanjut. Kalau nggak lengkap, kanvas dulu, cari minat dulu!'; st.innerText='📦 GUDANG? YES = Lengkap! NO = Kanvas dulu!'; hasil.innerText='GUDANG -> Cek QC Kepala Gudang + Teknisi lapor ke Bos!'; speak('Cek gudang! Lengkap atau tidak?');}
+ if(p=='SETUJU'){chars.innerText='🧑‍💼🤝'; dlg.innerText='DIAMOND 2: BOS SETUJU KONTRAK? YES -> Bos: "Setuju! Teknisi, tolong rakit!" NO -> Sales: "Nggak apa-apa Bos, kalau ada minat, hubungi saya ya, ini nomor saya!"'; nar.innerText='Kalau Bos setuju, Bos perintahkan Teknisi! Kalau Bos belum setuju, Sales kasih nomor telepon, kanvas ke market!'; st.innerText='📝 BOS SETUJU? YES = Teknisi! NO = Kanvas ke Market!'; hasil.innerText='BOS SETUJU? -> YES = Teknisi, NO = Kanvas!'; speak('Bos setuju kontrak?');}
+ if(p=='TEKNISI'){chars.innerText='👨‍🔧📋'; dlg.innerText='Teknisi: "Siap Bos! Saya cek alat, ikut SOP, OEE, KPI! ESP32-S3 ada, Sensor IR ada, Kapasitor + Dioda ada! Sudah siap!"'; nar.innerText='Teknisi Staff / Manager Teknik Bos. Ikut SOP Perakitan + Instalasi, OEE >=85% = Bonus, KPI: Instalasi berhasil, komplain 0-1, respon max 24 jam.'; st.innerText='👨‍🔧 TEKNISI BRIEFING - SOP + OEE + KPI!'; hasil.innerText='TEKNISI -> SOP + OEE + KPI!'; speak('Teknisi briefing! SOP, OEE, KPI!');}
+ if(p=='BUYER'){chars.innerText='🧑‍💼💬🧑'; dlg.innerText='DIAMOND: BUYER MINAT? Sales ketemu Buyer di Market (Ruko/Sekolah/Pasar/Mall/Departemen/Rumah). Sales: "Pak/Bu, saya dari Toko Supplier Bos. Ini produk kita. Kalau minat, saya bisa kontrak. Bos siapin barangnya, Teknisi rakit + instalasi. Boleh minta nomor teleponnya?"'; nar.innerText='Sales ketemu Buyer di Market, bukan Bos! Satu bentuk pembicaraan untuk semua market! Kalau Buyer minat, YES! Kalau belum minat, NO -> Mager!'; st.innerText='🧑 BUYER MINAT? YES = Kontrak! NO = Mager!'; hasil.innerText='BUYER MINAT? -> YES = Kontrak, NO = Mager!'; speak('Buyer minat?');}
+ if(p=='SECOND'){chars.innerText='🧑‍💼🤝🧑‍💼🪑'; dlg.innerText='Second Contract! Bos: "Oke, Second Contract Deal!" Sales: "Makasih Bos!"'; nar.innerText='Second Contract Deal! Belum ada penjualan, tapi udah ada persetujuan kontrak! +30 PTS!'; st.className='status gerak'; st.innerText='📝 SECOND CONTRACT! +30 PTS!'; hasil.innerText='SECOND CONTRACT -> +30 PTS!'; addPts(30,'Second Contract Deal'); speak('Second Contract Deal!');}
+ if(p=='INDENT'){chars.innerText='📦⏳'; dlg.innerText='INDENT ORDER: Pesan dulu, barang belum ada, tunggu datang! Bos pesen ke distributor, 2-3 hari datang, Teknisi rakit, baru instalasi!'; nar.innerText='Indent Order: Kalau gudang kosong, pesan dulu, tunggu 2-3 hari, barang datang, Teknisi rakit!'; st.innerText='📦 INDENT ORDER - Tunggu Barang Datang!'; hasil.innerText='INDENT ORDER -> Tunggu 2-3 hari!'; speak('Indent order! Tunggu barang datang!');}
+ if(p=='INSTALASI'){chars.innerText='🔧💡'; dlg.innerText='Teknisi Instalasi! Test: Tekan ON, Lampu Menyala, Cahaya Memancar, Aktif Berfungsi!'; nar.innerText='Teknisi instalasi di Market Buyer, test lampu ON!'; st.innerText='🔧 INSTALASI - Lampu ON! Aktif Berfungsi!'; hasil.innerText='INSTALASI -> Lampu ON!'; speak('Instalasi! Lampu menyala!');}
+ if(p=='JUALAN'){chars.innerText='💰😃🤝'; dlg.innerText='Penjualan! Deal! Bos ngomong sama Buyer, Buyer setuju! +100 PTS! Naik Level! Maintenance: Sales + Teknisi + Bos + Buyer rawat bareng! Purna Jual Jaminan Kualitas!'; nar.innerText='Penjualan! Deal! +100 PTS! Naik Level! Kalau Buyer survey ke toko dan Bos promosikan SaaS + Prototype Founder, Bos dapat KOMISI 10%!'; st.className='status gerak'; st.innerText='💰 JUALAN! +100 PTS! Naik Level!'; hasil.innerText='JUALAN -> +100 PTS! Naik Level!'; addPts(100,'Penjualan! Deal!'); speak('Jualan! Deal! Naik level!');}
+ if(p=='MARKETING'){chars.innerText='📱💻'; dlg.innerText='Marketing Digital: Bikin konten, posting di Instagram / Threads / Facebook / TikTok / WhatsApp / YouTube, jawab DM, update SaaS, cek dashboard, nyari network di laptop! Capek mikir + capek laptop dihargai!'; nar.innerText='Marketing Digital paling efektif: Sponsor Bos + Video Short (Kling / CapCut) + Live + Testimoni Buyer + Konten Edukasi!'; st.innerText='📱 MARKETING DIGITAL! +15 PTS!'; hasil.innerText='MARKETING DIGITAL -> +15 PTS!'; addPts(15,'Marketing Digital - Konten + Network'); speak('Marketing digital!');}
+ if(p=='DEMAND'){chars.innerText='📊'; dlg.innerText='Demand Planner: Atur mau jualan apa, ke mana, stok berapa, kapan kanvas, cek gudang lewat WA ke Bos, prediksi order 1 bulan!'; nar.innerText='Demand Planner akurat, stok tidak kosong, tidak overstock!'; st.innerText='📊 DEMAND PLANNER! +15 PTS!'; hasil.innerText='DEMAND PLANNER -> +15 PTS!'; addPts(15,'Demand Planner - Rencana akurat'); speak('Demand planner!');}
+ if(p=='STORE'){chars.innerText='🏪😊'; dlg.innerText='Store Experience: Buyer senang, kasih rating bagus, testimoni, repeat order, ajak teman! Pengalaman di toko + di game menyenangkan!'; nar.innerText='Store Experience bagus, Buyer repeat order!'; st.innerText='🏪 STORE EXPERIENCE! +20 PTS!'; hasil.innerText='STORE EXPERIENCE -> +20 PTS!'; addPts(20,'Store Experience - Buyer senang'); speak('Store experience! Buyer senang!');}
+ if(p=='MAGER'){chars.innerText='😴'; dlg.innerText='Mager: Tidak menjalankan = Mager, Rebahan, Capek, 0 PTS! Boleh mager, tapi nggak dapet PTS!'; nar.innerText='Bila tidak menjalankan = Mager, 0 PTS! Bila YES ada kontrak = Senang + dapat PTS!'; st.className='status mager'; st.innerText='😴 MAGER - Tidak Menjalankan = 0 PTS!'; hasil.innerText='MAGER -> 0 PTS!'; speak('Mager! Tidak menjalankan, nol PTS!');}
+ if(p=='TELP'){chars.innerText='📱📞😃'; dlg.innerText='TELEPON BUNYI! Bos / Buyer Nelpon! Ada minat! Senang! Besok berangkat lagi!'; nar.innerText='Telepon bunyi, ada minat, nggak jadi mager, seneng!'; st.className='status senang'; st.innerText='📞 TELEPON! Ada Minat! SENENG!'; hasil.innerText='TELEPON -> Ada minat! Seneng!'; speak('Telepon bunyi! Ada minat!');}
+ if(p=='NEXTDAY'){hari++; document.getElementById('hari').innerText=hari; chars.innerText='🌅🧑‍💼'; dlg.innerText='Hari '+hari+': Berangkat lagi! Kanvas lagi!'; nar.innerText='Hari berikutnya, berangkat lagi! Berkontinu!'; st.innerText='🌅 HARI '+hari+' - Berangkat Lagi!'; hasil.innerText='HARI BERIKUTNYA -> Hari '+hari+'!'; speak('Hari berikutnya! Berangkat lagi!');}
 }
-function cmd(p){
-  let st=document.getElementById('status'), nar=document.getElementById('narasi'), char=document.getElementById('char'), bub=document.getElementById('bubble'), ket=document.getElementById('animKet'), hasil=document.getElementById('kontrolHasil'), mode=document.getElementById('mode');
-  if(p=='MAGER'){char.innerText='😴';char.className='mager';bub.innerText='Zzz... capek... rebahan dulu... 😴';ket.innerText='Animasi: Rebahan, mata setengah merem. MAGER DOANG = 0 PTS!';st.className='status mager';st.innerText='😴 MODE MAGER - 0 PTS - Boleh istirahat, tapi nggak dapet upah!';mode.innerText='MAGER';nar.innerText='Observasi: Orang rebahan, capek habis kerja. Boleh mager, wajar. Tapi PTS = 0, karena belum kerja lagi. Kalau mager doang dapet PTS, game jadi sia-sia!';hasil.innerText='MAGER -> 0 PTS! Boleh istirahat, tapi nggak dapet upah!';speak('Mager doang, nol PTS! Boleh istirahat, tapi tidak dapat upah!');}
-  if(p=='KANVAS'){sudahKanvas=true;document.getElementById('kanvasSt').innerText='SUDAH';char.innerText='🚶';char.className='kanvas';bub.innerText='Jalan ke toko, kanvas, ngobrol... 🚶';ket.innerText='Animasi: Orang jalan ke toko, kanvas, ngobrol sama bos toko.';st.className='status gerak';st.innerText='🚶 MODE KANVAS - +5 PTS - Upah Minum!';mode.innerText='KANVAS';nar.innerText='Observasi: Orang udah bangun, jalan ke toko, kanvas, ngobrol. Capek jalan, wajar dikasih upah minum +5 PTS!';hasil.innerText='KANVAS -> +5 PTS! Upah minum!';addPts(5,'Perintah: KANVAS - Sudah jalan, sudah ngobrol, upah minum');toggleCenter(true);speak('Kanvas! Dapat lima PTS, upah minum!');}
-  if(p=='KONTRAK'){if(!sudahKanvas){hasil.innerText='Belum bisa KONTRAK! Kanvas dulu! Jalan ke toko dulu!';speak('Kanvas dulu, baru kontrak!');return;}sudahKontrak=true;document.getElementById('kontrakSt').innerText='SUDAH';char.innerText='🤝';char.className='kontrak';bub.innerText='Bos, aku mau kontrak deh! 📝';ket.innerText='Animasi: Orang salaman sama bos toko, minta kontrak.';st.className='status gerak';st.innerText='📝 MODE KONTRAK - +30 PTS!';mode.innerText='KONTRAK';nar.innerText='Observasi: Orang ngomong sama bos toko: "Aku mau kontrak deh!" Belum ada penjualan, nggak apa-apa, tapi udah ada kontrak, udah ada usaha serius! +30 PTS!';hasil.innerText='KONTRAK -> +30 PTS! Walaupun belum jualan, tapi udah kontrak!';addPts(30,'Perintah: KONTRAK - Sudah ngomong ke bos toko, mau kontrak');speak('Kontrak! Dapat tiga puluh PTS!');}
-  if(p=='JUALAN'){if(!sudahKontrak){hasil.innerText='Belum bisa JUALAN! Kontrak dulu! Ngomong ke bos toko dulu!';speak('Kontrak dulu, baru jualan!');return;}sudahJualan=true;document.getElementById('jualanSt').innerText='SUDAH';char.innerText='💰';char.className='jualan';bub.innerText='Deal! Barang laku! Senang! 💰';ket.innerText='Animasi: Orang senang, deal, barang laku, dapet uang!';st.className='status gerak';st.innerText='💰 MODE JUALAN - +100 PTS! DEAL!';mode.innerText='JUALAN - DEAL!';nar.innerText='Observasi: Deal! Barang laku! Ini baru kerja beneran! +100 PTS! Paling besar! Hobby gamers pasti kejar ini!';hasil.innerText='JUALAN -> +100 PTS! DEAL! Paling besar!';addPts(100,'Perintah: JUALAN - Deal, barang laku!');speak('Jualan! Deal! Dapat seratus PTS!');}
-  if(p=='PAUSE'){combo=0;document.getElementById('combo').innerText='x0';char.innerText='🧘';char.className='';bub.innerText='Istirahat sebentar...';ket.innerText='Animasi: Istirahat, combo reset.';st.innerText='⏸️ PAUSE - Istirahat, Combo Reset!';nar.innerText='Pause, istirahat. Boleh mager lagi, tapi PTS berhenti. Kalau mau PTS lagi, kerja lagi!';hasil.innerText='PAUSE -> Istirahat, Combo reset!';speak('Pause! Istirahat!');}
-}
-function toggleCenter(force){let lamp=document.getElementById('lamp'), st=document.getElementById('centerSt');let on=force!==undefined?force:lamp.style.filter.includes('grayscale');if(on){lamp.style.filter='none';lamp.innerText='💡✨';st.innerText='CENTER: ON - SEMUA INDERA MELEK!';}else{lamp.style.filter='grayscale(1)';lamp.innerText='💡';st.innerText='CENTER: OFF';}}
+function toggleCenter(force){let lamp=document.getElementById('lamp'), st=document.getElementById('centerSt');let on=force!==undefined?force:lamp.style.filter.includes('grayscale');if(on){lamp.style.filter='none';lamp.innerText='💡✨';st.innerText='CENTER: ON!';}else{lamp.style.filter='grayscale(1)';lamp.innerText='💡';st.innerText='CENTER: OFF';}}
 </script></body></html>
