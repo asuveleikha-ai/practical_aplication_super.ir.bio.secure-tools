@@ -1,9 +1,9 @@
-# app.py V6.5 FIX - TOMBOL + VOICE DI DALAM GAME
+# app.py V6.6 - NEURAL RUANG OBSERVASI - TOMBOL + VOICE DI DALAM GAME
 import streamlit as st, os
-st.set_page_config(page_title="Practical Application Game V6.5 FIX - Tombol + Voice Aktif", layout="wide")
+st.set_page_config(page_title="Practical Application Game V6.6 - NEURAL RUANG OBSERVASI - Tombol + Voice Aktif", layout="wide")
 st.markdown("""
 <div style="background:linear-gradient(90deg,#ff7a00,#ffeb3b,#00e676);color:#000;padding:12px;border-radius:12px;text-align:center">
-<b>🎮 V6.5 FIX - TOMBOL + VOICE AKTIF!</b><br>
+<b>🎮 V6.6 - NEURAL RUANG OBSERVASI - TOMBOL + VOICE AKTIF!</b><br>
 <small>Link: asuveleikha-ai.github.io/practicalaplication_gamesupersecure_tools - Link ini terkoneksi ke peralatan mikrokontroler, dan link ini juga yang terkoneksi ke game simulasi real ini.</small><br>
 <b>⚠️ Kalau suara di Streamlit ke-blokir, buka link GitHub langsung (GitHub Pages) - di sana suara 100% jalan! Di Streamlit, klik tombol No.1 AKTIFKAN SUARA dulu!</b>
 </div>
@@ -18,7 +18,7 @@ with tab_main:
 with tab_classic:
     st.components.v1.html(load("index_classic.html"), height=4200, scrolling=True)
 with tab_neuro:
-    st.markdown("**NEURAL - Panel Kontrol Observasi Otomasi - Tombol + Voice sudah FIX!**")
+    st.markdown("**NEURAL - Ruang Observasi Super Secure + Super Infrared - TANPA Tombol Game! Game cuma di MAIN!**")
     html_n = load("index_neural.html") if os.path.exists("index_neural.html") else load("index_Neural.html")
     st.components.v1.html(html_n, height=4600, scrolling=True)
-st.caption("V6.5 FIX - Tombol game di dalam panel game + Voice Recorder di dalam panel game, semua tombol langsung bersuara! Kalau suara di Streamlit ke-blokir, buka link GitHub langsung!")
+st.caption("V6.6 - NEURAL RUANG OBSERVASI - Tombol game di dalam panel game + Voice Recorder di dalam panel game, semua tombol langsung bersuara! Kalau suara di Streamlit ke-blokir, buka link GitHub langsung!")

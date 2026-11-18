@@ -1,120 +1,61 @@
-<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PRACTICAL APPLICATION GAME V6.5 FIX - TOMBOL + VOICE AKTIF</title>
-<style>*{box-sizing:border-box}body{margin:0;font-family:system-ui,Arial;background:#020a12;color:#dff;padding:12px}.top{background:linear-gradient(90deg,#ff7a00,#ffeb3b,#00e676);color:#000;padding:14px;border-radius:12px;text-align:center}.panel{background:#031a2a;border:1px solid #00e5ff;border-radius:12px;padding:14px;margin:10px 0}.box{background:#fff;color:#000;padding:12px;border-radius:10px;margin:8px 0}button{border:1px solid #00e5ff;background:#0a2a3a;color:#00e5ff;padding:12px 14px;border-radius:10px;font-weight:900;cursor:pointer;margin:4px;font-size:14px}button:active{transform:scale(0.96);background:#00e5ff;color:#000}button.green{border-color:#00e676;color:#00e676}button.yellow{border-color:#ffeb3b;color:#ffeb3b}button.gold{border-color:#ffd700;color:#ffd700}button.voice{background:#00e676;color:#000;border-color:#00e676}button.rec{background:#ff1744;color:#fff;border-color:#ff1744}.smallbox{border:2px dashed #ffeb3b;border-radius:12px;padding:10px;text-align:center;margin:10px 0}.hidden{display:none}#stage{width:100%;max-width:560px;margin:auto;background:#0a2a3a;border:2px solid #00e5ff;border-radius:12px;text-align:center;padding:16px;min-height:160px}#chars{font-size:55px}#dialog{background:#fff;color:#000;padding:12px;border-radius:12px;font-weight:800;min-height:56px;font-size:16px}.status{font-size:18px;font-weight:900;text-align:center;padding:12px;border-radius:10px;margin:8px 0}.gerak{background:#00e676;color:#000}.mager{background:#ffeb3b;color:#000}.senang{background:#ff7a00;color:#000}.voicebar{position:sticky;top:0;z-index:99;background:#000;border:2px solid #00e676;border-radius:12px;padding:10px;margin:8px 0;text-align:center}.log{background:#000;color:#00e676;padding:8px;border-radius:8px;font-family:monospace;font-size:12px;margin-top:6px;min-height:32px}table{width:100%;border-collapse:collapse}td,th{border:1px solid #00e5ff;padding:7px;text-align:left;font-size:13px}th{background:#003}.linkjelas{background:#fff;color:#000;padding:14px;border-radius:12px;font-size:18px;font-weight:900;text-align:center;line-height:1.5}</style></head><body>
-<div class="top"><b style="font-size:22px">🎮 NEURAL TRON 50% - PANEL OBSERVASI OTOMASI - TOMBOL + VOICE FIX</b><br><b>BUAT GAME DULU! JANGAN KONEKSI DULU KE DEMO STREAMLIT!</b><br><small>Batik 8in1 Dihapus dari Game, Pisah Total! Game cuma 4 item ringan!</small></div>
+<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>NEURAL V6.6 - RUANG OBSERVASI SUPER SECURE + SUPER INFRARED</title>
+<style>*{box-sizing:border-box}body{margin:0;font-family:system-ui,Arial;background:#020a12;color:#dff;padding:12px}.top{background:linear-gradient(90deg,#00e5ff,#7c4dff,#ff7a00);color:#000;padding:14px;border-radius:12px;text-align:center}.panel{background:#031a2a;border:1px solid #00e5ff;border-radius:12px;padding:14px;margin:10px 0}.box{background:#fff;color:#000;padding:12px;border-radius:10px;margin:8px 0}button{border:1px solid #00e5ff;background:#0a2a3a;color:#00e5ff;padding:12px 14px;border-radius:10px;font-weight:900;cursor:pointer;margin:4px;font-size:14px}button:active{transform:scale(0.96);background:#00e5ff;color:#000}button.voice{background:#00e676;color:#000;border-color:#00e676}button.rec{background:#ff1744;color:#fff;border-color:#ff1744}button.big{background:#ffeb3b;color:#000;font-size:16px;padding:14px 18px}.voicebar{position:sticky;top:0;z-index:99;background:#000;border:2px solid #00e676;border-radius:12px;padding:10px;margin:8px 0;text-align:center}.log{background:#000;color:#00e676;padding:8px;border-radius:8px;font-family:monospace;font-size:12px;margin-top:6px;min-height:32px}.room{border:2px solid #00e676;border-radius:12px;padding:12px;margin:10px 0}.room2{border:2px solid #ff7a00;border-radius:12px;padding:12px;margin:10px 0}.linkjelas{background:#fff;color:#000;padding:14px;border-radius:12px;font-size:18px;font-weight:900;text-align:center;line-height:1.5}.hidden{display:none}</style></head><body>
+<div class="top"><b style="font-size:22px">🧠 NEURAL V6.6 - RUANG OBSERVASI SUPER SECURE + SUPER INFRARED</b><br><b>BUKAN GAME! INI RUANG OBSERVASI + AKSES LINK SISTEM!</b><br><small>Game-nya di Tab MAIN! Di sini nggak ada tombol game lagi!</small></div>
 
 <div class="panel"><div class="linkjelas">✅ LINK APLIKASI SISTEM KITA:<br>asuveleikha-ai.github.io/practicalaplication_gamesupersecure_tools<br><br>✅ LINK INI TERKONEKSI KE PERALATAN MIKROKONTROLER.<br>✅ LINK INI JUGA YANG TERKONEKSI KE GAME SIMULASI REAL INI.</div>
-<div style="text-align:center"><button class="voice" onclick="unlockVoice();speakAll()">🔊 SUARAKAN SEMUA - BACA SEMUA HALAMAN INI!</button><button class="voice" onclick="unlockVoice();speak('Test suara! Game di depan! Link GitHub Ai Chaliveret terkoneksi ke peralatan mikrokontroler dan ke game simulasi real ini!')">🔊 TEST SUARA!</button><button onclick="stopVoice()">⏹️ STOP SUARA</button></div>
-<div id="voiceLog" class="log">Voice Log: Belum ada suara. Klik SUARAKAN SEMUA! Kalau di Streamlit suara ke-blokir, buka link GitHub langsung!</div>
-<div id="voiceStatus" style="text-align:center;font-weight:900;color:#ffeb3b">VOICE: BELUM DIAKTIFKAN - KLIK TOMBOL SUARA SEKALI!</div></div>
+<p style="text-align:center"><b>NEURAL INI BUAT APA?</b><br>Neural ini buat <b>KONEKTIVITAS / AKSES</b> ke link GitHub Ai Chaliveret sistem aplikasi kita <b>SELURUHNYA</b>, juga sebagai <b>RUANG OBSERVASI KITA</b> yang terpantau atas peralatan-peralatan mikrokontroler tersebut, sesuai nama sistem aplikasinya yaitu <b>SUPER SECURE</b> dan <b>SUPER INFRARED!</b></p>
+<div style="text-align:center"><a href="https://asuveleikha-ai.github.io/practicalaplication_gamesupersecure_tools" target="_blank" style="text-decoration:none"><button class="big">🔗 BUKA APLIKASI SISTEM - LINK GITHUB AI CHALIVERET!</button></a><button class="big" onclick="unlockVoice();speak('Neural ini ruang observasi Super Secure dan Super Infrared. Link ini terkoneksi ke peralatan mikrokontroler. Link ini juga yang terkoneksi ke game simulasi real ini.')">🔊 SUARAKAN PENJELASAN NEURAL!</button></div>
+<div class="box"><b>Jadi Neural = 2 Fungsi:</b><br><b>1. AKSES / KONEKTIVITAS:</b> Pintu masuk ke seluruh aplikasi sistem kita lewat link GitHub Ai Chaliveret!<br><b>2. RUANG OBSERVASI:</b> Pantau peralatan mikrokontroler Super Secure + Super Infrared, dari sini! Sensor baca, otomasi jalan, kita lihat di sini!</div></div>
 
-<div class="panel"><h2>🧠 NEURAL - PANEL KONTROL OBSERVASI OTOMASI - LINK GITHUB TERKONEKSI DI SINI!</h2>
-<div class="box"><b>Link: asuveleikha-ai.github.io/practicalaplication_gamesupersecure_tools</b><br>Link ini terkoneksi ke peralatan mikrokontroler. Link ini juga yang terkoneksi ke game simulasi real ini. Di Neural ini, link itu terkoneksi ke observasi otomasi!</div>
-<div style="text-align:center">
-<button class="voice" onclick="unlockVoice();speak('Observasi Tangan Gerak! IR detek!')">👋 OBSERVASI: TANGAN GERAK - IR DETEK!</button>
-<button class="voice" onclick="unlockVoice();speak('Observasi Gas! MQ-135 detek gas!')">💨 OBSERVASI: GAS - MQ-135!</button>
-<button class="voice" onclick="unlockVoice();speak('Observasi Panas! MLX90640 detek panas!')">🔥 OBSERVASI: PANAS - MLX90640!</button>
-<button class="voice" onclick="unlockVoice();speak('Observasi Udara! SHT41 detek udara!')">🌡️ OBSERVASI: UDARA - SHT41!</button>
-<button class="voice" onclick="unlockVoice();speak('Observasi Warna! TCS34725 detek warna!')">🎨 OBSERVASI: WARNA - TCS34725!</button>
-<button class="voice" onclick="unlockVoice();speak('Otomasi Jalan! Semua sensor aktif!')">🤖 OTOMASI JALAN!</button>
-</div><p style="text-align:center"><small>Panel Neural ini sekarang tombolnya juga sudah FIX, sama kayak game! Klik, langsung bunyi!</small></p>
-<h2>🎮 GAME DULU - HALAMAN UTAMA - DI DEPAN!</h2>
-<div><b>📅 HARI: <span id="hari">1</span> | ⭐ PTS: <span id="pts">0</span> | 🏆 LEVEL: <span id="levelTxt">1 - Perumahan</span></b><br><p><b>Game Ringan - 4 Item Saja:</b> 1. IR 7 Detik di HP | 2. Bio Health Ringkas | 3. CCTV AI Ringkas | 4. SaaS SCM Demo | <b>PTS:</b> Kanvas +5, Kontrak +30, Jualan +100 | <b>Batik:</b> DIHAPUS dari Game!</p></div>
-
-<!-- VOICE RECORDER + VOICE BAR - DI DALAM PANEL GAME, PERSIS DI ATAS TOMBOL GAME DI SS! -->
-<div class="voicebar">
-<b style="color:#00e676">🎙️ VOICE RECORDER - DI SINI, DI DALAM GAME! KLIK, LANGSUNG BUNYI!</b><br>
-<button class="voice" id="btnVoiceAktif" onclick="unlockVoice()">🔓 1. KLIK INI DULU - AKTIFKAN SUARA!</button>
-<button class="voice" onclick="unlockVoice();speakAll()">🔊 2. SUARAKAN SEMUA!</button>
-<button class="voice" onclick="unlockVoice();speak(document.getElementById('dialog').innerText)">🔊 3. SUARAKAN LANGKAH INI!</button><br>
-<button class="rec" onclick="startRecord()">🎙️ 4. REKAM SUARA 30 DETIK!</button>
-<button onclick="stopVoice()">⏹️ STOP SUARA</button>
-<button onclick="playRecord()">▶️ PUTAR REKAMAN</button><br>
+<div class="voicebar"><b style="color:#00e676">🎙️ VOICE RECORDER - AKTIF! BAGUS! TETAP DI SINI!</b><br>
+<button class="voice" onclick="unlockVoice()">🔓 1. KLIK INI DULU - AKTIFKAN SUARA!</button>
+<button class="voice" onclick="unlockVoice();speakAllNeural()">🔊 2. SUARAKAN SEMUA OBSERVASI!</button>
+<button class="rec" onclick="startRecord()">🎙️ 3. REKAM SUARA 30 DETIK!</button>
+<button onclick="stopVoice()">⏹️ STOP</button><button onclick="playRecord()">▶️ PUTAR REKAMAN</button><br>
 <audio id="rekamanPlayer" controls style="width:100%;margin-top:6px;display:none"></audio>
-<div id="voiceStatusGame" style="color:#ffeb3b;font-weight:900">VOICE GAME: BELUM AKTIF - KLIK TOMBOL KUNING NO.1 DULU!</div>
-<div id="voiceLogGame" class="log">Voice Game Log: Belum ada suara di game. Klik tombol No.1 dulu, baru klik tombol game di bawah!</div>
-<div id="recordLog" class="log">Rekaman Log: Belum ada rekaman. Klik REKAM SUARA 30 DETIK, ngomong, otomatis berhenti 30 detik!</div>
-</div>
+<div id="voiceStatusGame" style="color:#ffeb3b;font-weight:900">VOICE: BELUM AKTIF - KLIK No.1 DULU!</div>
+<div id="voiceLogGame" class="log">Voice Log: Belum ada suara. Klik No.1 dulu!</div>
+<div id="recordLog" class="log">Rekaman Log: Belum ada rekaman.</div></div>
 
-<div id="stage"><div id="chars">🧑‍💼</div><div id="dialog">Pagi Hari 1: Sales 4 Peran bangun. Klik 1. KANVAS! Ke Toko Supplier, ketemu Bos Supplier!</div></div>
-<div id="status" class="status gerak">☀️ PAGI HARI 1 - Siap Kanvas!</div>
-<p id="narasi">Game dulu! Tanpa koneksi ke demo Streamlit! Klik tombol di bawah, langsung berubah + langsung bunyi!</p>
-<div id="debugTombol" style="background:#ffeb3b;color:#000;padding:10px;border-radius:10px;font-weight:900;text-align:center">✅ TOMBOL CEK: Belum diklik. Klik tombol game di bawah, tulisan ini langsung berubah = tombol AKTIF!</div>
-
+<!-- RUANG 1 SUPER SECURE -->
+<div class="room"><h2>🛡️ RUANG 1 - SUPER SECURE - PANTAU KEAMANAN + KESEHATAN BADAN!</h2>
+<p><b>Super Secure =</b> Bio Health Room + IR 7 Detik + CCTV AI + Gas + Panas + Udara. Pantau orang + ruangan, biar aman + sehat!</p>
 <div style="text-align:center">
-<button data-step="KANVAS" onclick="step('KANVAS')">🚶 1. KANVAS +5</button>
-<button class="yellow" data-step="BOS" onclick="step('BOS')">🧑‍💼 2. BOS SUPPLIER</button>
-<button data-step="GUDANG" onclick="step('GUDANG')">📦 3. GUDANG?</button>
-<button data-step="SETUJU" onclick="step('SETUJU')">📝 4. BOS SETUJU?</button>
-<button data-step="TEKNISI" onclick="step('TEKNISI')">👨‍🔧 5. TEKNISI SOP</button>
-<button data-step="BUYER" onclick="step('BUYER')">🧑 6. BUYER MINAT?</button>
-<button class="green" data-step="SECOND" onclick="step('SECOND')">📝 7. SECOND CONTRACT +30</button>
-<button data-step="INDENT" onclick="step('INDENT')">📦 8. INDENT ORDER</button>
-<button data-step="INSTALASI" onclick="step('INSTALASI')">🔧 9. INSTALASI</button>
-<button class="green" data-step="JUALAN" onclick="step('JUALAN')">💰 10. JUALAN +100 + MAPPING!</button>
+<button class="voice" onclick="unlockVoice();speak('Observasi Gerak Gerik Badan! Bukan cuma tangan! Pantau seluruh gerak badan! Jalan, jatuh, kejang, lemas, mondar mandir mencurigakan, maling! IR dan CCTV AI pantau semua gerak badan!')">🚶‍♂️ OBSERVASI: GERAK-GERIK BADAN - PANTAU JATUH, KEJANG, LEMAS & GERAK MENCURIGAKAN!</button><br><small style="color:#ffeb3b"><b>RENAME BARU - INISIATIF:</b> Dulu namanya Tangan Gerak. Gue ganti jadi <b>Gerak-GERik Badan</b>, karena yang dipantau bukan cuma tangan, tapi <b>seluruh gerak badan</b>: jalan, jatuh, kejang, lemas, mondar-mandir mencurigakan, maling, JKL & sejenisnya!</small><br>
+<button class="voice" onclick="unlockVoice();speak('Observasi Gas! MQ-135 detek gas bocor, asap, udara kotor! Kalau gas naik, alarm bunyi, ventilasi jalan!')">💨 OBSERVASI: GAS - MQ-135 - GAS BOCOR & ASAP!</button>
+<button class="voice" onclick="unlockVoice();speak('Observasi Panas! MLX90640 detek panas badan dan panas ruangan! Kalau panas naik, alarm bunyi!')">🔥 OBSERVASI: PANAS - MLX90640 - PANAS BADAN & RUANGAN!</button>
+<button class="voice" onclick="unlockVoice();speak('Observasi Udara! SHT41 detek suhu dan kelembaban udara! Biar ruangan sehat, tidak lembab, tidak pengap!')">🌡️ OBSERVASI: UDARA - SHT41 - SUHU & KELEMBABAN!</button>
 </div>
-<p id="kontrolHasil">Belum ada langkah. Klik 1. KANVAS!</p>
+<div class="box"><b>Contoh Nyata Super Secure:</b><br>• Ibu Ani jatuh di kamar → Gerak-gerik badan detek jatuh → Alarm bunyi → Teknisi + keluarga dikabari!<br>• Anak kejang → Gerak badan kejang terdetek → Alarm!<br>• Orang mondar-mandir depan ruko jam 2 pagi → Gerak mencurigakan → CCTV AI rekam + alarm!</div>
+</div>
+
+<!-- RUANG 2 SUPER INFRARED -->
+<div class="room2"><h2>🔴 RUANG 2 - SUPER INFRARED - PANTAU KEMATANGAN & CAHAYA!</h2>
+<p><b>Super Infrared =</b> MLX90640 + TCS34725. Pantau panas infrared + warna cahaya, buat toko, pasar, buah, lampu!</p>
 <div style="text-align:center">
-<button data-step="MAGER" onclick="step('MAGER')">😴 MAGER 0 PTS</button>
-<button class="gold" data-step="TELP" onclick="step('TELP')">📞 TELEPON BUNYI!</button>
-<button data-step="NEXTDAY" onclick="step('NEXTDAY')">🌅 HARI BERIKUTNYA!</button>
+<button class="voice" onclick="unlockVoice();speak('Observasi Kematangan Buah dan Cahaya Lampu! TCS34725 detek perubahan warna kulit buah untuk tentukan sudah matang atau belum! Juga kalibrasi kecerahan dan suhu warna layar dan lampu pintar! Bukan untuk pabrik batik!')">🍌 OBSERVASI: KEMATANGAN BUAH & CAHAYA LAMPU - TCS34725!</button><br><small style="color:#ffeb3b"><b>RENAME BARU - INISIATIF:</b> Dulu namanya cuma Warna. Gue ganti jadi <b>Kematangan Buah & Cahaya Lampu</b>, biar jelas bukan warna batik! <b>2 Fungsi TCS34725:</b> 1. Pengukur Tingkat Kematangan: detek perubahan warna kulit buah, tentukan sudah matang atau belum! 2. Kalibrasi Layar dan Lampu: sesuaikan kecerahan & suhu warna layar dan lampu pintar!</small><br>
+<button class="voice" onclick="unlockVoice();speak('Observasi Infrared Panas! MLX90640 lihat panas dari jauh, tanpa sentuh! Buah panas, mesin panas, badan panas, semua keliatan!')">🔥 OBSERVASI: INFRARED PANAS - MLX90640 - LIHAT PANAS TANPA SENTUH!</button>
+<button class="voice" onclick="unlockVoice();speak('Otomasi Jalan! Semua sensor aktif! Super Secure dan Super Infrared jalan bareng!')">🤖 OTOMASI JALAN - SUPER SECURE + SUPER INFRARED!</button>
 </div>
-<div style="text-align:center;margin-top:8px"><button onclick="toggleCenter()">🔘 CENTER ON / OFF</button><div id="lamp" style="font-size:60px;filter:grayscale(1)">💡</div><div id="centerSt">CENTER: OFF</div></div>
+<div class="box"><b>Contoh Nyata Super Infrared:</b><br>• <b>Kematangan Buah:</b> Pisang kulit hijau → belum matang! Pisang kulit kuning bintik coklat → sudah matang! TCS34725 baca warna kulitnya, kasih tau matang / belum!<br>• <b>Kalibrasi Lampu:</b> Lampu toko terlalu putih / terlalu kuning → TCS34725 baca suhu warnanya, lampu otomatis disesuaikan biar enak dilihat!<br>• <b>Kalibrasi Layar:</b> Layar HP terlalu terang → disesuaikan biar mata nggak capek!</div>
 </div>
 
-<div class="panel"><h2>🗺️ MAPPING PER BUYER - PURNA JUAL - DI GAME INI!</h2>
-<p><b>Rute Maintenance Hari Ini:</b> 1. Pasar Jaya E (MERAH - URGENT, ganti kapasitor!) -> 2. Sekolah C (KUNING, bersihin sensor!) -> 3. Lainnya cek rutin - Batik TIDAK masuk game!</p>
-<table><tr><th>ID</th><th>Buyer</th><th>Alamat</th><th>Peralatan</th><th>Status</th><th>Teknisi</th></tr>
-<tr><td>BR-001</td><td>Ibu Ani</td><td>Perumahan A, Jakarta Selatan</td><td>Bio Health + IR 7 Detik</td><td>🟢 Sehat</td><td>Teknisi A</td></tr>
-<tr><td>BR-002</td><td>Pak Budi</td><td>Ruko B, Jakarta Pusat</td><td>IR Ringkas + CCTV AI</td><td>🟢 Sehat</td><td>Teknisi A</td></tr>
-<tr><td>BR-003</td><td>Sekolah C</td><td>Jakarta Timur</td><td>Bio Health + CCTV</td><td>🟡 Kuning - Sensor Kotor</td><td>Teknisi B</td></tr>
-<tr><td>BR-004</td><td>Toko D</td><td>Jakarta Barat</td><td>Super Infrared</td><td>🟢 Sehat</td><td>Teknisi B</td></tr>
-<tr><td>BR-005</td><td>Pasar Jaya E</td><td>Pasar Jaya, Jakarta Pusat</td><td>Super Infrared</td><td>🔴 Merah - Kapasitor Habis</td><td>Teknisi A - Hari Ini!</td></tr></table></div>
-
-<div class="smallbox"><b>📦 KOTAK KECIL - PENJELASAN SISTEM</b><br><small>Penjelasan panjangnya disimpen di sini! Klik kotak kecil ini, baru tampil!</small><br><button onclick="togglePenjelasan()" style="background:#ffeb3b;color:#000;font-size:16px">📦 KLIK KOTAK KECIL INI - LIHAT PENJELASAN SISTEM!</button>
-<div id="penjelasanBox" class="hidden">
-<div class="box"><b>1. DI MANA APLIKASI SISTEM KITA DISIMPAN?</b><br>GitHub = Lemari Kode! Server = Tempat Sistem Terpasang! Play Store = Toko download!</div>
-<div class="box"><b>2. DI MANA PROTOTIPE-NYA?</b><br>Barang di lokasi Buyer! Firmware di dalam ESP32-S3!</div>
-<div class="box"><b>3. PABRIK AUTONOMOUS?</b><br>PISAH TOTAL! Bukan di game!</div>
-<div class="box"><b>4. KONEKSI GAME KE SISTEM DI MANA?</b><br>Di Server! Game baca server, server baca ESP32!</div>
-<div class="box"><b>5. LINK KITA:</b><br>asuveleikha-ai.github.io/practicalaplication_gamesupersecure_tools. Link ini terkoneksi ke peralatan mikrokontroler. Link ini juga yang terkoneksi ke game simulasi real ini.</div>
-</div></div>
+<div class="panel"><h2>📊 STATUS TERPANTAU - DI RUANG OBSERVASI INI!</h2>
+<div class="box"><b>🛡️ SUPER SECURE - Status:</b> Gerak-gerik: Aman | Gas: Aman | Panas: Normal | Udara: Sehat | <b>Semua terpantau dari sini!</b></div>
+<div class="box"><b>🔴 SUPER INFRARED - Status:</b> Kematangan Buah: 3 Matang, 2 Belum | Cahaya Lampu: Pas | Infrared Panas: Normal | <b>Semua terpantau dari sini!</b></div>
+<p style="text-align:center"><small>Di Neural ini sudah <b>NGGAK ADA</b> tombol game (KANVAS, BOS, GUDANG, dll). Tombol game cuma ada di Tab MAIN! Neural ini khusus buat konektivitas + observasi Super Secure & Super Infrared!</small></p>
+<div style="text-align:center"><button onclick="togglePenjelasan()" style="background:#ffeb3b;color:#000">📦 KOTAK KECIL - LIHAT PENJELASAN SISTEM!</button><div id="penjelasanBox" class="hidden"><div class="box"><b>Link kita:</b> asuveleikha-ai.github.io/practicalaplication_gamesupersecure_tools. Link ini terkoneksi ke peralatan mikrokontroler. Link ini juga yang terkoneksi ke game simulasi real ini.</div><div class="box"><b>Neural = Akses + Ruang Observasi.</b> Bukan game. Game di Tab MAIN.</div></div></div>
+</div>
 
 <script>
-var pts=0,hari=1,level=1;var levels=["1 - Perumahan","2 - Outlet","3 - Ruko","4 - Sekolah","5 - Pasar","6 - Mall","7 - Departemen - MAX"];var voiceUnlocked=false;var mediaRecorder=null;var audioChunks=[];var recordedBlobUrl=null;
-function setLog(msg){var a=document.getElementById('voiceLog');if(a)a.innerText='Voice Log: '+msg;var b=document.getElementById('voiceLogGame');if(b)b.innerText='Voice Game Log: '+msg;}
-function unlockVoice(){try{if('speechSynthesis' in window){speechSynthesis.getVoices();var u=new SpeechSynthesisUtterance('Suara aktif! Tombol game sekarang bunyi!');u.lang='id-ID';speechSynthesis.speak(u);}voiceUnlocked=true;var s=document.getElementById('voiceStatus');if(s)s.innerText='VOICE: AKTIF ✅ - SUDAH BISA BUNYI!';var sg=document.getElementById('voiceStatusGame');if(sg)sg.innerText='VOICE GAME: AKTIF ✅ - KLIK TOMBOL GAME, LANGSUNG BUNYI!';var btn=document.getElementById('btnVoiceAktif');if(btn)btn.innerText='✅ SUARA SUDAH AKTIF!';setLog('Suara diaktifkan! '+new Date().toLocaleTimeString());}catch(e){setLog('Gagal aktifkan suara: '+e+' - Coba buka link GitHub langsung, jangan lewat Streamlit!');}}
-function speak(t){try{if(!('speechSynthesis' in window)){setLog('Browser tidak dukung suara! Coba Chrome! Buka link GitHub langsung!');alert('Browser tidak dukung suara! Coba Chrome, buka link GitHub langsung!');return;}if(!voiceUnlocked){voiceUnlocked=true;}speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='id-ID';u.rate=1;u.volume=1;u.onend=function(){setLog('Selesai bicara: '+t.substring(0,60));};u.onerror=function(e){setLog('Suara error, mungkin diblokir Streamlit. Buka link GitHub langsung! Error: '+e.error);};speechSynthesis.speak(u);setLog(t+' | '+new Date().toLocaleTimeString());}catch(e){setLog('Suara gagal: '+e);}}
+var voiceUnlocked=false;var mediaRecorder=null;var audioChunks=[];var recordedBlobUrl=null;
+function setLog(m){var b=document.getElementById('voiceLogGame');if(b)b.innerText='Voice Log: '+m;}
+function unlockVoice(){try{if('speechSynthesis' in window){speechSynthesis.getVoices();var u=new SpeechSynthesisUtterance('Suara aktif! Ruang observasi sekarang bunyi!');u.lang='id-ID';speechSynthesis.speak(u);}voiceUnlocked=true;document.getElementById('voiceStatusGame').innerText='VOICE: AKTIF ✅ - SUDAH BISA BUNYI!';setLog('Suara diaktifkan! '+new Date().toLocaleTimeString());}catch(e){setLog('Gagal: '+e);}}
+function speak(t){try{if(!('speechSynthesis' in window)){setLog('Browser tidak dukung suara! Coba Chrome!');return;}speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='id-ID';u.rate=1;speechSynthesis.speak(u);setLog(t+' | '+new Date().toLocaleTimeString());}catch(e){setLog('Gagal: '+e);}}
 function stopVoice(){try{speechSynthesis.cancel();setLog('Suara dihentikan!');}catch(e){}}
-function speakAll(){var teks="Game dulu! Link aplikasi sistem kita, asuveleikha-ai.github.io/practicalaplication_gamesupersecure_tools. Link ini terkoneksi ke peralatan mikrokontroler. Link ini juga yang terkoneksi ke game simulasi real ini. Game ringan, 4 item saja: IR 7 Detik di HP, Bio Health Ringkas, CCTV AI Ringkas, SaaS SCM Demo. Batik 8in1 dihapus dari game, pisah total. Mapping: Ibu Ani sehat, Pak Budi sehat, Sekolah C kuning sensor kotor, Toko D sehat, Pasar Jaya E merah kapasitor habis, teknisi harus datang hari ini.";speak(teks);}
-function togglePenjelasan(){var el=document.getElementById('penjelasanBox');el.classList.toggle('hidden');speak(el.classList.contains('hidden')?'Penjelasan ditutup!':'Penjelasan dibuka! Ini penjelasan sistem kita!');}
-function addPts(n){pts+=n;document.getElementById('pts').innerText=pts;if(pts>=300)level=7;else if(pts>=250)level=6;else if(pts>=200)level=5;else if(pts>=180)level=4;else if(pts>=150)level=3;else if(pts>=120)level=2;else level=1;document.getElementById('levelTxt').innerText=levels[level-1];}
-function step(p){
-  // BUKTI TOMBOL AKTIF - LANGSUNG UBAH DEBUG, BIAR KELIATAN WALAU SUARA KE-BLOKIR!
-  var dbg=document.getElementById('debugTombol');if(dbg){dbg.innerText='✅ TOMBOL AKTIF! Terakhir diklik: '+p+' | Jam: '+new Date().toLocaleTimeString()+' | PTS sekarang: '+pts;}
-  var chars=document.getElementById('chars'),dlg=document.getElementById('dialog'),st=document.getElementById('status'),nar=document.getElementById('narasi'),hasil=document.getElementById('kontrolHasil');
-  var suara='';
-  if(p=='KANVAS'){chars.innerText='🧑‍💼🚶‍➡️🧑‍💼🪑';dlg.innerText='Sales: Jalan ke Toko Supplier! Ketemu Bos Supplier!';nar.innerText='Sales jalan ke Toko Supplier, game dulu!';st.className='status gerak';st.innerText='🚶 KANVAS +5!';hasil.innerText='KANVAS -> +5!';suara='Kanvas! Sales jalan ke Toko Supplier! Ketemu Bos Supplier! Dapat 5 poin!';addPts(5);}
-  else if(p=='BOS'){chars.innerText='🧑‍💼💬🧑‍💼🪑';dlg.innerText='Sales: Bos, saya mau kanvas ke Ruko, Sekolah, Pasar, Mall! Stok gudang lengkap nggak?';nar.innerText='Sales ngomong ke Bos Supplier!';st.innerText='🧑‍💼 BOS SUPPLIER!';hasil.innerText='BOS -> Pembicaraan!';suara='Bos Supplier! Sales tanya stok gudang lengkap atau tidak!';}
-  else if(p=='GUDANG'){chars.innerText='📦';dlg.innerText='DIAMOND: GUDANG LENGKAP? YES = Lanjut! NO = Kanvas dulu!';nar.innerText='Kepala Gudang + Teknisi lapor ke Bos!';st.innerText='📦 GUDANG?';hasil.innerText='GUDANG -> Cek QC!';suara='Gudang! Kepala Gudang dan Teknisi cek stok!';}
-  else if(p=='SETUJU'){chars.innerText='🤝';dlg.innerText='DIAMOND: BOS SETUJU? YES = Teknisi! NO = Kanvas ke Market!';nar.innerText='Bos setuju, perintahkan Teknisi!';st.innerText='📝 BOS SETUJU?';hasil.innerText='BOS SETUJU?';suara='Bos setuju? Kalau setuju, lanjut ke Teknisi!';}
-  else if(p=='TEKNISI'){chars.innerText='👨‍🔧';dlg.innerText='Teknisi: Siap! SOP + OEE + KPI! Alat siap!';nar.innerText='Teknisi Staff Bos, SOP + OEE + KPI!';st.innerText='👨‍🔧 TEKNISI!';hasil.innerText='TEKNISI -> SOP!';suara='Teknisi! Siap! SOP, OEE, KPI! Alat siap!';}
-  else if(p=='BUYER'){chars.innerText='🧑‍💼💬🧑';dlg.innerText='Sales ketemu Buyer: Pak, Bu, saya dari Toko Supplier Bos. Ini produk kita. Kalau minat, saya bisa kontrak. Bos siapin barangnya, Teknisi rakit dan instalasi. Boleh minta nomor teleponnya?';nar.innerText='Sales ketemu Buyer di Market!';st.innerText='🧑 BUYER MINAT?';hasil.innerText='BUYER MINAT?';suara='Buyer minat? Sales ketemu Buyer, tawarkan produk, minta nomor telepon!';}
-  else if(p=='SECOND'){chars.innerText='🤝';dlg.innerText='Second Contract! +30 PTS!';nar.innerText='Second Contract Deal!';st.className='status gerak';st.innerText='📝 SECOND CONTRACT +30!';hasil.innerText='SECOND -> +30!';suara='Second Contract! Deal! Dapat 30 poin!';addPts(30);}
-  else if(p=='INDENT'){chars.innerText='📦⏳';dlg.innerText='Indent Order: Pesan dulu, tunggu 2-3 hari!';nar.innerText='Indent Order!';st.innerText='📦 INDENT!';hasil.innerText='INDENT -> Tunggu!';suara='Indent Order! Pesan dulu, tunggu 2 sampai 3 hari!';}
-  else if(p=='INSTALASI'){chars.innerText='🔧💡';dlg.innerText='Instalasi! Lampu ON, Cahaya Memancar, Aktif!';nar.innerText='Teknisi instalasi, test lampu ON!';st.innerText='🔧 INSTALASI!';hasil.innerText='INSTALASI -> Lampu ON!';suara='Instalasi! Lampu ON, cahaya memancar, aktif!';}
-  else if(p=='JUALAN'){chars.innerText='💰😃🤝';dlg.innerText='Jualan! Deal! +100 PTS! Naik Level! Mapping update!';nar.innerText='Jualan! Deal! Mapping update!';st.className='status gerak';st.innerText='💰 JUALAN +100! MAPPING UPDATE!';hasil.innerText='JUALAN -> +100! Mapping update!';suara='Jualan! Deal! Dapat 100 poin! Naik level! Mapping update!';addPts(100);}
-  else if(p=='MAGER'){chars.innerText='😴';dlg.innerText='Mager: Tidak menjalankan = 0 PTS!';nar.innerText='Mager 0 PTS!';st.className='status mager';st.innerText='😴 MAGER 0 PTS!';hasil.innerText='MAGER -> 0!';suara='Mager! Tidak menjalankan, nol poin!';}
-  else if(p=='TELP'){chars.innerText='📱📞😃';dlg.innerText='Telepon Bunyi! Ada minat! Seneng!';nar.innerText='Telepon bunyi, ada minat!';st.className='status senang';st.innerText='📞 TELEPON! Ada Minat!';hasil.innerText='TELEPON -> Ada minat!';suara='Telepon bunyi! Ada minat! Seneng!';}
-  else if(p=='NEXTDAY'){hari++;document.getElementById('hari').innerText=hari;chars.innerText='🌅🧑‍💼';dlg.innerText='Hari '+hari+': Berangkat lagi!';nar.innerText='Hari berikutnya, berangkat lagi!';st.innerText='🌅 HARI '+hari+'!';hasil.innerText='HARI BERIKUTNYA -> '+hari;suara='Hari berikutnya! Hari '+hari+', berangkat lagi!';}
-  if(dbg){dbg.innerText='✅ TOMBOL AKTIF! Terakhir diklik: '+p+' | PTS sekarang: '+pts+' | Hari: '+hari;}
-  // SETIAP TOMBOL LANGSUNG BERSUARA - INI YANG KEMARIN NGGAK BUNYI!
-  speak(suara);
-}
-function toggleCenter(){var lamp=document.getElementById('lamp'),st=document.getElementById('centerSt');var on=lamp.style.filter.indexOf('grayscale')!==-1;if(on){lamp.style.filter='none';lamp.innerText='💡✨';st.innerText='CENTER: ON!';speak('Center ON! Lampu nyala, semua sensor aktif!');}else{lamp.style.filter='grayscale(1)';lamp.innerText='💡';st.innerText='CENTER: OFF';speak('Center OFF! Lampu mati!');}var dbg=document.getElementById('debugTombol');if(dbg)dbg.innerText='✅ TOMBOL AKTIF! CENTER diklik! | '+new Date().toLocaleTimeString();}
-function startRecord(){var log=document.getElementById('recordLog');if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){log.innerText='Rekaman gagal: Browser tidak dukung mic! Coba Chrome, buka link GitHub langsung!';speak('Rekaman gagal, browser tidak dukung mic!');return;}navigator.mediaDevices.getUserMedia({audio:true}).then(function(stream){audioChunks=[];mediaRecorder=new MediaRecorder(stream);mediaRecorder.ondataavailable=function(e){audioChunks.push(e.data);};mediaRecorder.onstop=function(){var blob=new Blob(audioChunks,{type:'audio/webm'});recordedBlobUrl=URL.createObjectURL(blob);var p=document.getElementById('rekamanPlayer');p.src=recordedBlobUrl;p.style.display='block';log.innerText='Rekaman selesai! Klik PUTAR REKAMAN untuk dengar!';speak('Rekaman selesai! Klik putar rekaman untuk dengar!');stream.getTracks().forEach(function(t){t.stop();});};mediaRecorder.start();log.innerText='🎙️ MEREKAM... Ngomong sekarang! Otomatis berhenti 30 detik!';speak('Merekam! Ngomong sekarang!');setTimeout(function(){if(mediaRecorder&&mediaRecorder.state=='recording'){mediaRecorder.stop();}},30000);}).catch(function(e){log.innerText='Rekaman gagal, mic ditolak: '+e+' - Klik Allow mic di browser!';});}
-function playRecord(){var p=document.getElementById('rekamanPlayer');if(!recordedBlobUrl||!p.src){document.getElementById('recordLog').innerText='Belum ada rekaman! Klik REKAM dulu!';speak('Belum ada rekaman! Klik rekam dulu!');return;}p.play();}
-// BACKUP: Kalau onclick gagal di Streamlit, pakai listener ini!
-document.addEventListener('DOMContentLoaded',function(){var btns=document.querySelectorAll('[data-step]');btns.forEach(function(b){b.addEventListener('click',function(){var s=b.getAttribute('data-step');if(s)step(s);});});setLog('Halaman siap! Klik tombol No.1 untuk aktifkan suara, baru klik tombol game!');});
-// Supaya fungsi bisa dipanggil dari mana saja
-window.step=step;window.speak=speak;window.speakAll=speakAll;window.unlockVoice=unlockVoice;window.stopVoice=stopVoice;window.toggleCenter=toggleCenter;window.startRecord=startRecord;window.playRecord=playRecord;
+function speakAllNeural(){speak('Ruang observasi Super Secure dan Super Infrared. Link aplikasi sistem kita, asuveleikha-ai.github.io/practicalaplication_gamesupersecure_tools. Link ini terkoneksi ke peralatan mikrokontroler. Link ini juga yang terkoneksi ke game simulasi real ini. Super Secure: Observasi gerak gerik badan, pantau jatuh, kejang, lemas dan gerak mencurigakan. Observasi gas, panas, udara. Super Infrared: Observasi kematangan buah dan cahaya lampu. TCS34725 detek perubahan warna kulit buah untuk tentukan sudah matang atau belum. Juga kalibrasi kecerahan dan suhu warna layar dan lampu pintar. Bukan untuk pabrik batik. Otomasi jalan, semua sensor aktif!');}
+function togglePenjelasan(){var el=document.getElementById('penjelasanBox');el.classList.toggle('hidden');speak(el.classList.contains('hidden')?'Penjelasan ditutup!':'Penjelasan dibuka!');}
+function startRecord(){var log=document.getElementById('recordLog');if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){log.innerText='Rekaman gagal: Browser tidak dukung mic!';return;}navigator.mediaDevices.getUserMedia({audio:true}).then(function(stream){audioChunks=[];mediaRecorder=new MediaRecorder(stream);mediaRecorder.ondataavailable=function(e){audioChunks.push(e.data);};mediaRecorder.onstop=function(){var blob=new Blob(audioChunks,{type:'audio/webm'});recordedBlobUrl=URL.createObjectURL(blob);var p=document.getElementById('rekamanPlayer');p.src=recordedBlobUrl;p.style.display='block';log.innerText='Rekaman selesai! Klik PUTAR REKAMAN!';speak('Rekaman selesai!');stream.getTracks().forEach(function(t){t.stop();});};mediaRecorder.start();log.innerText='MEREKAM... Ngomong sekarang! Otomatis berhenti 30 detik!';setTimeout(function(){if(mediaRecorder&&mediaRecorder.state=='recording')mediaRecorder.stop();},30000);}).catch(function(e){log.innerText='Mic ditolak: '+e;});}
+function playRecord(){var p=document.getElementById('rekamanPlayer');if(!recordedBlobUrl||!p.src){document.getElementById('recordLog').innerText='Belum ada rekaman! Klik REKAM dulu!';return;}p.play();}
+window.speak=speak;window.unlockVoice=unlockVoice;window.stopVoice=stopVoice;window.startRecord=startRecord;window.playRecord=playRecord;
 </script></body></html>
