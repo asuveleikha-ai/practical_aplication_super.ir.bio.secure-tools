@@ -1,133 +1,113 @@
-# app.py - V5 - REVISI SPONSORSHIP + LEGAL + 4 PERAN + LEVEL 1-8 + MARKETING DIGITAL + PANDUAN DI TOMBOL
-# Main file path Streamlit: app.py
+# app.py V6 - HUB RINGAN + MAPPING PER BUYER - GAME DIKURANGI, BATIK PISAH
 import streamlit as st
 import os, json
-
-st.set_page_config(page_title="Practical Application Game - V5 Sponsorship + Legal", layout="wide")
-
+st.set_page_config(page_title="Practical Application Game V6 - HUB + MAPPING", layout="wide")
 st.markdown("""
 <div style="background:linear-gradient(90deg,#ff7a00,#ffeb3b,#00e676);color:#000;padding:14px;border-radius:12px;text-align:center">
-<b style="font-size:22px">🎮 PRACTICAL APPLICATION GAME - SIMULASI NYATA - V5 REVISI</b><br>
-<b>🎬 DIRECTOR'S CUT - LEGAL + SPONSORSHIP + 4 PERAN + LEVEL 1-8</b><br>
-<small>Sales = Demand Planner + Marketing Digital + Sales + Store Experience (1 orang sekarang, nanti sewa pekerja) | Bos = Supplier + Sponsor | Teknisi = Staff Bos | Buyer = Di Market | SaaS + Prototype MILIK FOUNDER</small>
+<b style="font-size:22px">🎮 PRACTICAL APPLICATION GAME V6.1 - HUB RINGAN - TANPA BATIK</b><br>
+<b>GAME DIKURANGI JADI 4 ITEM SAJA - RINGAN! BATIK 8in1 DIHAPUS DARI GAME!</b><br>
+<small>Game = Promosi Gratis | Super Secure + Super Infrared = Berbayar (Max 10 Buyer) | Batik Guard DIHAPUS dari Game, hidup di app sendiri!</small>
 </div>
 """, unsafe_allow_html=True)
 
-# TOMBOL - PANDUAN NGGAK NGALANGIN GAME!
+# 3 TOMBOL HUB KE 3 APP BERBAYAR
+st.markdown("### 🔗 HUB - KLIK UNTUK PINDAH KE APP BERBAYAR (REPORT + KONTROL PISAH)")
+c1,c2 = st.columns(2)
+with c1: st.link_button("🟦 SUPER SECURE SYST V23 - Berbayar", "https://super-secure-syst-v23.streamlit.app/")
+with c2: st.link_button("🟧 SUPER INFRARED - Berbayar", "https://super-infrared-giago2j38xeb3pdqmaxcqb.streamlit.app/")
+# BATIK DIHAPUS DARI GAME - TIDAK ADA TOMBOL BATIK DI SINI
+st.caption("Game ini HUB ringan TANPA BATIK! Batik 8in1 DIHAPUS dari game, cek di app Batik Guard sendiri. Report Super Secure + Super Infrared ada di app masing-masing!")
+
+# TOMBOL PANDUAN / MAPPING - NGGAK NGALANGIN GAME
 c1,c2,c3,c4 = st.columns(4)
 with c1: show_panduan = st.button("📋 PANDUAN")
-with c2: show_flow = st.button("🔀 FLOWCHART YES/NO")
-with c3: show_kontrak = st.button("📜 KONTRAK SPONSORSHIP")
-with c4: show_level = st.button("🏆 LEVEL 1-8")
+with c2: show_map = st.button("🗺️ MAPPING PER BUYER")
+with c3: show_kurang = st.button("✂️ ITEM DIKURANGI")
+with c4: show_flow = st.button("🔀 FLOWCHART")
 
 if show_panduan:
-    with st.expander("📋 PANDUAN - Klik tombol buat buka/tutup, nggak ngalangin game!", expanded=True):
-        st.markdown("""
-        **Game Balik Ngasih Contoh Dunia Nyata!** Bukan cuma liat jadi game, game-nya yang balik ngasih contoh dunia nyata!
-        **Sensor IR:** Transmitter bening nembak IR, Receiver hitam nangkep pantulan, Potensio Biru atur 2-20cm, LM393 otak kecil. Wiring: VCC->3.3V/5V, GND->GND, OUT->GPIO 15. OUT LOW=ADA BOTOL, HIGH=KOSONG. Tips: Jangan kena matahari, atur 5-10cm, botol bening tempelin stiker putih!
-        **IR 7 Detik:** Bisa terpasang di HP saja! Deteksi 7 detik: Panas, gas, api, warna, dari HP saja!
-        **Cara Pasang Dunia Nyata = Sama Kayak di Game:** Pasang sensor, kabel sama, atur potensio sama, botol ditaro sensor nyala, SCM berkurang!
-        """)
+    with st.expander("📋 PANDUAN - Ringan!", expanded=True):
+        st.markdown("**Game ini HUB ringan!** Cuma 4 item: IR 7 Detik di HP, Bio Health Room Ringkas, CCTV AI Ringkas, SaaS SCM Demo. Yang berat-berat pindah ke Super Secure / Super Infrared! Batik DIHAPUS dari game! Cara main: Kanvas -> Bos Supplier -> Gudang -> Buyer -> Second Contract -> Indent -> Instalasi -> Jualan + Maintenance! Panduan di tombol, nggak ngalangin game!")
 else: st.caption("📋 Panduan ngumpet, klik tombol 📋 PANDUAN kalau mau baca!")
 
+if show_kurang:
+    with st.expander("✂️ ITEM DIKURANGI - DARI 14 JADI 4!", expanded=True):
+        st.markdown("""
+        **SEBELUM (Berat):** 14 peralatan di game, campur aduk sama pabrik, game berat, report numpuk!
+        **SESUDAH (Ringan - Cuma 4):**
+        1. IR 7 Detik di HP - Demo paling ringan, di HP saja!
+        2. Bio Health Room Ringkas - SHT41 + MQ-135 + ESP32-S3 saja!
+        3. CCTV AI Ringkas - 1 kamera saja!
+        4. SaaS SCM Demo - Demo catat stok, bukan kontrol pabrik!
+        **YANG DIPINDAH:**
+        - Ke Batik Guard 8in1: Super IR Guard lengkap, Color QC Batik, Obsidian, GPS lengkap, UV Steril lengkap, Super Infrared lengkap, SuperSecure lengkap, Autonomous 8in1!
+        - Ke Super Secure / Super Infrared: Super Secure Syst + Super Infrared lengkap!
+        **Hasil:** Game jadi ringan, loading cepet, pemain nggak bingung, report nggak numpuk!
+        """)
+else: st.caption("✂️ Item dikurangi ngumpet, klik tombol ✂️ ITEM DIKURANGI kalau mau liat!")
+
 if show_flow:
-    with st.expander("🔀 FLOWCHART TERSISTEMATIS - YES / NO - Diamond!", expanded=True):
+    with st.expander("🔀 FLOWCHART - Sama, Bentuknya Sama!", expanded=True):
         st.code("""
-[START: PAGI - Sales (Demand Planner + Marketing + Sales + Store Experience) Bangun - Di game ditampilkan, masing-masing dapat point + peringkat level]
- -> [CEK HP + CEK GUDANG SUPPLIER LEWAT WA KE BOS: "Bos, stok ESP32-S3 ada nggak? Sensor IR ada nggak? Kapasitor ada nggak?"]
- -> [KE TOKO SUPPLIER - KETEMU BOS DI TOKO SUPPLIER - 1 BENTUK PEMBICARAAN]
-    "Bos, saya mau kanvas hari ini ke [Ruko/Sekolah/Pasar/Mall/Departemen/Rumah]. Kalau ada minat, saya mau kontrak. Stok gudang lengkap nggak?"
- -> [DIAMOND 1: GUDANG LENGKAP?]
-    YES -> Bos: "Lengkap!" -> Lanjut
-    NO -> Sales: "Ya udah Bos, saya kanvas dulu, cari minat dulu, nanti saya kabarin Bos!"
- -> [DIAMOND 2: BOS SETUJU KONTRAK?]
-    YES -> Bos perintahkan Teknisi! Teknisi Briefing! SOP + OEE + KPI!
-    NO -> Sales: "Nggak apa-apa Bos, kalau ada minat, hubungi saya ya, ini nomor saya!" -> Kanvas ke Market
- -> [TEKNISI CEK ALAT - DIAMOND 3: ALAT LENGKAP?]
-    YES -> Teknisi Rakit!
-    NO -> Indent Order! Tunggu barang datang! Kepala Gudang + Teknisi lapor ke Bos!
- -> [KANVAS KE MARKET: Rumah / Ruko / Outlet / Sekolah / Pasar / Mall / Departemen]
- -> [KETEMU BUYER - 1 BENTUK PEMBICARAAN]
-    "Pak/Bu, saya dari Toko Supplier Bos. Ini produk kita, Bio Health / CCTV AI / dll. Kalau minat, saya bisa kontrak. Bos siapin barangnya, Teknisi rakit + instalasi. Boleh minta nomor teleponnya?"
- -> [DIAMOND 4: BUYER MINAT?]
-    YES -> Buyer kasih nomor, minta kontrak! Sales telpon Bos -> Second Contract! -> Indent Order -> Instalasi -> Jualan +100 PTS!
-    NO -> Sales: "Nggak apa-apa, hubungi saya ya!" -> MAGER - Rebahan, 0 PTS! (Bila tidak menjalankan = Mager, Bila YES ada kontrak = Senang + dapat PTS!)
- -> [INSTALASI + TEST LAMPU ON, CAHAYA MEMANCAR, AKTIF BERFUNGSI!]
- -> [MAINTENANCE: Sales + Teknisi + Bos + Buyer rawat bareng - Purna Jual Jaminan Kualitas!]
- -> [BESOK KANVAS LAGI - BERKONTINU!]
- -> [KALAU BUYER SURVEY KE TOKO: Bos promosikan SaaS + Prototype Founder, Bos dapat KOMISI 10%!]
+[START: Sales 4 Peran Bangun] -> [Cek Gudang WA ke Bos] -> [Ke Toko Supplier, Ketemu Bos]
+-> [DIAMOND 1: GUDANG LENGKAP? YES/NO] -> [DIAMOND 2: BOS SETUJU? YES/NO]
+-> [TEKNISI SOP + OEE + KPI] -> [KANVAS KE MARKET] -> [DIAMOND 3: BUYER MINAT? YES/NO]
+-> YES: Second Contract -> Indent Order -> Instalasi -> Jualan + Maintenance + Mapping!
+-> NO: Mager 0 PTS!
+-> Kalau Buyer minat yang berbayar, kasih link: Super Secure / Super Infrared / Batik Guard!
         """)
 else: st.caption("🔀 Flowchart ngumpet, klik tombol 🔀 FLOWCHART kalau mau liat!")
 
-if show_kontrak:
-    with st.expander("📜 KONTRAK SPONSORSHIP - LEGAL - Baca Teliti!", expanded=True):
+if show_map:
+    with st.expander("🗺️ MAPPING PER BUYER - PURNA JUAL - SESUAI DAERAH PENEMPATAN!", expanded=True):
         try:
-            with open("kontrak.json","r",encoding="utf-8") as f: k=json.load(f)
-            st.json(k)
-        except Exception as e: st.write("kontrak.json belum ke-upload / belum update. Upload kontrak.json V24 dulu. Error:", e)
-        st.markdown("""
-        **Inti Kontrak:**
-        - **SaaS + Prototype MILIK FOUNDER**, bisa dijual sebagai Sales IT. Bos sebagai Sponsor, bukan pemilik SaaS.
-        - **Barang mikrokontroler MILIK BOS**, Founder tidak klaim barang Bos.
-        - **Bos sebagai Sponsor:** Bos sediakan barang, gudang, teknisi, tempat promosi. Kalau Buyer survey ke toko dan Bos promosikan SaaS + Prototype Founder dan Buyer jadi beli, **Bos dapat KOMISI 10%**.
-        - **Insentif 4 Peran Founder (Bukan Teknisi):** Demand Planner +15 PTS per rencana akurat, Marketing Digital +15 PTS per lead dari konten, Sales: Mager 0, Kanvas +5, Kontrak +30, Jualan +100, Store Experience +20 per Buyer rating bagus / repeat order. Capek kerja di laptop + capek mikir + capek kanvas harus dihargai!
-        - **Teknisi:** Briefing +10, Rakit +20, Instalasi +30, Maintenance +20. Ikut SOP, OEE >=85% = Bonus, KPI: Instalasi berhasil, komplain 0-1, respon max 24 jam.
-        - **Gudang QC:** Kepala Gudang tanggung jawab QC, Teknisi lapor ke Bos tiap minggu.
-        - **Purna Jual:** Maintenance Jaminan Kualitas. Founder maintenance SaaS + follow-up, Teknisi maintenance hardware, Bos sediain sparepart.
-        - **Kerja 4 Peran Bukan 1 Orang Kalau Sudah Berkembang:** Sekarang sendiri, nanti sewa + cari pekerja.
-        """)
-else: st.caption("📜 Kontrak ngumpet, klik tombol 📜 KONTRAK kalau mau baca!")
-
-if show_level:
-    with st.expander("🏆 LEVEL 1-8 - Makin Tinggi Makin Kompleks!", expanded=True):
-        st.markdown("""
-        | Level | Nama | Peralatan | Kompleksitas | PTS Jualan |
-        | :--- | :--- | :--- | :--- | :--- |
-        | 1 | Perumahan Pribadi | Bio Health + IR 7 Detik di HP | Rendah - 1 ruangan | +100 |
-        | 2 | Outlet | Bio Health + CCTV AI + SaaS SCM | Rendah-Sedang | +120 |
-        | 3 | Ruko | Super IR Guard + CCTV AI + Early Warning + SaaS | Sedang | +150 |
-        | 4 | Sekolah | Bio Health + UV Steril + CCTV AI + Early Warning + SaaS | Sedang-Tinggi | +180 |
-        | 5 | Pasar / Pasar Jaya | Color QC + CCTV AI + GPS + SaaS + UV Steril | Tinggi | +200 |
-        | 6 | Mall / Supermarket / Minimarket / Department Store | Semua + Marketing Digital | Tinggi | +250 |
-        | 7 | Departemen / Local Government | Tender - Puluhan unit | Sangat Tinggi | +300 |
-        | 8 | **Autonomous Prototype Pabrik Batik 8in1 - TERTINGGI** | **8in1: Bio Health + Super IR Guard + Color QC Batik + Obsidian + CCTV AI + GPS + SaaS SCM + UV Steril + Super Infrared + SuperSecure + IR 7 Detik - Semua Otomatis!** | **Paling Tinggi - Autonomous!** | **+500 - LEGEND!** |
-
-        **Di Game Simulasi Perlu Dijelaskan + Ditampilkan:** Setiap level ditampilkan di game, masing-masing dapat point + peringkat level semakin bertingkat dan komplit. Level 1 paling gampang, Level 8 paling susah, tapi PTS-nya paling gede!
-        **Variant Peralatan + System Aplikasi:** Nanti kita sesuaikan variant peralatannya + system aplikasinya, karena kita ada IR 7 Detik (di HP saja), Super Infrared, SuperSecure, SaaS SCM System, dll.
-        """)
-else: st.caption("🏆 Level ngumpet, klik tombol 🏆 LEVEL kalau mau liat!")
+            with open("mapping.json","r",encoding="utf-8") as f: m=json.load(f)
+            st.write("**Rute Maintenance Hari Ini:**", m["rute_maintenance_hari_ini"])
+            buyers=m["buyers"]
+            # Filter
+            filt = st.selectbox("Filter App:", ["Semua","Super Secure","Super Infrared"]) # BATIK DIHAPUS DARI GAME
+            for b in buyers:
+                if filt!="Semua" and b["app"]!=filt: continue
+                color = "🟢" if "HIJAU" in b["status"] else "🟡" if "KUNING" in b["status"] else "🔴"
+                st.markdown(f"**{color} {b['id']} - {b['nama']} - {b['app']}** | 📍 {b['alamat']} | 🔧 {b['peralatan']} | Status: {b['status']} | Heartbeat: {b['last_heartbeat']} | Kerusakan: {b['kerusakan']} | Maintenance Berikutnya: {b['maintenance_berikutnya']} | Teknisi: {b['teknisi']} | PTS: {b['pts']}")
+            st.markdown("**Peta:** Hijau = Sehat, Kuning = Perlu Maintenance, Merah = Rusak, Teknisi Harus Datang Hari Ini! Setiap Buyer punya ID, alamat, lat/lon, peralatan, status, teknisi, jadwal maintenance. Detail lengkap ada di app masing-masing (Super Secure / Super Infrared / Batik Guard), HUB ini cuma ringkasan!")
+            # Map
+            try:
+                import pandas as pd
+                df=pd.DataFrame([{"lat":b["lat"],"lon":b["lon"],"nama":b["nama"]} for b in buyers])
+                st.map(df)
+            except Exception as e: st.write("Map gagal load:", e)
+        except Exception as e: st.write("mapping.json belum ke-upload. Upload mapping.json V6 dulu. Error:", e)
+else: st.caption("🗺️ Mapping ngumpet, klik tombol 🗺️ MAPPING PER BUYER kalau mau liat peta + maintenance!")
 
 st.write("---")
-st.markdown("**Marketing Digital - Paling Efektif:** 1. Sponsor Bos Toko Supplier (Bos promosikan di toko + sosmed Bos) + 2. Video Short (Kling / CapCut) - Demo alat nyala + 3. Live + Testimoni Buyer + 4. Konten Edukasi | **Kerja di Laptop:** Founder kerja di laptop juga nyari network, marketingin digital, bikin konten, jawab DM, update SaaS, cek dashboard - Capek mikir + capek laptop harus dihargai dengan insentif Demand Planner + Marketing Digital! | **Game Simulator:** Practical Application Simulator dapat + mampu berfungsi real nyata bila terhubung dengan SaaS + Prototype, berapapun pelanggan bisa terkoneksi otomatis aktif sebagaimana fungsinya!")
-st.write("**Aturan PTS:** Mager 0 | Kanvas +5 | Kontrak +30 | Jualan +100 | Maintenance +20 | Demand Planner +15 | Marketing Digital +15 | Store Experience +20 | **Target:** Perumahan, Outlet, Ruko, Sekolah, Pasar, Mall, Departemen, Toko Permata, Toko Elektronik, Pabrik Batik 8in1, Rumah Sakit, Hotel")
+st.markdown("**Game Ringan - 4 Item Saja:** IR 7 Detik di HP + Bio Health Ringkas + CCTV AI Ringkas + SaaS SCM Demo | **PTS Game:** Kanvas +5, Kontrak +30, Jualan +100 | **PTS Berbayar:** Super Secure / Infrared +200 (Batik TIDAK di game) | **Mapping:** Sesuai daerah penempatan Buyer, gampang maintenance per Buyer!")
 
-def find_file(candidates):
+def find_file(cands):
     try: files=os.listdir(".")
     except: files=[]
-    lower_map={f.lower():f for f in files}
-    for cand in candidates:
-        if cand in files: return cand
-        if cand.lower() in lower_map: return lower_map[cand.lower()]
+    lm={f.lower():f for f in files}
+    for c in cands:
+        if c in files: return c
+        if c.lower() in lm: return lm[c.lower()]
     return None
-def load_html(candidates, label):
-    found=find_file(candidates)
-    if found:
-        with open(found,"r",encoding="utf-8") as f: return f.read()
-    return f"<h3>{label} belum ketemu. Dicari: {candidates}</h3>"
+def load_html(cands,label):
+    f=find_file(cands)
+    if f:
+        with open(f,"r",encoding="utf-8") as fh: return fh.read()
+    return f"<h3>{label} belum ketemu</h3>"
 
-tab_classic, tab_neuro, tab_main = st.tabs(["🟦 20% CLASSIC - Game PTS Sales", "🟧 50% NEURO TRON - Observasi Mikrokontroler", "🟩 20% MAIN - Jalur Harian Sales + Level"])
+tab_classic, tab_neuro, tab_main = st.tabs(["🟦 20% CLASSIC - Game Ringan", "🟧 50% NEURO TRON - Observasi", "🟩 20% MAIN - Jalur Harian + MAPPING"])
 with tab_classic:
-    st.markdown("**CLASSIC (20%): Pemain Utama = Sales (4 Peran).** Kanvas, ketemu Bos Supplier, ditolak, mager, ditelepon, second contract, jualan. Gerak-gerik Sales dibaca Neuro jadi data mikrokontroler!")
-    html = load_html(["index_Classic.html","index_classic.html"], "CLASSIC")
-    st.components.v1.html(html, height=900, scrolling=True)
+    st.markdown("**CLASSIC (20%): Game Ringan, 4 Item Saja!** Kanvas, Bos, Kontrak, Teknisi, Jualan!")
+    html=load_html(["index_Classic.html","index_classic.html"],"CLASSIC")
+    st.components.v1.html(html,height=900,scrolling=True)
 with tab_neuro:
-    st.markdown("**NEURO TRON (50%): Mata Film! MEMANTAU (bukan merekam!) tapi MEMFUNGSIKAN mikrokontroler seluruhnya!** Tangan gerak → IR detek! Gas → MQ-135! Panas → MLX90640! Api → IMX219! Udara → SHT41! Debu → TCS34725! Botol → IR Proximity! Listrik → Kapasitor + Dioda cegah brownout! Semua jadi partikel elektron!")
-    html = load_html(["index_Neural.html","index_neural.html"], "NEURAL")
-    st.components.v1.html(html, height=900, scrolling=True)
+    st.markdown("**NEURO TRON (50%): Observasi Mikrokontroler!** Tangan gerak -> IR detek! Gas -> MQ-135! Panas -> MLX90640! Dll!")
+    html=load_html(["index_Neural.html","index_neural.html"],"NEURAL")
+    st.components.v1.html(html,height=900,scrolling=True)
 with tab_main:
-    st.markdown("**MAIN (20%): Hasil Observasi Jadi PTS + Level!** Neuro bilang 'Instalasi berhasil!' → Main bilang '+100 PTS! Jualan! Deal!' + Naik Level! Level 1 Perumahan → Level 8 Pabrik Batik 8in1 Autonomous!")
-    html = load_html(["index.html","Index.html"], "MAIN")
-    st.components.v1.html(html, height=900, scrolling=True)
-
-st.markdown("---")
-st.caption("V5 - Sales = Demand Planner + Marketing Digital + Sales + Store Experience | Bos = Supplier + Sponsor (Komisi 10% kalau promosikan SaaS + Prototype Founder ke Buyer yang survey ke toko) | Teknisi = Staff Bos, SOP + OEE + KPI | SaaS + Prototype MILIK FOUNDER, bisa dijual sebagai Sales IT | Gudang QC: Kepala Gudang + Teknisi lapor ke Bos | Purna Jual Jaminan Kualitas")
+    st.markdown("**MAIN (20%): Jalur Harian + MAPPING!** Hasil Observasi Jadi PTS + Level! Mapping per Buyer di sini! Klik tombol 🗺️ MAPPING di atas untuk liat peta!")
+    html=load_html(["index.html","Index.html"],"MAIN")
+    st.components.v1.html(html,height=900,scrolling=True)
+st.caption("V6.1 - HUB Ringan TANPA BATIK + Mapping Per Buyer | Game = Promosi | Super Secure + Super Infrared = Berbayar | Batik DIHAPUS dari Game")
