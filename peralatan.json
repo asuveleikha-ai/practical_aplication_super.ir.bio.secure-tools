@@ -1,7 +1,7 @@
 {
-  "version": "v24 - Level + IR 7 Detik + Autonomous 8in1",
+  "version": "V6.1 - PERALATAN GAME RINGAN TANPA BATIK",
   "updated": "2026-11-18",
-  "catatan": "SaaS System + Prototype milik Founder, bisa dijual sebagai Sales IT. Barang mikrokontroler milik Bos Supplier (Sponsor).",
+  "catatan": "Batik Guard 8in1 Autonomous DIHAPUS dari game simulasi real. Game hanya 4 item ringan untuk promosi + kanvas. Batik hidup di app sendiri, tidak masuk game, tidak masuk peralatan game. Super Secure + Super Infrared di game hanya versi RINGKAS untuk demo, versi lengkap ada di app masing-masing.",
   "peralatan": [
     {
       "nama": "IR 7 Detik - Bisa Terpasang di HP Saja",
@@ -14,185 +14,81 @@
       "fungsi": "Deteksi 7 detik: Panas, gas, api, warna, dari HP saja, tanpa alat tambahan! Paling gampang dijual, paling gampang demo!"
     },
     {
-      "nama": "Bio Health Room",
-      "pts": 701,
+      "nama": "Bio Health Room Ringkas",
+      "pts": 100,
       "komponen": [
         "SHT41",
         "MQ-135",
         "ESP32-S3"
       ],
-      "fungsi": "Jaga udara, lembab, gas. Ruang sehat tanpa timbal dan debu."
+      "fungsi": "Jaga udara, lembab, gas. Ruang sehat tanpa timbal dan debu. Versi ringkas untuk Perumahan + Outlet + Sekolah."
     },
     {
-      "nama": "Super IR Guard SG-810 - Infrared Anti Kebakaran",
-      "pts": 1956,
+      "nama": "CCTV AI Ringkas - 1 Kamera Saja",
+      "pts": 80,
       "komponen": [
-        "ESP32-S3 otak",
-        "Kapasitor cadangan daya",
-        "TCS34725",
-        "IMX219",
-        "MLX90640",
-        "MQ-135",
-        "SHT41"
-      ],
-      "fungsi": "Deteksi kebakaran, gas berbahaya mudah terbakar. ESP32-S3 terima WiFi ke HP dan Laptop."
-    },
-    {
-      "nama": "Super Infrared",
-      "pts": 800,
-      "komponen": [
-        "MLX90640",
-        "IMX219",
-        "ESP32-S3"
-      ],
-      "fungsi": "Lihat panas yang mata tidak bisa lihat. Detek orang, detek api, detek mesin panas."
-    },
-    {
-      "nama": "SuperSecure",
-      "pts": 900,
-      "komponen": [
+        "Kamera 1 unit",
         "ESP32-S3",
-        "CCTV AI",
-        "Sensor IR Obstacle",
-        "MQ-135",
-        "SHT41"
+        "AI Deteksi Gerak"
       ],
-      "fungsi": "Keamanan menyeluruh: Maling, api, gas, udara. Semua terkoneksi ke SaaS + Game Simulator."
+      "fungsi": "Pantau maling, 1 kamera saja. Ringan, gampang instalasi, gampang maintenance."
     },
     {
-      "nama": "Obsidian / Gem Lab",
-      "pts": 788,
-      "komponen": [
-        "IMX219",
-        "ESP32-S3"
-      ],
-      "fungsi": "Cek batu mulia asli atau palsu ke toko permata mulia."
-    },
-    {
-      "nama": "Color QC Batik",
-      "pts": 650,
-      "komponen": [
-        "TCS34725",
-        "IMX219",
-        "ESP32-S3"
-      ],
-      "fungsi": "Cek warna batik belang atau tidak."
-    },
-    {
-      "nama": "CCTV AI Camera",
-      "pts": 578,
-      "komponen": [
-        "ESP32-S3 AI Camera"
-      ],
-      "fungsi": "Pantau maling, orang masuk."
-    },
-    {
-      "nama": "GPS Logistics",
-      "pts": 450,
-      "komponen": [
-        "ESP32-S3",
-        "GPS"
-      ],
-      "fungsi": "Lacak kurir dan barang."
-    },
-    {
-      "nama": "SaaS SCM Accurate - MILIK FOUNDER",
-      "pts": 500,
+      "nama": "SaaS SCM Demo - MILIK FOUNDER",
+      "pts": 50,
       "komponen": [
         "Aplikasi SaaS",
-        "Database Cloud"
+        "HP / Laptop"
       ],
-      "fungsi": "Catat stok, order, uang, demand planner. Berapapun pelanggan bisa terkoneksi otomatis aktif!"
-    },
-    {
-      "nama": "SaaS Marketing Digital - MILIK FOUNDER",
-      "pts": 600,
-      "komponen": [
-        "Aplikasi SaaS",
-        "Media Sosial"
-      ],
-      "fungsi": "Posting, chat, Google Search, promosi produk Bos + produk Founder. Paling efektif: Sponsor Bos + Video Short."
-    },
-    {
-      "nama": "SaaS Monitoring + Game Simulator - MILIK FOUNDER",
-      "pts": 700,
-      "komponen": [
-        "Aplikasi SaaS",
-        "Game Practical Application Simulator",
-        "ESP32-S3"
-      ],
-      "fungsi": "Pantau alat real-time dari HP + Laptop, game simulasi nyala kalau alat nyala, berapapun pelanggan terkoneksi otomatis!"
-    },
-    {
-      "nama": "UV Steril + Fogging",
-      "pts": 380,
-      "komponen": [
-        "UV LED 365nm",
-        "MOSFET AO3400",
-        "Photodiode S1226",
-        "Relay Omron"
-      ],
-      "fungsi": "Steril ruangan, bunuh jamur."
-    },
-    {
-      "nama": "Autonomous Prototype Pabrik Batik 8in1 - LEVEL 8 TERTINGGI",
-      "pts": 5000,
-      "komponen": [
-        "Bio Health Room",
-        "Super IR Guard",
-        "Color QC Batik",
-        "Obsidian Gem Lab",
-        "CCTV AI",
-        "GPS Logistics",
-        "SaaS SCM",
-        "UV Steril + Fogging",
-        "Super Infrared",
-        "SuperSecure",
-        "IR 7 Detik"
-      ],
-      "fungsi": "Pabrik batik jalan sendiri, tanpa operator! 8 fungsi jadi 1: Sehat, aman api, cek warna batik, cek permata, pantau maling, lacak barang, catat stok, steril ruangan. Semua otomatis, mikrokontroler observasi semua!"
+      "fungsi": "Demo catat stok + order + mapping Buyer. Bukan kontrol pabrik. Untuk promosi + kanvas."
     }
+  ],
+  "yang_dihapus_dari_game": [
+    "Autonomous Prototype Pabrik Batik 8in1 - Level 8 - DIHAPUS",
+    "Color QC Batik - DIHAPUS",
+    "Obsidian / Gem Lab - DIHAPUS",
+    "Super IR Guard SG-810 Lengkap - DIHAPUS dari game, ada di app Super Secure",
+    "SuperSecure Lengkap - DIHAPUS dari game, ada di app Super Secure",
+    "Super Infrared Lengkap - DIHAPUS dari game, ada di app Super Infrared",
+    "GPS Logistics Lengkap - DIHAPUS dari game",
+    "UV Steril + Fogging Lengkap - DIHAPUS dari game",
+    "SaaS Marketing Digital + Monitoring Lengkap - DIHAPUS, game hanya SaaS SCM Demo"
   ],
   "level": [
     {
       "level": 1,
       "nama": "Perumahan Pribadi",
-      "peralatan": "Bio Health Room + IR 7 Detik di HP"
+      "peralatan": "Bio Health Ringkas + IR 7 Detik di HP"
     },
     {
       "level": 2,
       "nama": "Outlet",
-      "peralatan": "Bio Health + CCTV AI + SaaS SCM"
+      "peralatan": "Bio Health Ringkas + CCTV AI Ringkas + SaaS SCM Demo"
     },
     {
       "level": 3,
       "nama": "Ruko",
-      "peralatan": "Super IR Guard + CCTV AI + Early Warning + SaaS"
+      "peralatan": "IR 7 Detik + Bio Health Ringkas + CCTV AI Ringkas + SaaS"
     },
     {
       "level": 4,
       "nama": "Sekolah",
-      "peralatan": "Bio Health + UV Steril + CCTV AI + Early Warning + SaaS"
+      "peralatan": "Bio Health Ringkas + CCTV AI Ringkas + SaaS SCM Demo"
     },
     {
       "level": 5,
       "nama": "Pasar / Pasar Jaya",
-      "peralatan": "Color QC + CCTV AI + GPS + SaaS + UV Steril"
+      "peralatan": "CCTV AI Ringkas + SaaS SCM Demo + IR 7 Detik"
     },
     {
       "level": 6,
       "nama": "Mall / Supermarket / Minimarket / Department Store",
-      "peralatan": "Semua produk + Marketing Digital"
+      "peralatan": "4 Item Ringkas + SaaS SCM Demo"
     },
     {
       "level": 7,
-      "nama": "Departemen / Local Government",
-      "peralatan": "Tender - Puluhan unit"
-    },
-    {
-      "level": 8,
-      "nama": "Autonomous Prototype Pabrik Batik 8in1",
-      "peralatan": "8in1 Autonomous - Paling Tinggi!"
+      "nama": "Departemen / Local Government - MAX",
+      "peralatan": "Tender - Puluhan unit dari 4 Item Ringkas saja. MAX LEVEL 7, TIDAK ADA LEVEL 8 DI GAME!"
     }
   ]
 }

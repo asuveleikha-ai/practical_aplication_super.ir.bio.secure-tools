@@ -1,4 +1,4 @@
-# app.py V6 - HUB RINGAN + MAPPING PER BUYER - GAME DIKURANGI, BATIK PISAH
+# app.py V6.1 - HUB RINGAN TANPA BATIK + MAPPING SUPER SECURE + SUPER INFRARED
 import streamlit as st
 import os, json
 st.set_page_config(page_title="Practical Application Game V6 - HUB + MAPPING", layout="wide")
@@ -40,7 +40,7 @@ if show_kurang:
         3. CCTV AI Ringkas - 1 kamera saja!
         4. SaaS SCM Demo - Demo catat stok, bukan kontrol pabrik!
         **YANG DIPINDAH:**
-        - Ke Batik Guard 8in1: Super IR Guard lengkap, Color QC Batik, Obsidian, GPS lengkap, UV Steril lengkap, Super Infrared lengkap, SuperSecure lengkap, Autonomous 8in1!
+        - Yang berat-berat DIHAPUS dari game, tidak ada lagi di game!
         - Ke Super Secure / Super Infrared: Super Secure Syst + Super Infrared lengkap!
         **Hasil:** Game jadi ringan, loading cepet, pemain nggak bingung, report nggak numpuk!
         """)
@@ -54,7 +54,7 @@ if show_flow:
 -> [TEKNISI SOP + OEE + KPI] -> [KANVAS KE MARKET] -> [DIAMOND 3: BUYER MINAT? YES/NO]
 -> YES: Second Contract -> Indent Order -> Instalasi -> Jualan + Maintenance + Mapping!
 -> NO: Mager 0 PTS!
--> Kalau Buyer minat yang berbayar, kasih link: Super Secure / Super Infrared / Batik Guard!
+-> Kalau Buyer minat yang berbayar, kasih link: Super Secure / Super Infrared saja!
         """)
 else: st.caption("🔀 Flowchart ngumpet, klik tombol 🔀 FLOWCHART kalau mau liat!")
 
