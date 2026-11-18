@@ -1,160 +1,96 @@
 <!DOCTYPE html>
 <html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Neural Grid - Super Secure Syst v23 - FIXED</title>
+<title>PRACTICAL APPLICATION GAME - ATURAN PTS BENER - Animasi Kartun, Bukan Gambar Asli</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#020a12;color:#aef;font-family:Consolas,monospace;padding:10px}
-.top{background:#031018;border:2px solid #00e5ff;border-radius:10px;padding:12px;text-align:center}
-.trend{color:#ff9a00;font-weight:900}
-.panel{background:#031a2a;border:1px solid #00e5ff;border-radius:10px;padding:12px;margin:10px 0}
-button{background:transparent;border:1px solid #00e5ff;color:#00e5ff;padding:10px 12px;border-radius:8px;font-weight:800;cursor:pointer;margin:4px}
-button.o{border-color:#ff9a00;color:#ff9a00}button.y{border-color:#ffeb3b;color:#ffeb3b}
-select{width:100%;padding:10px;border-radius:8px;background:#021a2a;color:#fff;border:1px solid #00e5ff;margin:6px 0}
-canvas{width:100%;height:220px;border:1px solid #00e5ff;border-radius:10px;background:#020a12}
-.marketBtn{display:inline-block;padding:7px 10px;margin:3px;border:1px solid #00e5ff;border-radius:999px;cursor:pointer;font-size:12px}
-.marketBtn.active{background:#00e5ff;color:#000}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,Arial;background:#020a12;color:#dff;padding:12px}
+.top{background:linear-gradient(90deg,#ff7a00,#ffeb3b,#00e676);color:#000;padding:14px;border-radius:12px;text-align:center}
+.panel{background:#031a2a;border:1px solid #00e5ff;border-radius:12px;padding:12px;margin:10px 0}
+button{border:1px solid #00e5ff;background:transparent;color:#00e5ff;padding:12px 14px;border-radius:10px;font-weight:900;cursor:pointer;margin:4px}
+button.red{border-color:#ff5252;color:#ff5252}button.green{border-color:#00e676;color:#00e676}button.yellow{border-color:#ffeb3b;color:#ffeb3b}button.gold{border-color:#ffd700;color:#ffd700;background:#3a2a00}
+.bar{height:14px;background:#111;border-radius:7px;overflow:hidden;margin:6px 0}.fill{height:100%;background:linear-gradient(90deg,#00e5ff,#00e676);width:5%;transition:.5s}
+#anim{width:100%;max-width:480px;margin:auto;background:#0a2a3a;border:2px solid #00e5ff;border-radius:12px;text-align:center;padding:20px;position:relative;overflow:hidden}
+#char{font-size:90px;transition:.6s;display:inline-block}
+#char.mager{transform:rotate(90deg) translateX(10px);filter:grayscale(.2)}
+#char.kanvas{transform:translateX(40px)}#char.kontrak{transform:scale(1.15)}#char.jualan{transform:scale(1.2) rotate(-5deg)}
+.bubble{background:#fff;color:#000;padding:8px 12px;border-radius:12px;display:inline-block;margin:8px;font-weight:700}
+.status{font-size:20px;font-weight:900;text-align:center;padding:10px;border-radius:10px;margin:8px 0}
+.mager{background:#ffeb3b;color:#000}.gerak{background:#00e676;color:#000}.warn{background:#ff5252;color:#fff}
+.prompt{background:#000;color:#00e676;padding:10px;border-radius:8px;font-family:monospace;font-size:13px;white-space:pre-wrap}
+table{width:100%;border-collapse:collapse}td,th{border:1px solid #00e5ff;padding:8px;text-align:left}th{background:#003}
 </style></head><body>
-<div style="background:linear-gradient(90deg,#ff7a00,#ffeb3b,#00e676);color:#000;padding:14px;border-radius:12px;text-align:center;margin-bottom:10px">
-<b style="font-size:22px">🎮 PRACTICAL APPLICATION GAME - SIMULASI NYATA - SIMULASI REAL</b><br>
-<b>PRACTICAL • APPLICATION • GAME • SIMULASI REAL • SIMULASI NYATA</b><br>
-<small>Game ini merekam dunia nyata - pabrik, rumah, sekolah, pasar - jadi permainan + simulasi yang benar, diterima umum, sesuai standar kehidupan nyata yang terus membaik dan lestari. CENTER ON, indera melek, rekaman jalan, game berperilaku sesuai rekaman!</small>
+<div class="top"><b style="font-size:20px">🎮 PRACTICAL APPLICATION GAME - ATURAN PTS BENER!</b><br><b>ANIMASI KARTUN - BUKAN GAMBAR ASLI - LEBIH SERU, LEBIH LUCU!</b><br><small>Dari Observasi Kamera + Suara: Insting + Feeling + Microcontroller (walaupun belum terpasang, tapi sudah bisa dinilai dari pengamatan). Mager doang = 0 PTS. Kerja baru dapet PTS!</small></div>
+
+<div class="panel"><b>⭐ PTS & RANK - ATURAN BENER, NGGAK ROYAL LAGI!</b><br>
+<div style="display:flex;justify-content:space-between;flex-wrap:wrap"><span>⭐ <b id="pts2">0</b> PTS</span><span>🔥 STREAK: <b id="streak">0</b></span><span>🏆 <b id="rank">BRONZE - Pemula</b></span></div>
+<div class="bar"><div class="fill" id="xpbar"></div></div>
+<p style="text-align:center">XP: <b id="xp">0</b> / 100 | LEVEL: <b id="lvl">1</b> | COMBO: <b id="combo">x0</b></p>
+<table>
+<tr><th>Perilaku - Dari Observasi</th><th>PTS</th><th>Alasan - Layak & Wajar?</th></tr>
+<tr><td>😴 MAGER DOANG - Rebahan, belum kerja, belum kanvas</td><td><b>0 PTS</b></td><td>Boleh mager karena capek, tapi nggak dapet upah. Kalau mager dapet PTS, game jadi sia-sia!</td></tr>
+<tr><td>🚶 UDAH KANVAS - Jalan ke toko, ngobrol, capek jalan</td><td><b>+5 PTS</b></td><td>Upah minum aja. Wajar, udah usaha jalan!</td></tr>
+<tr><td>📝 UDAH KONTRAK - Ngomong sama bos toko: "Aku mau kontrak deh"</td><td><b>+30 PTS</b></td><td>Belum ada penjualan, nggak apa-apa, tapi udah ada kontrak, udah ada usaha serius!</td></tr>
+<tr><td>💰 UDAH PENJUALAN - Deal! Barang laku!</td><td><b>+100 PTS</b></td><td>Ini baru kerja beneran! PTS paling besar!</td></tr>
+</table>
 </div>
 
-<div class="top"><b style="color:#fff;font-size:20px">NEURAL GRID // GAME UI v3.7 - FIXED ✅</b><br><span class="trend">SYSTEM ONLINE - SECURE - SUPER SECURE SYST v23</span><br><small>TIMER <span id="timer">02:14</span> | PING 22ms | FPS 144 | PTS <span id="ptsTop">0</span></small><br><small id="debug" style="color:#00e676">✅ Game ke-load! Semua tombol jalan! Kalau ini muncul, berarti file-nya BENER.</small></div>
-
-<div class="panel"><b>🏪 MARKET - PILIH NODE</b><br><div id="markets"></div><p id="marketDesc"></p></div>
-
-<div class="panel"><b>💡 CENTER - PUSAT HIDUP ALAT</b><br><small>OTAK ESP32-S3 | MATA IMX219+MLX90640 | HIDUNG MQ-135+SHT41 | TELINGA Sensor Suara</small>
-<div style="text-align:center;padding:10px"><div id="centerLamp" style="font-size:80px;filter:grayscale(1)">💡</div><div id="centerStatus" style="font-weight:900;color:#ff5252">CENTER: OFF - SEMUA INDERA TIDUR</div>
-<div style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:8px">
-<div id="mata" style="border:1px solid #00e5ff;padding:8px;border-radius:8px">👁️ MATA<br>TIDUR</div>
-<div id="hidung" style="border:1px solid #ff9a00;padding:8px;border-radius:8px">👃 HIDUNG<br>TIDUR</div>
-<div id="telinga" style="border:1px solid #00e676;padding:8px;border-radius:8px">👂 TELINGA<br>TIDUR</div>
-<div id="otak" style="border:1px solid #ffeb3b;padding:8px;border-radius:8px">🧠 OTAK<br>TIDUR</div>
+<div class="panel"><b>🎬 ANIMASI KARTUN - DARI GERAKAN LU, TAPI BUKAN MUKA LU!</b><br>
+<small>Rekaman asli lu TIDAK dipakai sebagai gambar. Diganti jadi kartun animasi, gerakannya ngikutin gerakan lu, tapi mukanya kartun. Lebih seru, lebih lucu, lebih aman!</small>
+<div id="anim">
+<div id="char">🧑‍💼</div><br>
+<div class="bubble" id="bubble">Zzz... capek... rebahan dulu... 😴</div><br>
+<small id="animKet">Animasi: Orang rebahan di bantal, mata setengah merem. Ini MAGER. 0 PTS!</small>
 </div>
-<button class="y" onclick="toggleCenter()">🔘 CENTER: KLIK ON - LAMPU MENYALA!</button>
-<button onclick="suaraCenter()">🔊 SUARA CENTER</button><p id="centerMsg">Pegang CENTER, klik ON, lampu menyala, semua indera melek.</p></div></div>
+<div id="status" class="status mager">😴 MODE MAGER - 0 PTS - Boleh istirahat, tapi nggak dapet upah!</div>
+<p style="text-align:center">Mode: <b id="mode">MAGER</b> | Sudah Kanvas? <b id="kanvasSt">BELUM</b> | Sudah Kontrak? <b id="kontrakSt">BELUM</b> | Sudah Jualan? <b id="jualanSt">BELUM</b></p>
+<p id="narasi">Observasi Kamera + Suara: Orang ini habis kerja, capek, rebahan. Mata setengah merem, tangan nutup mulut (lagi mikir), tangan lambaian (nyapa). Penilaian: Wajar, capek, boleh mager. Tapi karena belum kerja lagi, PTS = 0. Nanti kalau dia bangun dan kanvas, baru dapet PTS.</p>
+</div>
 
-<div class="panel"><b>✨ NEURAL GRID - PARTIKEL ELEKTRON = DATA NGALIR</b><br><small>Partikel biru + oranye = data dari mata / hidung ke otak. Kalau gerak, berarti sensor hidup. Kalau diem, berarti CENTER OFF.</small><canvas id="gridCanvas"></canvas><p style="text-align:center"><b>SCANNING... NODE 03 LOCKED</b> • <span id="story">Sales siap jalan.</span></p>
-<div style="text-align:center"><button onclick="scan()">[Q] SCAN</button><button class="o" onclick="dash()">[W] DASH</button><button onclick="boost()">[E] BOOST</button><button class="o" onclick="deploy()">[R] DEPLOY PROBE</button></div></div>
+<div class="panel"><b>🎮 KONTROL - URUTAN KERJA YANG BENER!</b><br>
+<p style="text-align:center"><small>Harus urut! Nggak bisa langsung jualan kalau belum kanvas! Nggak bisa langsung kontrak kalau belum ngobrol!</small></p>
+<div style="text-align:center">
+<button onclick="cmd('MAGER')">😴 MAGER - Rebahan (0 PTS)</button>
+<button class="yellow" onclick="cmd('KANVAS')">🚶 KANVAS - Jalan ke Toko (+5 PTS)</button>
+<button onclick="cmd('KONTRAK')">📝 KONTRAK - Ngomong ke Bos Toko (+30 PTS)</button>
+<button class="green" onclick="cmd('JUALAN')">💰 JUALAN - Deal! (+100 PTS)</button>
+<button class="red" onclick="cmd('PAUSE')">⏸️ PAUSE - Istirahat</button>
+</div>
+<p id="kontrolHasil">Belum ada perintah. Pencet urut: MAGER -> KANVAS -> KONTRAK -> JUALAN!</p>
+</div>
 
-<div class="panel"><b>🛒 PRODUK - SUARA DETAIL 1 PER 1</b><br><select id="produk"></select><select id="qty"><option value="1">1 unit</option><option value="5">5 unit</option><option value="10">10 unit</option><option value="100">TENDER 100 - INDENT FULL DESIGN</option></select><p id="detail"></p>
-<button onclick="suaraProduk()">🔊 SUARA PRODUK</button><button class="o" onclick="suaraPanduan()">🔊 PANDUAN RAKIT</button><button onclick="suaraKontrak()">🔊 KONTRAK LANTANG</button><button class="o" onclick="jual()">JUAL 💰</button><p id="jualMsg"></p></div>
+<div class="panel"><b>🧠 PENILAIAN DARI OBSERVASI - INSTING + FEELING + MICROCONTROLLER</b><br>
+<div class="prompt" id="promptBox">PROMPT PENILAIAN - Dari Pengamatan Kamera + Suara:
+- Kamera lihat: Orang rebahan, mata setengah merem, gerak pelan
+- Suara dengar: Ngomong pelan, capek, tapi masih nyambung
+- Insting: Orang ini HABIS KERJA, bukan males dari pagi!
+- Feeling: Dia capek, butuh istirahat, tapi otaknya masih mikir game
+- Microcontroller (walaupun belum terpasang fisik, tapi logikanya sudah jalan):
+  Jika sudah kerja + mager = WAJAR, boleh istirahat, 0 PTS
+  Jika belum kerja + mager terus = TIDAK WAJAR, harus dibangunkan!
+- Kesimpulan: Mager ini OKE, tapi PTS = 0. Kerja dulu baru dapet PTS!
 
-<div class="panel"><b>🏭 REKAM PABRIK - JADI SIMULASI NYATA</b><br><button class="o" onclick="toggleRekam()">⏺️ REKAM PABRIK</button><span id="rekam">OFF</span><p id="rekamMsg">Pencet untuk mulai merekam aktivitas pabrik jadi data game. Lestari, diterima umum.</p><p id="sensorLive">TEMP: 36.6°C • MQ-135: 28 • SHT41: 95 • NODE: Pabrik</p></div>
+Perintah: Belum ada.</div>
+<button onclick="speak('Aturan baru! Mager doang nol PTS! Kanvas lima PTS! Kontrak tiga puluh PTS! Jualan seratus PTS!')">🔊 SUARA: Aturan PTS Baru!</button>
+</div>
+
+<div class="panel"><b>💡 CENTER</b><br><div style="text-align:center"><div id="lamp" style="font-size:70px;filter:grayscale(1)">💡</div><div id="centerSt">CENTER: OFF - Orang masih mager</div><button onclick="toggleCenter()">🔘 CENTER ON / OFF</button></div></div>
 
 <script>
-var pts=0, curMarket=0, centerOn=false, rekamOn=false, sec=134, extract=32;
-var MARKETS=[
-{nama:"Pabrik",desc:"Rekam pabrik: suhu, gas, api, debu. SG-810 + Bio Health + CCTV."},
-{nama:"Rumah Tangga",desc:"Bio Health Room - rumah sehat tanpa timbal dan debu."},
-{nama:"Ruko",desc:"CCTV + SG-810."},
-{nama:"Outlet",desc:"Color QC + Marketing Digital."},
-{nama:"Sekolah",desc:"Bio Health + UV Steril + CCTV."},
-{nama:"Pasar Jaya",desc:"GPS + CCTV + SG-810."},
-{nama:"Mall",desc:"Tender Inden Full Design."},
-{nama:"Minimarket",desc:"CCTV + SAAS SCM."},
-{nama:"Supermarket",desc:"GPS + SAAS SCM + CCTV."},
-{nama:"Department Store",desc:"Tender + Marketing."},
-{nama:"Dinas Pemda",desc:"Tender Resmi."},
-{nama:"Toko Permata",desc:"Obsidian Gem Lab."}];
-var DATA=[
-{nama:"Bio Health Room",pts:701,komponen:["SHT41","MQ-135","ESP32-S3"],fungsi:"Jaga udara, lembab, gas."},
-{nama:"Super IR Guard SG-810",pts:1956,komponen:["ESP32-S3 otak","Kapasitor cadangan daya","TCS34725","IMX219","MLX90640","MQ-135","SHT41"],fungsi:"Deteksi kebakaran, gas berbahaya mudah terbakar. ESP32-S3 terima WiFi ke HP dan Laptop."},
-{nama:"Obsidian / Gem Lab",pts:788,komponen:["IMX219","ESP32-S3"],fungsi:"Cek batu asli atau palsu."},
-{nama:"Color QC Batik",pts:650,komponen:["TCS34725","IMX219","ESP32-S3"],fungsi:"Cek warna batik."},
-{nama:"CCTV AI Camera",pts:578,komponen:["ESP32-S3 AI Camera"],fungsi:"Pantau maling."},
-{nama:"GPS Logistics",pts:450,komponen:["ESP32-S3","GPS"],fungsi:"Lacak kurir."},
-{nama:"SAAS SCM Accurate",pts:500,komponen:["Aplikasi"],fungsi:"Catat stok."},
-{nama:"Sistem Marketing Digital",pts:600,komponen:["Aplikasi"],fungsi:"Promosi."},
-{nama:"UV Steril + Fogging",pts:380,komponen:["UV LED 365nm","MOSFET AO3400","Photodiode S1226","Relay Omron"],fungsi:"Steril ruangan."}];
-function speak(t){try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='id-ID';u.rate=0.92;speechSynthesis.speak(u);}catch(e){}}
-function renderMarkets(){var d=document.getElementById('markets');d.innerHTML='';MARKETS.forEach(function(m,i){var s=document.createElement('span');s.className='marketBtn'+(i===curMarket?' active':'');s.innerText=m.nama;s.onclick=function(){curMarket=i;renderMarkets();speak('Market '+m.nama+'. '+m.desc);};d.appendChild(s);});document.getElementById('marketDesc').innerText=MARKETS[curMarket].nama+' - '+MARKETS[curMarket].desc;}
-function renderProduk(){var s=document.getElementById('produk');s.innerHTML='';DATA.forEach(function(p){var o=document.createElement('option');o.text=p.nama+' - '+p.pts+' PTS';s.appendChild(o);});pilihProduk();}
-function cur(){return DATA[document.getElementById('produk').selectedIndex]||DATA[0];}
-function pilihProduk(){var p=cur();document.getElementById('detail').innerText=p.nama+' | '+p.pts+' PTS | '+p.fungsi+' | '+p.komponen.join(', ');}
-function toggleCenter(){centerOn=!centerOn;var lamp=document.getElementById('centerLamp');if(centerOn){lamp.style.filter='none';lamp.innerText='💡✨';document.getElementById('centerStatus').innerText='CENTER: ON - SEMUA INDERA MELEK! LAMPU MENYALA!';document.getElementById('centerStatus').style.color='#00e676';document.getElementById('mata').innerHTML='👁️ MATA<br>MELEK - LIAT API!';document.getElementById('hidung').innerHTML='👃 HIDUNG<br>MELEK - CIUM GAS!';document.getElementById('telinga').innerHTML='👂 TELINGA<br>MELEK - DENGER!';document.getElementById('otak').innerHTML='🧠 OTAK<br>MIKIR - KIRIM KE HP!';document.getElementById('centerMsg').innerText='CENTER ON! Lampu menyala! Cahaya memancar!';speak('Center diaktifkan! Otak ESP32-S3 bangun! Mata melek! Hidung mencium gas! Telinga mendengar! Lampu menyala! Cahaya memancar! Aktif berfungsi!');}else{lamp.style.filter='grayscale(1)';lamp.innerText='💡';document.getElementById('centerStatus').innerText='CENTER: OFF - SEMUA INDERA TIDUR';document.getElementById('centerStatus').style.color='#ff5252';document.getElementById('centerMsg').innerText='Center OFF, semua tidur.';speak('Center dimatikan. Semua tidur.');}}
-function suaraCenter(){speak('Center diaktifkan! Otak ESP32-S3 bangun! Mata IMX219 dan MLX90640 melek! Hidung MQ-135 dan SHT41 mencium gas dan udara! Telinga mendengar! Lampu Center menyala!');}
-function scan(){extract=Math.min(100,extract+8);document.getElementById('story').innerText='Scanning! Node 03 terdeteksi! Extract '+extract+'%';speak('Scanning! Node terdeteksi!');}
-function dash(){document.getElementById('story').innerText='Sales dash ke market '+MARKETS[curMarket].nama; speak('Sales dash ke market '+MARKETS[curMarket].nama);}
-function boost(){speak('Boost! Energi naik!');}
-function deploy(){speak('Probe dikirim! Sensor mendeteksi elektron!');}
-function suaraProduk(){var p=cur();var q=document.getElementById('qty').value;speak('Produk '+p.nama+', harga '+p.pts+' PTS, jumlah '+q+' unit, market '+MARKETS[curMarket].nama+', fungsi '+p.fungsi+', komponen '+p.komponen.join(', '));}
-function suaraPanduan(){var p=cur();var teks='Panduan '+p.nama+', siapkan '+p.komponen.join(', ')+', pasang satu per satu, kapasitor cadangkan daya, WiFi ESP32-S3 ke HP, tes ON, lampu menyala, aktif berfungsi!';if(p.nama.indexOf('SG-810')>=0)teks='Panduan SG-810! ESP32-S3 sebagai otak, menerima WiFi ke HP dan Laptop! Kapasitor cadangkan daya agar TCS34725 dan IMX219 berfungsi baik! TCS34725 dan IMX219 deteksi kebakaran, gas berbahaya mudah terbakar! SHT41 dan MQ-135 deteksi ruang sehat tanpa timbal dan debu! Tekan ON! Lampu menyala! Cahaya memancar! Aktif berfungsi!';speak(teks);}
-function suaraKontrak(){speak('Perhatian! Kontrak resmi! Bos Sponsor setuju! Sales dapat PTS! Teknisi merakit! Peralatan kita: '+DATA.map(function(x){return x.nama}).join(', ')+'. Semua harus dipasang benar, aktif berfungsi!');}
-function jual(){var p=cur();var q=parseInt(document.getElementById('qty').value);var total=p.pts*q;pts+=total;document.getElementById('ptsTop').innerText=pts;document.getElementById('jualMsg').innerText='Berhasil di '+MARKETS[curMarket].nama+'! +'+total+' PTS';speak('Berhasil! '+p.nama+' terjual '+q+' unit di '+MARKETS[curMarket].nama+'! Total '+total+' PTS! Aktif berfungsi!');}
-function toggleRekam(){rekamOn=!rekamOn;document.getElementById('rekam').innerText=rekamOn?'ON - MEREKAM':'OFF';document.getElementById('rekamMsg').innerText=rekamOn?('MEREKAM PABRIK '+MARKETS[curMarket].nama+'! Data suhu, gas, api, debu direkam jadi simulasi.'):'Rekaman OFF.';speak(rekamOn?('Mulai merekam pabrik '+MARKETS[curMarket].nama):'Rekaman berhenti.');}
-try{
-  var cv=document.getElementById('gridCanvas');var ctx=cv.getContext('2d');cv.width=600;cv.height=220;
-  var parts=[];for(var i=0;i<70;i++)parts.push({x:Math.random()*600,y:Math.random()*220,vx:(Math.random()-0.5)*2,vy:(Math.random()-0.5)*2,c:Math.random()>0.5?'#00e5ff':'#ff9a00'});
-  function draw(){try{ctx.clearRect(0,0,600,220);ctx.strokeStyle='#0a3a5a';for(var x=0;x<600;x+=40){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,220);ctx.stroke();}for(var y=0;y<220;y+=40){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(600,y);ctx.stroke();}parts.forEach(function(p){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>600)p.vx*=-1;if(p.y<0||p.y>220)p.vy*=-1;ctx.fillStyle=p.c;ctx.beginPath();ctx.arc(p.x,p.y,3,0,7);ctx.fill();});}catch(e){}requestAnimationFrame(draw);}draw();
-}catch(e){document.getElementById('debug').innerText='Canvas error, tapi tombol tetap jalan.';}
-setInterval(function(){sec--;if(sec<0)sec=134;var m=String(Math.floor(sec/60)).padStart(2,'0'),s=String(sec%60).padStart(2,'0');document.getElementById('timer').innerText=m+':'+s;var t=(36+Math.random()).toFixed(1);var mq=Math.floor(20+Math.random()*20);document.getElementById('sensorLive').innerText='TEMP: '+t+' C • MQ-135: '+mq+' • SHT41: 95 • NODE: '+MARKETS[curMarket].nama;},2000);
-document.getElementById('produk').addEventListener('change',pilihProduk);
-renderMarkets();renderProduk();
-</script>
-<div class="panel" style="border:2px solid #ffeb3b"><b style="color:#ffeb3b">📷 KAMERA DUNIA NYATA - TANPA KABEL DEBUGGING - MATA + TELINGA + HIDUNG LANGSUNG!</b><br>
-<small>Konsep KEGERAKAN + INSTING + FEELING: Game tidak lagi dirancang dari hayalan. Game dirancang dari HASIL NYATA yang diamati + terekam. Kamera = MATA, Mic = TELINGA, Input manual = HIDUNG. Kalau layak + wajar sesuai standar umum, game otomatis ikut.</small>
-<div style="text-align:center;padding:10px">
-<video id="camVideo" width="320" height="200" autoplay playsinline muted style="border:2px solid #00e5ff;border-radius:10px;background:#000;display:none"></video>
-<canvas id="camSnap" width="320" height="200" style="display:none;border:2px solid #ff9a00;border-radius:10px"></canvas>
-<p id="camStatus">Kamera OFF. Pencet tombol di bawah.</p>
-<button class="y" onclick="startCam()">📷 NYALAKAN KAMERA LAPTOP / HP - JADI MATA!</button>
-<button onclick="snapCam()">📸 JEPRET - REKAM APA YANG DILIHAT!</button>
-<button class="o" onclick="startMic()">🎤 NYALAKAN MIC - JADI TELINGA!</button>
-<button onclick="stopCam()">⏹ MATIKAN</button>
-</div>
-<div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
-<div style="border:1px solid #00e5ff;padding:8px;border-radius:8px">👁️ MATA: <span id="mataCam">Belum lihat</span></div>
-<div style="border:1px solid #ff9a00;padding:8px;border-radius:8px">👃 HIDUNG: <select id="bauInput" onchange="updateBau()" style="width:auto"><option>Udara Segar - Sehat</option><option>Bau Gas - Bahaya!</option><option>Bau Debu / Timbal</option><option>Bau Terbakar - Api!</option></select> <span id="bauOut"></span></div>
-<div style="border:1px solid #00e676;padding:8px;border-radius:8px">👂 TELINGA: <span id="telingaCam">Belum dengar</span></div>
-</div>
-<p><b>HASIL REKAMAN NYATA:</b> <span id="rekamNyata">Belum ada rekaman. Nyalakan kamera, jepret, game akan berperilaku sesuai rekaman.</span></p>
-<button onclick="speak('Kamera dinyalakan! Mata melihat dunia nyata! Mic mendengar! Hidung mencium! Game merekam! Perilaku game mengikuti rekaman nyata! Layak dan wajar sesuai standar kehidupan umum!')">🔊 SUARA: Jelaskan Rekam Nyata</button>
-</div>
-<script>
-let camStream=null;
-async function startCam(){try{camStream=await navigator.mediaDevices.getUserMedia({video:true,audio:false});let v=document.getElementById('camVideo');v.srcObject=camStream;v.style.display='block';document.getElementById('camStatus').innerText='KAMERA ON! Mata melihat dunia nyata! Tanpa kabel debugging!';document.getElementById('mataCam').innerText='MELIHAT - Kamera ON!';speak('Kamera dinyalakan! Mata melihat dunia nyata! Tanpa kabel!');}catch(e){document.getElementById('camStatus').innerText='Kamera gagal: '+e.message+'. Coba di Chrome, izinkan kamera.';speak('Kamera gagal, izinkan kamera di browser.');}}
-function snapCam(){try{let v=document.getElementById('camVideo');let c=document.getElementById('camSnap');let ctx=c.getContext('2d');ctx.drawImage(v,0,0,320,200);c.style.display='block';document.getElementById('rekamNyata').innerText='TEREKAM! Foto dunia nyata diambil jam '+new Date().toLocaleTimeString()+'. Game akan berperilaku sesuai foto ini. Mata melihat, otak ESP32-S3 mikir, CENTER memutuskan: Layak dan wajar? YA, sesuai standar umum!';document.getElementById('mataCam').innerText='TEREKAM - Foto diambil!';speak('Jepret! Dunia nyata terekam! Game akan berperilaku sesuai rekaman!');}catch(e){speak('Nyalakan kamera dulu.');}}
-async function startMic(){try{let s=await navigator.mediaDevices.getUserMedia({audio:true});document.getElementById('telingaCam').innerText='MENDENGAR - Mic ON! Suara dunia nyata masuk!';document.getElementById('camStatus').innerText='MIC ON! Telinga mendengar!';speak('Mic dinyalakan! Telinga mendengar dunia nyata!');setTimeout(()=>{s.getTracks().forEach(t=>t.stop());},8000);}catch(e){speak('Mic gagal, izinkan mic.');}}
-function stopCam(){if(camStream)camStream.getTracks().forEach(t=>t.stop());document.getElementById('camVideo').style.display='none';document.getElementById('camStatus').innerText='Kamera OFF.';}
-function updateBau(){let v=document.getElementById('bauInput').value;document.getElementById('bauOut').innerText=' - '+v;let msg='Hidung mencium: '+v;if(v.indexOf('Gas')>=0||v.indexOf('Terbakar')>=0){msg+='. BAHAYA! CENTER memutuskan: Alarm ON! Layak dan wajar untuk selamatkan nyawa!';document.getElementById('rekamNyata').innerText=msg;}else{msg+='. Aman. Udara sehat, lestari.';document.getElementById('rekamNyata').innerText=msg;}speak(msg);}
-</script>
-
-<div class="panel" style="border:3px solid #ff5252"><b style="color:#ff5252;font-size:18px">🔴 AUTO REKAM 30 DETIK - AKTIF! - 1 KLIK, SEMUA JALAN!</b><br>
-<small>Insting + Feeling: Lu pencet 1 tombol, game langsung: Kamera ON + Mic ON + Hitung mundur 30 detik + Rekam + Simpan + Analisis + Berperilaku sesuai rekaman. Lu nggak usah pencet apa-apa lagi, tinggal jalanin kehidupan nyata lu 30 detik!</small>
-<div style="text-align:center;padding:10px">
-<div id="autoTimer" style="font-size:48px;font-weight:900;color:#ffeb3b">30</div>
-<div id="autoStatus">AUTO REKAM: OFF - Pencet tombol merah di bawah</div>
-<video id="autoVideo" width="320" height="200" autoplay playsinline muted style="border:2px solid #ff5252;border-radius:10px;background:#000;display:none"></video>
-<p id="autoHasil">Belum ada rekaman otomatis.</p>
-<button style="background:#ff5252;color:#fff;font-size:18px;padding:14px 22px;border:2px solid #fff" onclick="autoRekam30()">🔴 MULAI AUTO REKAM 30 DETIK - AKTIF!</button>
-<button onclick="speak('Auto rekam 30 detik dimulai! Kamera merekam! Mic mendengar! Game akan berperilaku sesuai rekaman nyata!')">🔊 SUARA: Auto Rekam</button>
-</div>
-</div>
-<script>
-let autoRecorder=null, autoChunks=[];
-async function autoRekam30(){
-  try{
-    let stream=await navigator.mediaDevices.getUserMedia({video:true,audio:true});
-    let v=document.getElementById('autoVideo'); v.srcObject=stream; v.style.display='block';
-    document.getElementById('autoStatus').innerText='🔴 MEREKAM... Kamera + Mic AKTIF! Jangan diem, jalanin kehidupan nyata lu! 30 detik!';
-    speak('Auto rekam 30 detik dimulai! Kamera merekam! Mic mendengar! Game akan berperilaku sesuai rekaman nyata!');
-    autoChunks=[]; autoRecorder=new MediaRecorder(stream);
-    autoRecorder.ondataavailable=e=>{if(e.data.size>0)autoChunks.push(e.data);};
-    autoRecorder.onstop=()=>{
-      let blob=new Blob(autoChunks,{type:'video/webm'});
-      let url=URL.createObjectURL(blob);
-      let a=document.createElement('a'); a.href=url; a.download='rekaman-pabrik-30detik.webm'; a.innerText='⬇️ DOWNLOAD REKAMAN 30 DETIK LU (klik untuk simpan)';
-      a.style.display='block'; a.style.color='#00e676'; a.style.fontWeight='900';
-      document.getElementById('autoHasil').innerHTML='✅ REKAMAN 30 DETIK SELESAI! Game sudah merekam! Sekarang game berperilaku sesuai rekaman: Mata melihat apa yang lu lihat, Telinga mendengar apa yang lu dengar, Otak ESP32-S3 mikir: Layak dan wajar? YA, sesuai standar umum! Perilaku game = perilaku nyata lu tadi! ';
-      document.getElementById('autoHasil').appendChild(a);
-      document.getElementById('autoStatus').innerText='✅ SELESAI! Rekaman 30 detik tersimpan! Game berperilaku sesuai rekaman!';
-      speak('Rekaman 30 detik selesai! Game sudah merekam! Game sekarang berperilaku sesuai rekaman nyata lu! Layak dan wajar sesuai standar umum!');
-      stream.getTracks().forEach(t=>t.stop());
-    };
-    autoRecorder.start();
-    let sisa=30; let iv=setInterval(()=>{sisa--; document.getElementById('autoTimer').innerText=sisa; if(sisa<=0){clearInterval(iv); document.getElementById('autoTimer').innerText='30'; try{autoRecorder.stop();}catch(e){} }},1000);
-  }catch(e){ document.getElementById('autoStatus').innerText='Gagal: '+e.message+' - Izinkan kamera + mic di Chrome.'; speak('Gagal, izinkan kamera dan mic.'); }
+let pts=0, xp=0, lvl=1, combo=0, sudahKanvas=false, sudahKontrak=false, sudahJualan=false;
+function speak(t){try{speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(t);u.lang='id-ID';speechSynthesis.speak(u);}catch(e){}}
+function addPts(n,alasan){pts+=n; xp+=n; combo++;
+  if(xp>=100){xp-=100; lvl++;}
+  let ranks=['BRONZE - Pemula','SILVER - Sales Aktif','GOLD - Master Guardian','PLATINUM - Bos Toko','LEGEND - Pencipta Game!'];
+  let r = lvl<2?ranks[0]: lvl<4?ranks[1]: lvl<6?ranks[2]: lvl<8?ranks[3]: ranks[4];
+  document.getElementById('pts2').innerText=pts; document.getElementById('xp').innerText=xp; document.getElementById('lvl').innerText=lvl; document.getElementById('rank').innerText=r; document.getElementById('xpbar').style.width=xp+'%'; document.getElementById('combo').innerText='x'+combo;
+  document.getElementById('promptBox').innerText='PROMPT PENILAIAN:\n> '+alasan+'\n> PTS +'+n+' Total: '+pts+'\n> LEVEL: '+lvl+' RANK: '+r+'\n> COMBO: x'+combo;
 }
-</script>
-</body></html>
+function cmd(p){
+  let st=document.getElementById('status'), nar=document.getElementById('narasi'), char=document.getElementById('char'), bub=document.getElementById('bubble'), ket=document.getElementById('animKet'), hasil=document.getElementById('kontrolHasil'), mode=document.getElementById('mode');
+  if(p=='MAGER'){char.innerText='😴';char.className='mager';bub.innerText='Zzz... capek... rebahan dulu... 😴';ket.innerText='Animasi: Rebahan, mata setengah merem. MAGER DOANG = 0 PTS!';st.className='status mager';st.innerText='😴 MODE MAGER - 0 PTS - Boleh istirahat, tapi nggak dapet upah!';mode.innerText='MAGER';nar.innerText='Observasi: Orang rebahan, capek habis kerja. Boleh mager, wajar. Tapi PTS = 0, karena belum kerja lagi. Kalau mager doang dapet PTS, game jadi sia-sia!';hasil.innerText='MAGER -> 0 PTS! Boleh istirahat, tapi nggak dapet upah!';speak('Mager doang, nol PTS! Boleh istirahat, tapi tidak dapat upah!');}
+  if(p=='KANVAS'){sudahKanvas=true;document.getElementById('kanvasSt').innerText='SUDAH';char.innerText='🚶';char.className='kanvas';bub.innerText='Jalan ke toko, kanvas, ngobrol... 🚶';ket.innerText='Animasi: Orang jalan ke toko, kanvas, ngobrol sama bos toko.';st.className='status gerak';st.innerText='🚶 MODE KANVAS - +5 PTS - Upah Minum!';mode.innerText='KANVAS';nar.innerText='Observasi: Orang udah bangun, jalan ke toko, kanvas, ngobrol. Capek jalan, wajar dikasih upah minum +5 PTS!';hasil.innerText='KANVAS -> +5 PTS! Upah minum!';addPts(5,'Perintah: KANVAS - Sudah jalan, sudah ngobrol, upah minum');toggleCenter(true);speak('Kanvas! Dapat lima PTS, upah minum!');}
+  if(p=='KONTRAK'){if(!sudahKanvas){hasil.innerText='Belum bisa KONTRAK! Kanvas dulu! Jalan ke toko dulu!';speak('Kanvas dulu, baru kontrak!');return;}sudahKontrak=true;document.getElementById('kontrakSt').innerText='SUDAH';char.innerText='🤝';char.className='kontrak';bub.innerText='Bos, aku mau kontrak deh! 📝';ket.innerText='Animasi: Orang salaman sama bos toko, minta kontrak.';st.className='status gerak';st.innerText='📝 MODE KONTRAK - +30 PTS!';mode.innerText='KONTRAK';nar.innerText='Observasi: Orang ngomong sama bos toko: "Aku mau kontrak deh!" Belum ada penjualan, nggak apa-apa, tapi udah ada kontrak, udah ada usaha serius! +30 PTS!';hasil.innerText='KONTRAK -> +30 PTS! Walaupun belum jualan, tapi udah kontrak!';addPts(30,'Perintah: KONTRAK - Sudah ngomong ke bos toko, mau kontrak');speak('Kontrak! Dapat tiga puluh PTS!');}
+  if(p=='JUALAN'){if(!sudahKontrak){hasil.innerText='Belum bisa JUALAN! Kontrak dulu! Ngomong ke bos toko dulu!';speak('Kontrak dulu, baru jualan!');return;}sudahJualan=true;document.getElementById('jualanSt').innerText='SUDAH';char.innerText='💰';char.className='jualan';bub.innerText='Deal! Barang laku! Senang! 💰';ket.innerText='Animasi: Orang senang, deal, barang laku, dapet uang!';st.className='status gerak';st.innerText='💰 MODE JUALAN - +100 PTS! DEAL!';mode.innerText='JUALAN - DEAL!';nar.innerText='Observasi: Deal! Barang laku! Ini baru kerja beneran! +100 PTS! Paling besar! Hobby gamers pasti kejar ini!';hasil.innerText='JUALAN -> +100 PTS! DEAL! Paling besar!';addPts(100,'Perintah: JUALAN - Deal, barang laku!');speak('Jualan! Deal! Dapat seratus PTS!');}
+  if(p=='PAUSE'){combo=0;document.getElementById('combo').innerText='x0';char.innerText='🧘';char.className='';bub.innerText='Istirahat sebentar...';ket.innerText='Animasi: Istirahat, combo reset.';st.innerText='⏸️ PAUSE - Istirahat, Combo Reset!';nar.innerText='Pause, istirahat. Boleh mager lagi, tapi PTS berhenti. Kalau mau PTS lagi, kerja lagi!';hasil.innerText='PAUSE -> Istirahat, Combo reset!';speak('Pause! Istirahat!');}
+}
+function toggleCenter(force){let lamp=document.getElementById('lamp'), st=document.getElementById('centerSt');let on=force!==undefined?force:lamp.style.filter.includes('grayscale');if(on){lamp.style.filter='none';lamp.innerText='💡✨';st.innerText='CENTER: ON - SEMUA INDERA MELEK!';}else{lamp.style.filter='grayscale(1)';lamp.innerText='💡';st.innerText='CENTER: OFF';}}
+</script></body></html>
