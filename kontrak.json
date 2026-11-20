@@ -1,146 +1,68 @@
 {
-  "version": "v24 - REVISI SPONSORSHIP + LEGAL",
-  "judul": "KONTRAK KERJASAMA SPONSORSHIP - Practical Application Game Simulator - SaaS System + Prototype Milik Founder",
+  "version": "v25 - REVISI PRACTICAL APPLICATION - TANPA SEBUTAN LAMA",
+  "judul": "KONTRAK KERJASAMA SPONSORSHIP - Practical Application - SaaS System + Prototype Milik Founder",
+  "kalimat_induk": "aichaliveret inteligent market infokan ke masyarakat.",
   "pihak": {
-    "pihak_pertama": "FOUNDER / SALES - Demand Planner + Marketing Digital + Sales + Store Experience (1 orang sekarang, nanti sewa pekerja kalau berkembang). Pemilik SaaS System + Prototype + Game Practical Application Simulator. Bukan Teknisi.",
+    "pihak_pertama": "FOUNDER / SELLS - Demand Planner + Marketing Digital + Sells + Store Experience (1 orang sekarang, nanti sewa pekerja kalau berkembang). Pemilik SaaS System + Prototype + Practical Application. Bukan Teknisi.",
     "pihak_kedua": "BOS TOKO SUPPLIER ALAT MIKROKONTROLER - Sponsor. Pemilik toko + gudang + stok ESP32-S3, Sensor IR, MQ-135, SHT41, TCS34725, IMX219, MLX90640, Kapasitor, Dioda, Resistor. Sponsor utama.",
-    "pihak_ketiga": "TEKNISI - Staff Teknik / Manager Teknik Bos. Jasa aja, bukan pemilik barang. Ikut SOP, OEE, KPI. Rakit + Instalasi + Briefing.",
-    "pihak_keempat": "BUYER / PENGGUNA - Pembeli + Pengguna System + Alat Mikrokontroler. Bertemu di Ruko / Sekolah / Pasar / Mall / Departemen / Rumah. Kontrak dikuasai Bos Supplier, tapi Sales yang bertemu Buyer."
+    "pihak_ketiga": "TEKNISI - Staff Teknik / Manager Teknik Bos. Jasa saja, bukan pemilik barang. Ikut SOP, OEE, KPI. Rakit + Instalasi + Briefing.",
+    "pihak_keempat": "PELAKU PASAR / PENGGUNA - Pembeli + Pengguna System + Alat Mikrokontroler. Bertemu di Perumahan, Ruko, Toko, Outlet, Mall, Pasar, Minimarket, Supermarket, Sekolah, Departemen Pemerintah, Kementerian. Kontrak dikuasai Bos Supplier, tapi Sells yang bertemu pelaku pasar."
   },
   "kepemilikan": {
-    "saas_system": "MILIK FOUNDER (Sales). SaaS SCM System + SaaS Marketing Digital + SaaS Monitoring. Bisa dijual sebagai Sales IT. Bos Supplier sebagai Sponsor, bukan pemilik SaaS.",
-    "prototype": "MILIK FOUNDER. Prototype: IR 7 Detik (bisa terpasang di HP saja), Super Infrared, SuperSecure, Bio Health Room, Super IR Guard SG-810, Obsidian / Gem Lab, Color QC Batik, CCTV AI, GPS Logistics, UV Steril + Fogging, Autonomous Prototype Pabrik Batik 8in1. Bisa dijual sebagai Sales IT.",
+    "saas_system": "MILIK FOUNDER (Sells). SaaS SCM System + SaaS Marketing Digital + SaaS Monitoring. Bisa ditawarkan sebagai Sells IT. Bos Supplier sebagai Sponsor, bukan pemilik SaaS.",
+    "prototype": "MILIK FOUNDER. Prototype: IR 7 Detik (bisa terpasang di HP saja), Super Infrared, Super Secure, Bio Health Room, CCTV AI, GPS Logistics, UV Steril + Fogging. Bisa ditawarkan sebagai Sells IT.",
     "barang_mikrokontroler": "MILIK BOS SUPPLIER. ESP32-S3, sensor, kapasitor, dioda, dll. Founder tidak klaim barang Bos.",
-    "game_simulator": "MILIK FOUNDER. Practical Application Game Simulator ini dapat dan mampu berfungsi real nyata bila terhubung dengan SaaS System + Prototype. Berapapun pelanggan (pembeli + pengguna system + alat mikrokontroler) bisa terkoneksi otomatis aktif sebagaimana fungsinya."
+    "practical_application": "MILIK FOUNDER. Practical Application ini dapat dan mampu berfungsi real nyata bila terhubung dengan SaaS System + Prototype. Pelanggan (pembeli + pengguna system + alat mikrokontroler) bisa terkoneksi otomatis aktif sebagaimana fungsinya."
   },
   "sponsorship": {
     "bos_sebagai_sponsor": "Bos Toko Supplier adalah Sponsor utama. Bos sediakan barang, gudang, teknisi, tempat promosi di toko.",
-    "komisi_bos_promosi": "Kalau ada Buyer yang survey ke toko Bos, dan Bos yang promosikan SaaS System + Prototype milik Founder, dan Buyer jadi beli, Bos dapat KOMISI PROMOSI 10% dari harga SaaS + Prototype. Founder kasih komisi ke Bos, dicatat di kontrak.",
-    "komisi_sales_ke_bos": "Kalau Sales yang bawa Buyer ke toko Bos dan Buyer beli barang Bos, Bos tidak wajib kasih komisi ke Sales untuk barang Bos, tapi Bos wajib kasih akses gudang + teknisi + harga sponsor.",
-    "logo_sponsor": "Di game + di SaaS + di brosur, tulis 'Disponsori oleh Toko Supplier [Nama Bos]' + logo Bos. Di toko Bos, pasang poster 'System + Prototype by Founder - Practical Application Simulator'."
+    "komisi_bos_promosi": "Kalau ada pelaku pasar yang survey ke toko Bos, dan Bos yang promosikan SaaS System + Prototype milik Founder, dan pelaku pasar jadi membeli, Bos dapat KOMISI PROMOSI 10% dari harga SaaS + Prototype. Founder kasih komisi ke Bos, dicatat di kontrak.",
+    "logo_sponsor": "Di Practical Application + di SaaS + di brosur, tulis 'Disponsori oleh Toko Supplier [Nama Bos]' + logo Bos. Di toko Bos, pasang poster 'System + Prototype by Founder - Practical Application'."
   },
   "insentif_4_peran_founder": {
     "catatan": "Founder kerja 4 peran sekaligus (sekarang sendiri, nanti sewa pekerja kalau berkembang). Insentif bukan sebagai Teknisi. Teknisi punya insentif sendiri.",
-    "demand_planner": "Insentif: +15 PTS per rencana demand yang akurat (stok tidak kosong, tidak overstock) + Bonus Rp / % kalau demand planner berhasil prediksi order 1 bulan. Kerja: Atur mau jualan apa, ke mana, stok berapa, kapan kanvas, cek gudang lewat WA ke Bos.",
-    "marketing_digital": "Insentif: +15 PTS per konten digital yang menghasilkan lead (WA / DM / komen) + Bonus kalau konten viral / lead jadi kontrak. Kerja: Marketing Digital via Media Sosial (Instagram, Threads, Facebook, TikTok, WhatsApp, YouTube). Yang paling efektif: Sponsor Bos + Konten Video Short (Kling / CapCut) + Live + Testimoni Buyer. Kerja di laptop juga nyari network, marketingin secara digital, capek mikir + capek kerja di laptop juga harus dihargai!",
-    "sales": "Insentif: Mager 0 PTS, Kanvas +5 PTS (upah minum), Kontrak +30 PTS, Jualan +100 PTS, Second Contract +30 PTS. Kerja: Kanvas, ketemu Buyer, ngomong 1 bentuk pembicaraan, deal.",
-    "store_experience": "Insentif: +20 PTS per Buyer yang kasih rating bagus / testimoni / repeat order karena pengalaman di toko / di game menyenangkan + Bonus kalau Buyer ajak teman. Kerja: Kasih pengalaman nyaman, jelasin produk dengan sabar, kasih demo game, kasih demo prototype, follow-up purna jual."
+    "demand_planner": "Insentif: Skor Verifikasi +15 per rencana demand yang akurat (stok tidak kosong, tidak overstock) + Bonus kalau berhasil prediksi order 1 bulan. Kerja: Atur mau tawarkan apa, ke mana, stok berapa, kapan observasi lapangan, cek gudang lewat WA ke Bos.",
+    "marketing_digital": "Insentif: Skor Verifikasi +15 per konten digital yang menghasilkan lead (WA / DM / komen) + Bonus kalau konten viral / lead jadi kesepakatan. Kerja: Marketing Digital via Media Sosial (YouTube, TikTok, Facebook, Instagram, WhatsApp). Yang paling efektif: Sponsor Bos + Konten Video Short + Live + Testimoni Pelaku Pasar.",
+    "sells": "Insentif: Tidak Menjalankan = Skor Verifikasi 0, Observasi Lapangan +5, Kesepakatan Lanjutan +30, Keputusan Terverifikasi +100. Kerja: Observasi Lapangan, ketemu pelaku pasar, satu bentuk pembicaraan, kesepakatan.",
+    "store_experience": "Insentif: Skor Verifikasi +20 per pelaku pasar yang kasih rating bagus / testimoni / repeat order karena pengalaman di toko menyenangkan + Bonus kalau pelaku pasar ajak teman."
   },
   "insentif_teknisi_bukan_founder": {
-    "catatan": "Teknisi bukan Founder. Teknisi jasa aja.",
-    "briefing": "+10 PTS",
-    "rakit_sesuai_sop": "+20 PTS",
-    "instalasi_berhasil": "+30 PTS",
-    "maintenance_berhasil": "+20 PTS",
+    "catatan": "Teknisi bukan Founder. Teknisi jasa saja.",
+    "briefing": "Skor Verifikasi +10",
+    "rakit_sesuai_sop": "Skor Verifikasi +20",
+    "instalasi_berhasil": "Skor Verifikasi +30",
+    "maintenance_berhasil": "Skor Verifikasi +20",
     "sop": "Ikut SOP Perakitan + Instalasi: Cek alat, sambung kapasitor + dioda untuk cadangan daya, sambung WiFi ESP32-S3 ke HP + Laptop, test tekan ON, lampu menyala, cahaya memancar, aktif berfungsi.",
     "oee": "OEE Teknisi: Availability (hadir tepat waktu) + Performance (rakit cepat, tidak ulang) + Quality (instalasi tidak error, tidak brownout). OEE >= 85% = Bonus.",
-    "kpi": "KPI Teknisi: 1. Jumlah instalasi berhasil / bulan, 2. Jumlah komplain Buyer (harus 0-1), 3. Waktu respon maintenance (max 24 jam), 4. Laporan QC ke Bos tiap minggu."
+    "kpi": "KPI Teknisi: 1. Jumlah instalasi berhasil / bulan, 2. Jumlah komplain pelaku pasar (harus 0-1), 3. Waktu respon maintenance (max 24 jam), 4. Laporan QC ke Bos tiap minggu."
   },
-  "gudang_qc": {
-    "kepala_gudang": "Tanggung jawab QC Gudang: Cek stok, cek barang datang, cek barang cacat, catat di SaaS SCM.",
-    "teknisi_lapor": "Teknisi lapor ke Bos Toko Supplier tiap minggu: Stok apa yang habis, alat apa yang rusak, apa yang perlu indent order.",
-    "qc_prosedur": "Barang datang -> Kepala Gudang cek fisik -> Teknisi test fungsi (ESP32-S3 nyala? Sensor IR detek? MQ-135 cium gas?) -> Kalau lolos QC, masuk gudang + catat di SaaS -> Kalau gagal QC, retur ke distributor, jangan dijual ke Buyer!"
-  },
-  "purna_jual_maintenance_jaminan_kualitas": {
-    "jaminan": "Founder + Bos + Teknisi kasih Purna Jual: Maintenance Jaminan Kualitas. Kalau alat error dalam masa garansi, Teknisi datang, cek, ganti sensor / kapasitor gratis (kalau cacat pabrik), kalau rusak karena Buyer (kena matahari, kena air), Buyer bayar maintenance.",
-    "maintenance_founder": "Founder (Sales) juga maintenance: Cek SaaS System Buyer, update aplikasi, jawab WA Buyer, follow-up tiap bulan, kasih edukasi cara rawat alat.",
-    "maintenance_teknisi": "Teknisi maintenance hardware: Ganti sensor, ganti kapasitor, cek dioda, cek WiFi.",
-    "maintenance_bos": "Bos sediain stok sparepart, sediain teknisi cadangan."
-  },
-  "flowchart_tersistematis": {
-    "start": "PAGI - Sales (4 peran) bangun - Di game simulasi perlu dijelaskan + ditampilkan, masing-masing dapat point + peringkat level",
-    "diamond1_gudang_lengkap": "YES -> Lanjut, NO -> Kanvas dulu, cari minat dulu",
-    "diamond2_bos_setuju_kontrak": "YES -> Bos perintahkan Teknisi, NO -> Sales kasih nomor telepon, kanvas ke market",
-    "diamond3_buyer_minat": "YES -> Buyer kasih nomor, minta kontrak, Sales telpon Bos, Second Contract, Indent Order, Instalasi, Jualan +100 PTS, NO -> Mager, 0 PTS, besok kanvas lagi",
-    "diamond4_alat_lengkap": "YES -> Teknisi rakit, NO -> Indent Order, tunggu barang datang",
-    "indent_order": "Pesan dulu, barang belum ada, tunggu datang. Bos pesen ke distributor, 2-3 hari datang, Teknisi rakit, baru instalasi.",
-    "kontrak_dikuasai_bos": "Kontrak dikuasai Bos Toko Supplier, tapi Sales yang bertemu Buyer. Kalau Buyer survey ke toko, Bos promosikan system + prototype Founder, Bos dapat komisi 10%.",
-    "pertemuan": "Sales bertemu Bos CUMA di Toko Supplier. Sales bertemu Buyer di Ruko / Sekolah / Pasar / Mall / Departemen / Rumah. Satu bentuk pembicaraan untuk semua toko / market."
-  },
-  "level_permainan": [
-    {
-      "level": 1,
-      "nama": "Perumahan Pribadi",
-      "peralatan": "Bio Health Room (SHT41 + MQ-135 + ESP32-S3) + IR 7 Detik di HP",
-      "kompleksitas": "Rendah - 1 ruangan, 1 alat",
-      "pts": "Jualan +100 PTS"
-    },
-    {
-      "level": 2,
-      "nama": "Outlet",
-      "peralatan": "Bio Health Room + CCTV AI + SaaS SCM",
-      "kompleksitas": "Rendah-Sedang - 1 toko, 2-3 alat",
-      "pts": "Jualan +120 PTS"
-    },
-    {
-      "level": 3,
-      "nama": "Ruko",
-      "peralatan": "Super IR Guard SG-810 + CCTV AI + Early Warning + SaaS SCM",
-      "kompleksitas": "Sedang - 2-3 lantai, 4-5 alat",
-      "pts": "Jualan +150 PTS"
-    },
-    {
-      "level": 4,
-      "nama": "Sekolah",
-      "peralatan": "Bio Health Room + UV Steril + CCTV AI + Early Warning + SaaS SCM",
-      "kompleksitas": "Sedang-Tinggi - Banyak kelas, banyak alat",
-      "pts": "Jualan +180 PTS"
-    },
-    {
-      "level": 5,
-      "nama": "Pasar / Pasar Jaya",
-      "peralatan": "Color QC + CCTV AI + GPS Logistics + SaaS SCM + UV Steril",
-      "kompleksitas": "Tinggi - Banyak pedagang, banyak barang",
-      "pts": "Jualan +200 PTS"
-    },
-    {
-      "level": 6,
-      "nama": "Mall / Supermarket / Minimarket / Department Store",
-      "peralatan": "Semua: Bio Health + CCTV AI + GPS + SaaS + Marketing Digital + UV Steril",
-      "kompleksitas": "Tinggi - Banyak lantai, banyak toko",
-      "pts": "Jualan +250 PTS"
-    },
-    {
-      "level": 7,
-      "nama": "Departemen / Local Government",
-      "peralatan": "Tender - Puluhan unit Bio Health + CCTV AI + GPS + SaaS",
-      "kompleksitas": "Sangat Tinggi - Tender, administrasi, banyak unit",
-      "pts": "Jualan +300 PTS"
-    },
-    {
-      "level": 8,
-      "nama": "Autonomous Prototype Pabrik Batik 8in1 - LEVEL TERTINGGI",
-      "peralatan": "Autonomous 8in1: 1. Bio Health Room, 2. Super IR Guard, 3. Color QC Batik, 4. Obsidian Gem Lab, 5. CCTV AI, 6. GPS Logistics, 7. SaaS SCM, 8. UV Steril + Fogging + Super Infrared + SuperSecure + IR 7 Detik di HP. Semua otomatis, tanpa operator!",
-      "kompleksitas": "Paling Tinggi - Autonomous, pabrik jalan sendiri, mikrokontroler observasi semua!",
-      "pts": "Jualan +500 PTS - LEGEND!"
-    }
+  "mapping_neural_spesifik": "Mapping secara spesifik, terkoordinasi, jelas, detail alamat dan keberadaan terdeteksi aktif bila terhubung dan sensor, sehingga terpantau, terkendali, dan bisa maintenance sebagai layanan purna jual. Alat test: Multimeter Tester, Tester Sinyal WiFi, Tester Sensor, Tester Baterai / Daya.",
+  "template_kesimpulan_5_bagian": [
+    "Apa yang diobservasi",
+    "Apa yang terverifikasi",
+    "Apa yang belum diketahui",
+    "Apa risikonya",
+    "Apa skenario dan keputusan yang bisa diambil"
   ],
-  "marketing_digital": {
-    "media_sosial": "Instagram, Threads, Facebook, TikTok, WhatsApp, YouTube",
-    "paling_efektif": "1. Sponsor Bos Toko Supplier (Bos promosikan di toko + di sosmed Bos) + 2. Video Short (Kling / CapCut) - Demo alat nyala, demo sensor detek, demo game + 3. Live + Testimoni Buyer + 4. Konten Edukasi (Cara rawat alat, cara cek gas, cara atur potensio)",
-    "kerja_laptop": "Founder kerja di laptop juga: Nyari network, marketingin secara digital, bikin konten, jawab DM, update SaaS, cek dashboard. Capek mikir + capek kerja di laptop harus dihargai dengan insentif Marketing Digital + Demand Planner!",
-    "sponsor_bos": "Bos Sponsor juga marketingin: Pasang poster di toko, posting di sosmed Bos, ngomong ke Buyer yang survey ke toko: 'Ini system + prototype Founder, bagus, coba liat game-nya!'"
-  },
-  "bonus": {
-    "design": 2000,
-    "saas": 500,
-    "marketing": 600
-  },
-  "markets": [
-    "Perumahan Pribadi",
-    "Outlet",
+  "market_menyeluruh": [
+    "Perumahan",
     "Ruko",
-    "Sekolah",
-    "Pasar / Pasar Jaya",
+    "Toko",
+    "Outlet",
     "Mall",
+    "Pasar",
     "Minimarket",
     "Supermarket",
-    "Department Store",
-    "Departemen / Dinas Pemda",
-    "Toko Permata",
-    "Toko Elektronik",
-    "Pabrik Batik 8in1",
-    "Rumah Sakit",
-    "Hotel"
-  ]
+    "Sekolah",
+    "Departemen Pemerintah",
+    "Kementerian"
+  ],
+  "network": [
+    "YouTube",
+    "TikTok",
+    "Facebook",
+    "Instagram",
+    "WhatsApp"
+  ],
+  "alur": "Neural → Classic → Publish Information → Network. Tidak ada kesimpulan yang dipublikasikan sebelum terverifikasi di Neural."
 }
